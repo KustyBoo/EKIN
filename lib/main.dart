@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:pa_ekin/models/provider_btn_intro.dart';
+import 'package:pa_ekin/screens/Home.dart';
 import 'package:pa_ekin/screens/Introduction_screen.dart';
 import 'package:pa_ekin/screens/signInPage.dart';
 import 'package:pa_ekin/widgets/theme_data.dart';
@@ -35,8 +36,9 @@ class MyApp extends StatelessWidget {
         routes: {
           "/IntroPage": (context) => IntroductionPage(),
           "/SignInPage": (context) => SignInPage(),
+          "/HomePage":(context) => HomePage(),
         },
-        initialRoute: "/SignInPage", // inisialisasi rute
+        initialRoute: "/HomePage", // inisialisasi rute
       ),
     );
   }

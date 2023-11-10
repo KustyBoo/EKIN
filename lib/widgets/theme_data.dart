@@ -45,6 +45,21 @@ TextTheme teksMode = TextTheme(
    letterSpacing: 2,
    color: colorMode.primary,
   ),
+  displayLarge: TextStyle(
+    fontSize: 16,
+    fontFamily: "Oddval",
+    color: colorMode.onPrimary,
+  ),
+  displaySmall: TextStyle(
+   fontSize: 8,
+   fontFamily: "dity",
+   color: colorMode.onPrimary,
+  ),
+  displayMedium: TextStyle(
+   fontSize: 12,
+   fontFamily: "dity",
+   color: colorMode.onPrimary,
+  ),
   
   //
 );
