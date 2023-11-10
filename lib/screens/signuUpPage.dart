@@ -42,7 +42,7 @@ class _SignInPageState extends State<SignUpPage> {
         body: Container(
           child: Column(
             children: [
-               Container(
+              Container(
               margin: EdgeInsets.only(top: 31, right: 290),
               child: TextButton(
                 onPressed: (){},
@@ -57,7 +57,7 @@ class _SignInPageState extends State<SignUpPage> {
               Container(
                 margin: EdgeInsets.only(top: 60, right: 90),
                 alignment: Alignment.center,
-                child: Text("Your journey\nstarts here",
+                child: Text("Your journey\nstarts here.",
                     style: Theme.of(context).textTheme.headlineMedium),
               ),
                Container(
