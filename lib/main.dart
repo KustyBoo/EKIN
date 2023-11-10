@@ -5,6 +5,8 @@ import 'package:pa_ekin/models/provider_btn_intro.dart';
 import 'package:pa_ekin/screens/Home.dart';
 import 'package:pa_ekin/screens/Introduction_screen.dart';
 import 'package:pa_ekin/screens/signInPage.dart';
+import 'package:pa_ekin/screens/signuUpPage.dart';
+import 'package:pa_ekin/screens/success.dart';
 import 'package:pa_ekin/widgets/theme_data.dart';
 import 'package:provider/provider.dart';
 
