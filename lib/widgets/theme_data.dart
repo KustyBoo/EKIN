@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 
+// tema color
 ColorScheme colorMode = ColorScheme.fromSeed(
   seedColor: Color(0xFFA8E25C),
   primary: Color(0xFFA8E25C),
@@ -10,6 +11,7 @@ ColorScheme colorMode = ColorScheme.fromSeed(
   onPrimaryContainer: Colors.white,
 );
 
+// tema teks
 TextTheme teksMode = TextTheme(
   // styling headline intro
   headlineLarge: TextStyle(
@@ -28,6 +30,7 @@ TextTheme teksMode = TextTheme(
   //
 );
 
+// tema elevated button
 ElevatedButtonThemeData btnMode = ElevatedButtonThemeData(
   style: ElevatedButton.styleFrom(
     elevation: 0.7,
