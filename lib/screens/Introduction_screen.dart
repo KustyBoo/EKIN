@@ -238,7 +238,7 @@ class IntroductionPage extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: () {
                       Navigator.pop(context);
-                      Navigator.pushNamed(context, "/");
+                      Navigator.pushNamed(context, "/SignInPage");
                     },
                     style: ElevatedButton.styleFrom(
                       minimumSize: Size(MediaQuery.of(context).size.width, 50),

@@ -27,6 +27,25 @@ TextTheme teksMode = TextTheme(
     fontFamily: "dity",
     color: colorMode.onPrimaryContainer.withOpacity(0.8), // warna putih
   ),
+   bodyLarge: TextStyle(
+   fontSize: 20,
+   fontFamily: "dity",
+   letterSpacing: 2,
+   color: colorMode.onPrimaryContainer.withOpacity(0.8),
+  ),
+  bodyMedium: TextStyle(
+   fontSize: 16,
+   fontFamily: "dity",
+   letterSpacing: 2,
+   color: colorMode.onPrimaryContainer.withOpacity(0.8),
+  ),
+   bodySmall: TextStyle(
+   fontSize: 14,
+   fontFamily: "dity",
+   letterSpacing: 2,
+   color: colorMode.primary,
+  ),
+  
   //
 );
 
