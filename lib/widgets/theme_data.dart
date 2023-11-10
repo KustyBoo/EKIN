@@ -19,9 +19,14 @@ TextTheme teksMode = TextTheme(
     fontFamily: "Oddval",
     color: colorMode.onPrimaryContainer, // warna putih
   ),
+    headlineMedium: TextStyle(
+    fontSize: 32,
+    fontFamily: "Oddval",
+    color: colorMode.onPrimaryContainer, // warna putih
+  ),
 
   // styling caption headline intro
-  headlineMedium: TextStyle(
+  headlineSmall: TextStyle(
     fontSize: 16.5,
     height: 1.5,
     fontFamily: "dity",

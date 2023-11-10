@@ -148,7 +148,7 @@ class IntroductionPage extends StatelessWidget {
                           child: Text(
                             "Showcasing the latest shoe collections, trends, styles, and fashionable shoe choices.",
                             textAlign: TextAlign.center,
-                            style: Theme.of(context).textTheme.headlineMedium,
+                            style: Theme.of(context).textTheme.headlineSmall,
                           ),
                         ),
                       ],
@@ -238,7 +238,7 @@ class IntroductionPage extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: () {
                       Navigator.pop(context);
-                      Navigator.pushNamed(context, "/SignInPage");
+                      Navigator.pushNamed(context, "/");
                     },
                     style: ElevatedButton.styleFrom(
                       minimumSize: Size(MediaQuery.of(context).size.width, 50),

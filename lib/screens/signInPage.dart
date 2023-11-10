@@ -29,7 +29,8 @@ class _SignInPageState extends State<SignInPage> {
           image: DecorationImage(
         image: AssetImage("assets/background.png"),
         fit: BoxFit.cover,
-      )),
+      )
+      ),
       child: Scaffold(
         body: Container(
           child: Column(
@@ -41,12 +42,12 @@ class _SignInPageState extends State<SignInPage> {
                     style: Theme.of(context).textTheme.headlineLarge),
               ),
               Container(
-                padding: EdgeInsets.only(left: 20, right: 20),
+                padding: EdgeInsets.only(left: 30, right: 30),
                 child: TextField(
                   style: Theme.of(context).textTheme.bodySmall,
                   decoration: InputDecoration(
                     labelText:
-                        "Email", // Label akan hilang saat pengguna mengetik
+                        "Username", // Label akan hilang saat pengguna mengetik
                     labelStyle: Theme.of(context).textTheme.bodyLarge,
                     enabledBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
@@ -60,7 +61,7 @@ class _SignInPageState extends State<SignInPage> {
               ),
               SizedBox(height: 25,),
               Container(
-                padding: EdgeInsets.only(left: 20, right: 20),
+                padding: EdgeInsets.only(left: 30, right: 30),
                 child: TextField(
                   style: Theme.of(context).textTheme.bodySmall,
                   decoration: InputDecoration(
@@ -90,6 +91,7 @@ class _SignInPageState extends State<SignInPage> {
                     Container(
                       child: TextButton(
                         onPressed: () {
+
                         },
                         child: Text("Sign Up",
                         style:Theme.of(context).textTheme.bodySmall
