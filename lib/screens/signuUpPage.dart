@@ -176,7 +176,7 @@ class _SignInPageState extends State<SignUpPage> {
               Expanded(
                 flex: 10,
                 child: Container(
-                  margin: EdgeInsets.only(top: 80),
+                  margin: EdgeInsets.only(top: 100),
                   width: MediaQuery.of(context).size.width,
                    child: ElevatedButton(
                       onPressed: () {
@@ -184,7 +184,7 @@ class _SignInPageState extends State<SignUpPage> {
                       style: ElevatedButton.styleFrom(
                         minimumSize: Size(MediaQuery.of(context).size.width * 0.9, 50,),
                       ),
-                      child: Text("Sign In"),
+                      child: Text("Sign-Up"),
                     ),
                     alignment: Alignment.bottomCenter,
                 ),

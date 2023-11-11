@@ -128,7 +128,7 @@ class _SignInPageState extends State<SignInPage> {
                         minimumSize:
                             Size(MediaQuery.of(context).size.width * 0.9, 50),
                       ),
-                      child: Text("Sign In"),
+                      child: Text("Sign-In"),
                     ),
                      alignment: Alignment.bottomCenter,
                   ),

@@ -15,42 +15,59 @@ class SuccessPage extends StatelessWidget {
           fit: BoxFit.cover,
         )
         ),
-        child: Column(
+        child: ListView(
           children: [
-            Container(
-              margin: EdgeInsets.only(top: 31, right: 290),
-              child: TextButton(
+            Stack(
+              children:[
+                TextButton(
                 onPressed: (){},
                  child:
                  Container(
-                   width: 24,
+                  margin: EdgeInsets.only(top: 25, left: 15),
+                   width: MediaQuery.of(context).size.width,
                    height: 24,
-                   child: Image.asset("assets/buttonBack.png")
+                   child: Image.asset("assets/buttonBack.png"),
+                   alignment: Alignment.topLeft,
                    )
-                 ),   
+                  
+                 ),
+              ]
             ),
-            Container(
-                margin: EdgeInsets.only(top: 60, right: 90),
-                alignment: Alignment.center,
-                child: Text("Registration\nsuccesful.",
-                    style: Theme.of(context).textTheme.headlineMedium),
-              ),
-            SizedBox(height: 30,),
-            Container(
-                   width: 320,
+            Expanded(
+              flex: 30,
+              child:
+               Container(
+                  alignment: Alignment.topLeft,
+                  margin: EdgeInsets.only(top: 100, left: 30),
+                  child: Text("Registration\nsuccesful.",
+                      style: Theme.of(context).textTheme.headlineMedium),
+                ),
+            ),
+            Expanded(
+              child:
+               Container(
+                   alignment: Alignment.center,
+                   margin: EdgeInsets.only(top: 30),
+                   width: MediaQuery.of(context).size.width,
                    height: 270,
                    child: Image.asset("assets/Success.png")
-              ),
-            SizedBox(height: 120,),
-            Container(
-                 child: ElevatedButton(
-                    onPressed: () {
-                    },
-                    style: ElevatedButton.styleFrom(
-                      minimumSize: Size(MediaQuery.of(context).size.width * 0.9, 50,),
+                ),
+            ),
+            Expanded(
+                flex: 10,
+                child: Container(
+                  margin: EdgeInsets.only(top: 100),
+                  width: MediaQuery.of(context).size.width,
+                   child: ElevatedButton(
+                      onPressed: () {
+                      },
+                      style: ElevatedButton.styleFrom(
+                        minimumSize: Size(MediaQuery.of(context).size.width * 0.9, 50,),
+                      ),
+                      child: Text("Sign In"),
                     ),
-                    child: Text("Continue"),
-                  ),
+                    alignment: Alignment.bottomCenter,
+                ),
               )
              
           ],

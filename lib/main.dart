@@ -39,9 +39,10 @@ class MyApp extends StatelessWidget {
           "/IntroPage": (context) => IntroductionPage(),
           "/SignInPage": (context) => SignInPage(),
           "/SignUpPage": (context) => SignUpPage(),
+          "/SuccessPage":(context) => SuccessPage(),
           "/HomePage":(context) => HomePage(),
         },
-        initialRoute: "/SignUpPage", // inisialisasi rute
+        initialRoute: "/SuccessPage", // inisialisasi rute
       ),
     );
   }
