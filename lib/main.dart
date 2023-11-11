@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
           "/SuccessPage":(context) => SuccessPage(),
           "/HomePage":(context) => HomePage(),
         },
-        initialRoute: "/SuccessPage", // inisialisasi rute
+        initialRoute: "/HomePage", // inisialisasi rute
       ),
     );
   }
