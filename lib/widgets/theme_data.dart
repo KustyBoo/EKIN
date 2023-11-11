@@ -65,6 +65,11 @@ TextTheme teksMode = TextTheme(
    fontFamily: "dity",
    color: colorMode.onPrimary,
   ),
+  labelMedium: TextStyle(
+   fontSize: 14,
+   fontFamily: "dity",
+   color: colorMode.onPrimary
+  ),
   
   //
 );
