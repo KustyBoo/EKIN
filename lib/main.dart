@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:pa_ekin/models/provider_btn_intro.dart';
+import 'package:pa_ekin/screens/Collection.dart';
 import 'package:pa_ekin/screens/Home.dart';
 import 'package:pa_ekin/screens/Introduction_screen.dart';
 import 'package:pa_ekin/screens/signInPage.dart';
@@ -41,8 +42,9 @@ class MyApp extends StatelessWidget {
           "/SignUpPage": (context) => SignUpPage(),
           "/SuccessPage":(context) => SuccessPage(),
           "/HomePage":(context) => HomePage(),
+          "/CollectionPage":(context) => CollectionPage(),
         },
-        initialRoute: "/HomePage", // inisialisasi rute
+        initialRoute: "/CollectionPage", // inisialisasi rute
       ),
     );
   }
