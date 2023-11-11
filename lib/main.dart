@@ -38,9 +38,10 @@ class MyApp extends StatelessWidget {
         routes: {
           "/IntroPage": (context) => IntroductionPage(),
           "/SignInPage": (context) => SignInPage(),
+          "/SignUpPage": (context) => SignUpPage(),
           "/HomePage":(context) => HomePage(),
         },
-        initialRoute: "/HomePage", // inisialisasi rute
+        initialRoute: "/SignUpPage", // inisialisasi rute
       ),
     );
   }
