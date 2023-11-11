@@ -1,77 +1,74 @@
 import 'package:flutter/material.dart';
 
 class SuccessPage extends StatelessWidget {
-  const SuccessPage({super.key});
+  const SuccessPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-         decoration: BoxDecoration(
-          image: DecorationImage(
-          image: AssetImage("assets/background.png"),
-          fit: BoxFit.cover,
-        )
-        ),
-        child: ListView(
-          children: [
-            Stack(
-              children:[
-                TextButton(
-                onPressed: (){},
-                 child:
-                 Container(
-                  margin: EdgeInsets.only(top: 25, left: 15),
-                   width: MediaQuery.of(context).size.width,
-                   height: 24,
-                   child: Image.asset("assets/buttonBack.png"),
-                   alignment: Alignment.topLeft,
-                   )
-                  
-                 ),
-              ]
+      body: Stack(
+        children: [
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/background.png"),
+                fit: BoxFit.cover,
+              ),
             ),
-            Expanded(
-              flex: 30,
-              child:
-               Container(
-                  alignment: Alignment.topLeft,
-                  margin: EdgeInsets.only(top: 100, left: 30),
-                  child: Text("Registration\nsuccesful.",
-                      style: Theme.of(context).textTheme.headlineMedium),
-                ),
-            ),
-            Expanded(
-              child:
-               Container(
-                   alignment: Alignment.center,
-                   margin: EdgeInsets.only(top: 30),
-                   width: MediaQuery.of(context).size.width,
-                   height: 270,
-                   child: Image.asset("assets/Success.png")
-                ),
-            ),
-            Expanded(
-                flex: 10,
-                child: Container(
-                  margin: EdgeInsets.only(top: 100),
-                  width: MediaQuery.of(context).size.width,
-                   child: ElevatedButton(
-                      onPressed: () {
-                      },
-                      style: ElevatedButton.styleFrom(
-                        minimumSize: Size(MediaQuery.of(context).size.width * 0.9, 50,),
-                      ),
-                      child: Text("Sign In"),
+            child:           
+            Container(
+              child: ListView(
+                children: [
+                  Column(
+                  children: [
+                    SizedBox(height: 25),
+                    Container(
+                      margin: EdgeInsets.only(left: 15),
+                      width: MediaQuery.of(context).size.width,
+                      height: 24,
+                      child: Image.asset("assets/buttonBack.png"),
+                      alignment: Alignment.topLeft,
                     ),
-                    alignment: Alignment.bottomCenter,
-                ),
-              )
-             
-          ],
-        ),
+                    SizedBox(height: 100),
+                    Container(
+                      alignment: Alignment.topLeft,
+                      margin: EdgeInsets.only(left: 30),
+                      child: Text(
+                        "Registration\nsuccessful.",
+                        style: Theme.of(context).textTheme.headlineLarge,
+                      ),
+                    ),
+                    SizedBox(height: 30),
+                    Container(
+                      alignment: Alignment.center,
+                      width: MediaQuery.of(context).size.width,
+                      height: 270,
+                      child: Image.asset("assets/Success.png"),
+                    ),
+                    SizedBox(height: 100),
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      alignment: Alignment.bottomCenter,
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: Size(MediaQuery.of(context).size.width * 0.9, 50),
+                        ),
+                        child: Text("Sign In"),
+                      ),
+                    ),
+                  ],
+                )
+                ],
+              
+              
+                      ),
+            ),
+          ),
+
+        ],
       ),
     );
   }

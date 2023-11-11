@@ -22,8 +22,9 @@ class _SignInPageState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Container(
+        body: Stack(
+      children: [
+        Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(
@@ -33,111 +34,122 @@ class _SignInPageState extends State<SignInPage> {
             ),
           ),
           child: Container(
-            margin: EdgeInsets.only(top: 200),
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
             child: ListView(
-             // crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Expanded(
-                  flex: 2,
-                  child: Container(
-                    child: Text(
-                      "Login",
-                      style: Theme.of(context).textTheme.headlineLarge,
-                    ),
-                    alignment: Alignment.center,
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-                    child: TextField(
-                      controller: _controllerUserName,
-                      style: Theme.of(context).textTheme.bodySmall,
-                      decoration: InputDecoration(
-                        labelText: "Username",
-                        labelStyle: Theme.of(context).textTheme.bodyLarge,
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: colorMode
-                                .onPrimary, // Ganti dengan warna border yang sesuai
+               children: [
+                 Column(
+                    children: [
+                      SizedBox(height: 200),
+                      Container(
+                        alignment: Alignment.center,
+                        child: Text(
+                          "Login",
+                          style: Theme.of(context).textTheme.headlineLarge,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      Container(
+                        child: Padding(
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                          child: TextField(
+                            controller: _controllerUserName,
+                            style: Theme.of(context).textTheme.bodySmall,
+                            decoration: InputDecoration(
+                              labelText: "Username",
+                              labelStyle: Theme.of(context).textTheme.bodyLarge,
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: colorMode
+                                      .onPrimary, // Ganti dengan warna border yang sesuai
+                                ),
+                              ),
+                              floatingLabelBehavior: FloatingLabelBehavior.always,
+                              contentPadding: EdgeInsets.symmetric(vertical: 10),
+                            ),
                           ),
                         ),
-                        floatingLabelBehavior: FloatingLabelBehavior.always,
-                        contentPadding: EdgeInsets.symmetric(vertical: 10),
                       ),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-                    child: TextField(
-                      controller: _controllerPassword,
-                      obscureText: true,
-                      style: Theme.of(context).textTheme.bodySmall,
-                      decoration: InputDecoration(
-                        labelText: "Password",
-                        labelStyle: Theme.of(context).textTheme.bodyLarge,
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: colorMode
-                                .onPrimary, // Ganti dengan warna border yang sesuai
+                      Container(
+                        child: Padding(
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                          child: TextField(
+                            controller: _controllerPassword,
+                            obscureText: true,
+                            style: Theme.of(context).textTheme.bodySmall,
+                            decoration: InputDecoration(
+                              labelText: "Password",
+                              labelStyle: Theme.of(context).textTheme.bodyLarge,
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: colorMode
+                                      .onPrimary, // Ganti dengan warna border yang sesuai
+                                ),
+                              ),
+                              floatingLabelBehavior: FloatingLabelBehavior.always,
+                              contentPadding: EdgeInsets.symmetric(vertical: 10),
+                            ),
                           ),
                         ),
-                        floatingLabelBehavior: FloatingLabelBehavior.always,
-                        contentPadding: EdgeInsets.symmetric(vertical: 10),
                       ),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: Container(
-                    width: MediaQuery.of(context).size.width,
-                    margin: EdgeInsets.only(top: 60),
-                    child: Text(
-                      "Don't Have an Account?",
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    ),
-                    alignment: Alignment.center,
-                  ),
-                ),
-                Expanded(
-                  flex: 4,
-                  child: Container(
-                    width: MediaQuery.of(context).size.width,
-                    margin: EdgeInsets.only(bottom: 170),
-                    child: TextButton(
-                      onPressed: () {},
-                      child: Text("Sign Up",
-                          style: Theme.of(context).textTheme.bodySmall),
-                    ),
-                    alignment: Alignment.center,
-                  ),
-                ),
-                Expanded(
-                  flex: 10,
-                  child: Container(
-                    margin: EdgeInsets.only(bottom: 100),
-                    width: MediaQuery.of(context).size.width,
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        minimumSize:
-                            Size(MediaQuery.of(context).size.width * 0.9, 50),
+                      Container(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Flexible(
+                              child: Container(
+                                margin: EdgeInsets.only(top: 40,),
+                                child: Text(
+                                  "Don't Have an Account?",
+                                  style: Theme.of(context).textTheme.bodyMedium,
+                                ),
+                                
+                              ),
+                            ),
+                            Flexible(
+                              child: Container(
+                                margin: EdgeInsets.only(top: 35),
+                                child: TextButton(
+                                  onPressed: () {},
+                                  child: Text(
+                                    "Sign Up",
+                                    style: Theme.of(context).textTheme.bodySmall,
+                                  ),
+                                ),
+                               
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                      child: Text("Sign-In"),
-                    ),
-                     alignment: Alignment.bottomCenter,
-                  ),
+                      SizedBox(height: 140,),
+                      Container(
+                        //margin: EdgeInsets.only(bottom: 100),
+                        width: MediaQuery.of(context).size.width,
+                        child:
+                         ElevatedButton(
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            minimumSize:
+                                Size(MediaQuery.of(context).size.width * 0.9, 50),
+                          ),
+                          child: Text("Sign-In"),
+                        ),
+                        alignment: Alignment.bottomCenter,
+                      )
+                    ],
+                  )
+               ],
+
                 ),
-              ],
-            ),
           ),
-        ),
-      ),
-    );
+        )
+      ],
+    ));
   }
 }

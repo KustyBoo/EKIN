@@ -29,169 +29,181 @@ class _SignInPageState extends State<SignUpPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height,
-      decoration: BoxDecoration(
-          image: DecorationImage(
-        image: AssetImage("assets/background.png"),
-        fit: BoxFit.cover,
-      )
-      ),
-      child: Scaffold(
-        body: Container(
-          child: ListView(
-            children: [
-              Stack(
-              children:[
-                TextButton(
-                onPressed: (){},
-                 child:
-                 Container(
-                  margin: EdgeInsets.only(top: 25, left: 15),
-                   width: MediaQuery.of(context).size.width,
-                   height: 24,
-                   child: Image.asset("assets/buttonBack.png"),
-                   alignment: Alignment.topLeft,
-                   )
+    return Scaffold(
+      body: Stack(
+        children: [
+          Container(
+             width: MediaQuery.of(context).size.width,
+             height: MediaQuery.of(context).size.height,
+             decoration: BoxDecoration(
+             image: DecorationImage(
+             image: AssetImage("assets/background.png"),
+             fit: BoxFit.cover,
+                ),
+              ),
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height,
+                child: ListView(
+                    children :[
+                      Column(
+                      children: [
+                         SizedBox(height: 25),
+                          Container(
+                            margin: EdgeInsets.only(left: 15),
+                            width: MediaQuery.of(context).size.width,
+                            height: 24,
+                            child: Image.asset("assets/buttonBack.png"),
+                            alignment: Alignment.topLeft,
+                        ),
+                        SizedBox(height: 100),
+                        Container(
+                          alignment: Alignment.topLeft,
+                          margin: EdgeInsets.only(left: 30),
+                          child: Text(
+                            "Your journey\nstarts here.",
+                            style: Theme.of(context).textTheme.headlineLarge,
+                          ),
+                        ),
+                        SizedBox(height: 30,),
+                        Container(
+                          child: Padding(
+                           padding:
+                              EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                          child: TextField(
+                            controller: _controllerPassword,
+                            obscureText: true,
+                            style: Theme.of(context).textTheme.bodySmall,
+                            decoration: InputDecoration(
+                              labelText: "Full Name",
+                              labelStyle: Theme.of(context).textTheme.bodyLarge,
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: colorMode
+                                      .onPrimary, // Ganti dengan warna border yang sesuai
+                                ),
+                              ),
+                              floatingLabelBehavior: FloatingLabelBehavior.always,
+                              contentPadding: EdgeInsets.symmetric(vertical: 10),
+                            ),
+                          ),
+                        ),
+                        ),
+                         Container(
+                          child: Padding(
+                           padding:
+                              EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                          child: TextField(
+                            controller: _controllerPassword,
+                            obscureText: true,
+                            style: Theme.of(context).textTheme.bodySmall,
+                            decoration: InputDecoration(
+                              labelText: "Username",
+                              labelStyle: Theme.of(context).textTheme.bodyLarge,
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: colorMode
+                                      .onPrimary, // Ganti dengan warna border yang sesuai
+                                ),
+                              ),
+                              floatingLabelBehavior: FloatingLabelBehavior.always,
+                              contentPadding: EdgeInsets.symmetric(vertical: 10),
+                            ),
+                          ),
+                        ),
+                        ),
+                         Container(
+                          child: Padding(
+                           padding:
+                              EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                          child: TextField(
+                            controller: _controllerPassword,
+                            obscureText: true,
+                            style: Theme.of(context).textTheme.bodySmall,
+                            decoration: InputDecoration(
+                              labelText: "Email",
+                              labelStyle: Theme.of(context).textTheme.bodyLarge,
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: colorMode
+                                      .onPrimary, // Ganti dengan warna border yang sesuai
+                                ),
+                              ),
+                              floatingLabelBehavior: FloatingLabelBehavior.always,
+                              contentPadding: EdgeInsets.symmetric(vertical: 10),
+                            ),
+                          ),
+                        ),
+                        ),
+                         Container(
+                          child: Padding(
+                           padding:
+                              EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                          child: TextField(
+                            controller: _controllerPassword,
+                            obscureText: true,
+                            style: Theme.of(context).textTheme.bodySmall,
+                            decoration: InputDecoration(
+                              labelText: "Password",
+                              labelStyle: Theme.of(context).textTheme.bodyLarge,
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: colorMode
+                                      .onPrimary, // Ganti dengan warna border yang sesuai
+                                ),
+                              ),
+                              floatingLabelBehavior: FloatingLabelBehavior.always,
+                              contentPadding: EdgeInsets.symmetric(vertical: 10),
+                            ),
+                          ),
+                        ),
+                        ),
+                         Container(
+                          child: Padding(
+                           padding:
+                              EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                          child: TextField(
+                            controller: _controllerPassword,
+                            obscureText: true,
+                            style: Theme.of(context).textTheme.bodySmall,
+                            decoration: InputDecoration(
+                              labelText: "Confirm Password",
+                              labelStyle: Theme.of(context).textTheme.bodyLarge,
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: colorMode
+                                      .onPrimary, // Ganti dengan warna border yang sesuai
+                                ),
+                              ),
+                              floatingLabelBehavior: FloatingLabelBehavior.always,
+                              contentPadding: EdgeInsets.symmetric(vertical: 10),
+                            ),
+                          ),
+                        ),
+                        ),
+                        SizedBox(height: 40,),
+                    Container(
+                      //margin: EdgeInsets.only(bottom: 100),
+                      width: MediaQuery.of(context).size.width,
+                      child:
+                       ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                          minimumSize:
+                              Size(MediaQuery.of(context).size.width * 0.9, 50),
+                        ),
+                        child: Text("Sign-Un"),
+                      ),
+                      alignment: Alignment.bottomCenter,
+                    )
+                      ],
+                    )
+                    ]
                   
-                 ),
-              ]
-            ),
-              Expanded(
-                flex: 10,
-                child: Container(
-                  alignment: Alignment.topLeft,
-                  margin: EdgeInsets.only(top: 100, left: 30),
-                  child: Text("Your journey\nstarts here.",
-                      style: Theme.of(context).textTheme.headlineMedium
-                      ),
-                  ),
-                ),
-               Expanded(
-                 flex: 20,
-                 child: Container(
-                  padding: EdgeInsets.only(left: 30, right: 30, top : 40),
-                  child: TextField(
-                    style: Theme.of(context).textTheme.bodySmall,
-                    decoration: InputDecoration(
-                      labelText:
-                          "Full Name", 
-                      labelStyle: Theme.of(context).textTheme.bodyLarge,
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: colorMode.onPrimaryContainer, // Warna border
-                        ),
-                      ),
-                      floatingLabelBehavior: FloatingLabelBehavior.always, //agar label selalu naik
-                      contentPadding: EdgeInsets.symmetric(vertical: 10)//atur jarak label and inputan
-                    ),
-                  ),
-                 ),
-               ),
-              Expanded(
-                flex: 20,
-                child: Container(
-                  padding: EdgeInsets.only(left: 30, right: 30, top : 10),
-                  child: TextField(
-                    style: Theme.of(context).textTheme.bodySmall,
-                    decoration: InputDecoration(
-                      labelText:
-                          "Username", // Label akan hilang saat pengguna mengetik
-                      labelStyle: Theme.of(context).textTheme.bodyLarge,
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: colorMode.onPrimaryContainer, // Warna border
-                        ),
-                      ),
-                      floatingLabelBehavior: FloatingLabelBehavior.always, //agar label selalu naik
-                      contentPadding: EdgeInsets.symmetric(vertical: 10)//atur jarak label and inputan
-                    ),
-                  ),
                 ),
               ),
-              Expanded(
-                flex: 20,
-                child: Container(
-                  padding: EdgeInsets.only(left: 30, right: 30, top : 10),
-                  child: TextField(
-                    style: Theme.of(context).textTheme.bodySmall,
-                    decoration: InputDecoration(
-                      labelText:
-                          "Email", // Label akan hilang saat pengguna mengetik
-                      labelStyle: Theme.of(context).textTheme.bodyLarge,
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: colorMode.onPrimaryContainer, // Warna border
-                        ),
-                      ),
-                      floatingLabelBehavior: FloatingLabelBehavior.always, //agar label selalu naik
-                      contentPadding: EdgeInsets.symmetric(vertical: 10)//atur jarak label and inputan
-                    ),
-                  ),
-                ),
-              ),
-              Expanded(
-                flex: 20,
-                child: Container(
-                  padding: EdgeInsets.only(left: 30, right: 30, top : 10),
-                  child: TextField(
-                    style: Theme.of(context).textTheme.bodySmall,
-                    decoration: InputDecoration(
-                      labelText:
-                          "Password", // Label akan hilang saat pengguna mengetik
-                      labelStyle: Theme.of(context).textTheme.bodyLarge,
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: colorMode.onPrimaryContainer, // Warna border
-                        ),
-                      ),
-                      floatingLabelBehavior: FloatingLabelBehavior.always, //agar label selalu naik
-                      contentPadding: EdgeInsets.symmetric(vertical: 10)//atur jarak label and inputan
-                    ),
-                  ),
-                ),
-              ),
-              Expanded(
-                flex: 20,
-                child: Container(
-                  padding: EdgeInsets.only(left: 30, right: 30, top : 30),
-                  child: TextField(
-                    style: Theme.of(context).textTheme.bodySmall,
-                    decoration: InputDecoration(
-                      labelText:
-                          "Confirm Password", // Label akan hilang saat pengguna mengetik
-                      labelStyle: Theme.of(context).textTheme.bodyLarge,
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: colorMode.onPrimaryContainer, // Warna border
-                        ),
-                      ),
-                      floatingLabelBehavior: FloatingLabelBehavior.always, //agar label selalu naik
-                      contentPadding: EdgeInsets.symmetric(vertical: 10)//atur jarak label and inputan
-                    ),
-                  ),
-                ),
-              ),
-              Expanded(
-                flex: 10,
-                child: Container(
-                  margin: EdgeInsets.only(top: 100),
-                  width: MediaQuery.of(context).size.width,
-                   child: ElevatedButton(
-                      onPressed: () {
-                      },
-                      style: ElevatedButton.styleFrom(
-                        minimumSize: Size(MediaQuery.of(context).size.width * 0.9, 50,),
-                      ),
-                      child: Text("Sign-Up"),
-                    ),
-                    alignment: Alignment.bottomCenter,
-                ),
-              )
-            ],
-          ),
-        ),
+          )
+        ],
       ),
     );
   }
