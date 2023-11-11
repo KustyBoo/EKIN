@@ -40,7 +40,6 @@ class _SignInPageState extends State<SignInPage> {
                 Expanded(
                   flex: 2,
                   child: Container(
-                    //margin: EdgeInsets.only(left: 160),
                     child: Text(
                       "Login",
                       style: Theme.of(context).textTheme.headlineLarge,
