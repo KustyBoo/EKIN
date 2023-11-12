@@ -8,20 +8,20 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Stack(
-          children: [
-            //container bg
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
-              child: Image(
-                image: AssetImage("assets/background.png"),
-                fit: BoxFit.cover,
-              ),
-            ),
-            Column(
+    return Stack(
+      children: [
+        //container bg
+        Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          child: Image(
+            image: AssetImage("assets/background.png"),
+            fit: BoxFit.cover,
+          ),
+        ),
+        Scaffold(
+          body: SafeArea(
+            child: Column(
               children: [
                 //container search dan logo
                 Container(
@@ -149,7 +149,9 @@ class HomePage extends StatelessWidget {
                               Container(
                                 child: Text(
                                   "Lix",
-                                  style: Theme.of(context).textTheme.bodyMedium,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyMedium,
                                 ),
                               )
                             ],
@@ -179,8 +181,8 @@ class HomePage extends StatelessWidget {
                         height: 152,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12),
-                          border:
-                              Border.all(color: colorMode.primary, width: 1),
+                          border: Border.all(
+                              color: colorMode.primary, width: 1),
                         ),
                         child: Image(
                           image: AssetImage("assets/Group_89.png"),
@@ -202,7 +204,8 @@ class HomePage extends StatelessWidget {
                           children: [
                             Text(
                               "What's New",
-                              style: Theme.of(context).textTheme.displayLarge,
+                              style:
+                                  Theme.of(context).textTheme.displayLarge,
                             ),
                             SizedBox(
                               width: 8.5,
@@ -234,9 +237,12 @@ class HomePage extends StatelessWidget {
                               width: 93,
                               height: 121,
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(12),
-                                  border: Border.all(
-                                      color: colorMode.primary, width: 1)),
+                                borderRadius: BorderRadius.circular(12),
+                                border: Border.all(
+                                  color: colorMode.primary,
+                                  width: 1,
+                                ),
+                              ),
                               child: Stack(
                                 children: [
                                   Container(
@@ -251,8 +257,12 @@ class HomePage extends StatelessWidget {
                                     decoration: BoxDecoration(
                                       color: colorMode.primary,
                                       borderRadius: BorderRadius.only(
-                                        bottomRight: Radius.circular(6),
-                                        topLeft: Radius.circular(6),
+                                        bottomRight: Radius.circular(10),
+                                        topLeft: Radius.circular(10),
+                                      ),
+                                      border: Border.all(
+                                        color: colorMode.primary,
+                                        width: 1,
                                       ),
                                     ),
                                     child: Text(
@@ -272,8 +282,12 @@ class HomePage extends StatelessWidget {
                                       decoration: BoxDecoration(
                                         color: colorMode.primary,
                                         borderRadius: BorderRadius.only(
-                                          bottomRight: Radius.circular(12),
-                                          bottomLeft: Radius.circular(11),
+                                          bottomRight: Radius.circular(13),
+                                          bottomLeft: Radius.circular(10),
+                                        ),
+                                        border: Border.all(
+                                          color: colorMode.primary,
+                                          width: 1,
                                         ),
                                       ),
                                       child: Text(
@@ -286,7 +300,7 @@ class HomePage extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                            )
+                            ),
                           ],
                         ),
                       ),
@@ -305,7 +319,8 @@ class HomePage extends StatelessWidget {
                           children: [
                             Text(
                               "Most Rated",
-                              style: Theme.of(context).textTheme.displayLarge,
+                              style:
+                                  Theme.of(context).textTheme.displayLarge,
                             ),
                             SizedBox(
                               width: 8.5,
@@ -337,9 +352,12 @@ class HomePage extends StatelessWidget {
                                 width: 93,
                                 height: 121,
                                 decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(12),
-                                    border: Border.all(
-                                        color: colorMode.primary, width: 1)),
+                                  borderRadius: BorderRadius.circular(12),
+                                  border: Border.all(
+                                    color: colorMode.primary,
+                                    width: 1,
+                                  ),
+                                ),
                                 child: Stack(
                                   children: [
                                     Container(
@@ -347,22 +365,31 @@ class HomePage extends StatelessWidget {
                                       height: 121,
                                     ),
                                     //container tulisan harga
-                                    Container(
-                                      alignment: Alignment.center,
-                                      height: 11.5,
-                                      width: 40,
-                                      decoration: BoxDecoration(
-                                        color: colorMode.primary,
-                                        borderRadius: BorderRadius.only(
-                                          bottomRight: Radius.circular(6),
-                                          topLeft: Radius.circular(6),
+                                    Positioned(
+                                      left: 0,
+                                      top: 0,
+                                      child: Container(
+                                        alignment: Alignment.center,
+                                        height: 11.5,
+                                        width: 40,
+                                        decoration: BoxDecoration(
+                                          color: colorMode.primary,
+                                          borderRadius: BorderRadius.only(
+                                            bottomRight:
+                                                Radius.circular(10),
+                                            topLeft: Radius.circular(10),
+                                          ),
+                                          border: Border.all(
+                                            color: colorMode.primary,
+                                            width: 1,
+                                          ),
                                         ),
-                                      ),
-                                      child: Text(
-                                        "\$100.00",
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .displaySmall,
+                                        child: Text(
+                                          "\$100.00",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .displaySmall,
+                                        ),
                                       ),
                                     ),
                                     Positioned(
@@ -376,8 +403,13 @@ class HomePage extends StatelessWidget {
                                         decoration: BoxDecoration(
                                           color: colorMode.primary,
                                           borderRadius: BorderRadius.only(
-                                            bottomRight: Radius.circular(12),
-                                            bottomLeft: Radius.circular(11),
+                                            bottomRight:
+                                                Radius.circular(10),
+                                            bottomLeft: Radius.circular(10),
+                                          ),
+                                          border: Border.all(
+                                            color: colorMode.primary,
+                                            width: 1,
                                           ),
                                         ),
                                         child: Text(
@@ -404,7 +436,8 @@ class HomePage extends StatelessWidget {
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(12),
                                     border: Border.all(
-                                        color: colorMode.primary, width: 1)),
+                                        color: colorMode.primary,
+                                        width: 1)),
                                 child: Stack(
                                   children: [
                                     Container(
@@ -419,8 +452,12 @@ class HomePage extends StatelessWidget {
                                       decoration: BoxDecoration(
                                         color: colorMode.primary,
                                         borderRadius: BorderRadius.only(
-                                          bottomRight: Radius.circular(6),
-                                          topLeft: Radius.circular(6),
+                                          bottomRight: Radius.circular(10),
+                                          topLeft: Radius.circular(10),
+                                        ),
+                                        border: Border.all(
+                                          color: colorMode.primary,
+                                          width: 1,
                                         ),
                                       ),
                                       child: Text(
@@ -441,8 +478,13 @@ class HomePage extends StatelessWidget {
                                         decoration: BoxDecoration(
                                           color: colorMode.primary,
                                           borderRadius: BorderRadius.only(
-                                            bottomRight: Radius.circular(12),
-                                            bottomLeft: Radius.circular(11),
+                                            bottomRight:
+                                                Radius.circular(10),
+                                            bottomLeft: Radius.circular(10),
+                                          ),
+                                          border: Border.all(
+                                            color: colorMode.primary,
+                                            width: 1,
                                           ),
                                         ),
                                         child: Text(
@@ -469,7 +511,8 @@ class HomePage extends StatelessWidget {
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(12),
                                     border: Border.all(
-                                        color: colorMode.primary, width: 1)),
+                                        color: colorMode.primary,
+                                        width: 1)),
                                 child: Stack(
                                   children: [
                                     //ngeset container paling besar
@@ -485,8 +528,12 @@ class HomePage extends StatelessWidget {
                                       decoration: BoxDecoration(
                                         color: colorMode.primary,
                                         borderRadius: BorderRadius.only(
-                                          bottomRight: Radius.circular(6),
-                                          topLeft: Radius.circular(6),
+                                          bottomRight: Radius.circular(10),
+                                          topLeft: Radius.circular(10),
+                                        ),
+                                        border: Border.all(
+                                          color: colorMode.primary,
+                                          width: 1,
                                         ),
                                       ),
                                       child: Text(
@@ -507,8 +554,13 @@ class HomePage extends StatelessWidget {
                                         decoration: BoxDecoration(
                                           color: colorMode.primary,
                                           borderRadius: BorderRadius.only(
-                                            bottomRight: Radius.circular(12),
-                                            bottomLeft: Radius.circular(11),
+                                            bottomRight:
+                                                Radius.circular(10),
+                                            bottomLeft: Radius.circular(10),
+                                          ),
+                                          border: Border.all(
+                                            color: colorMode.primary,
+                                            width: 1,
                                           ),
                                         ),
                                         child: Text(
@@ -541,7 +593,8 @@ class HomePage extends StatelessWidget {
                           children: [
                             Text(
                               "Today's Pick",
-                              style: Theme.of(context).textTheme.displayLarge,
+                              style:
+                                  Theme.of(context).textTheme.displayLarge,
                             ),
                             SizedBox(
                               width: 8.5,
@@ -568,8 +621,8 @@ class HomePage extends StatelessWidget {
                         height: 152,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12),
-                          border:
-                              Border.all(color: colorMode.primary, width: 1),
+                          border: Border.all(
+                              color: colorMode.primary, width: 1),
                         ),
                         child: Stack(
                           children: [
@@ -595,8 +648,9 @@ class HomePage extends StatelessWidget {
                                 ),
                                 child: Text(
                                   "\$100.00",
-                                  style:
-                                      Theme.of(context).textTheme.displaySmall,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .displaySmall,
                                 ),
                               ),
                             ),
@@ -606,7 +660,8 @@ class HomePage extends StatelessWidget {
                               top: 0,
                               //container image
                               child: Container(
-                                width: MediaQuery.of(context).size.width * 0.5,
+                                width:
+                                    MediaQuery.of(context).size.width * 0.5,
                                 height: MediaQuery.of(context).size.height,
                               ),
                             ),
@@ -621,9 +676,11 @@ class HomePage extends StatelessWidget {
                                 child: Stack(
                                   children: [
                                     Container(
-                                      width: MediaQuery.of(context).size.width,
-                                      height:
-                                          MediaQuery.of(context).size.height,
+                                      width:
+                                          MediaQuery.of(context).size.width,
+                                      height: MediaQuery.of(context)
+                                          .size
+                                          .height,
                                     ),
                                     //container more
                                     Positioned(
@@ -656,16 +713,16 @@ class HomePage extends StatelessWidget {
                         ),
                       ),
                       SizedBox(
-                        height: 100,
+                        height: 20,
                       ),
                     ],
                   ),
                 ),
               ],
             ),
-          ],
+          ),
         ),
-      ),
+      ],
     );
   }
 }

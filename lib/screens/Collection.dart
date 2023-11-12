@@ -13,20 +13,20 @@ class CollectionPage extends StatefulWidget {
 class _CollectionPageState extends State<CollectionPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Stack(
-          children: [
-            //container bg
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
-              child: Image(
-                image: AssetImage("assets/background.png"),
-                fit: BoxFit.cover,
-              ),
-            ),
-            Column(
+    return Stack(
+      children: [
+        //container bg
+        Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          child: Image(
+            image: AssetImage("assets/background.png"),
+            fit: BoxFit.cover,
+          ),
+        ),
+        Scaffold(
+          body: SafeArea(
+            child: Column(
               children: [
                 //container search dan logo
                 Container(
@@ -230,8 +230,8 @@ class _CollectionPageState extends State<CollectionPage> {
                                 decoration: BoxDecoration(
                                   color: colorMode.primary,
                                   borderRadius: BorderRadius.only(
-                                    bottomLeft: Radius.circular(6),
-                                    topRight: Radius.circular(6),
+                                    bottomLeft: Radius.circular(10),
+                                    topRight: Radius.circular(10),
                                   ),
                                 ),
                                 child: Text(
@@ -578,12 +578,14 @@ class _CollectionPageState extends State<CollectionPage> {
                               width: 93,
                               height: 121,
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(12),
-                                  border: Border.all(
-                                      color: colorMode.primary, width: 1)),
+                                borderRadius: BorderRadius.circular(12),
+                                border: Border.all(
+                                  color: colorMode.primary,
+                                  width: 1,
+                                ),
+                              ),
                               child: Stack(
                                 children: [
-                                  //ngeset container paling besar
                                   Container(
                                     width: 93,
                                     height: 121,
@@ -596,8 +598,12 @@ class _CollectionPageState extends State<CollectionPage> {
                                     decoration: BoxDecoration(
                                       color: colorMode.primary,
                                       borderRadius: BorderRadius.only(
-                                        bottomRight: Radius.circular(6),
-                                        topLeft: Radius.circular(6),
+                                        bottomRight: Radius.circular(10),
+                                        topLeft: Radius.circular(10),
+                                      ),
+                                      border: Border.all(
+                                        color: colorMode.primary,
+                                        width: 1,
                                       ),
                                     ),
                                     child: Text(
@@ -608,18 +614,21 @@ class _CollectionPageState extends State<CollectionPage> {
                                     ),
                                   ),
                                   Positioned(
-                                    left: 0,
-                                    right: 0,
                                     bottom: 0,
                                     //container view
                                     child: Container(
                                       alignment: Alignment.center,
                                       height: 22,
+                                      width: 93,
                                       decoration: BoxDecoration(
                                         color: colorMode.primary,
                                         borderRadius: BorderRadius.only(
-                                          bottomRight: Radius.circular(12),
-                                          bottomLeft: Radius.circular(11),
+                                          bottomRight: Radius.circular(13),
+                                          bottomLeft: Radius.circular(10),
+                                        ),
+                                        border: Border.all(
+                                          color: colorMode.primary,
+                                          width: 1,
                                         ),
                                       ),
                                       child: Text(
@@ -638,12 +647,14 @@ class _CollectionPageState extends State<CollectionPage> {
                               width: 93,
                               height: 121,
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(12),
-                                  border: Border.all(
-                                      color: colorMode.primary, width: 1)),
+                                borderRadius: BorderRadius.circular(12),
+                                border: Border.all(
+                                  color: colorMode.primary,
+                                  width: 1,
+                                ),
+                              ),
                               child: Stack(
                                 children: [
-                                  //ngeset container paling besar
                                   Container(
                                     width: 93,
                                     height: 121,
@@ -656,8 +667,12 @@ class _CollectionPageState extends State<CollectionPage> {
                                     decoration: BoxDecoration(
                                       color: colorMode.primary,
                                       borderRadius: BorderRadius.only(
-                                        bottomRight: Radius.circular(6),
-                                        topLeft: Radius.circular(6),
+                                        bottomRight: Radius.circular(10),
+                                        topLeft: Radius.circular(10),
+                                      ),
+                                      border: Border.all(
+                                        color: colorMode.primary,
+                                        width: 1,
                                       ),
                                     ),
                                     child: Text(
@@ -668,18 +683,21 @@ class _CollectionPageState extends State<CollectionPage> {
                                     ),
                                   ),
                                   Positioned(
-                                    left: 0,
-                                    right: 0,
                                     bottom: 0,
                                     //container view
                                     child: Container(
                                       alignment: Alignment.center,
                                       height: 22,
+                                      width: 93,
                                       decoration: BoxDecoration(
                                         color: colorMode.primary,
                                         borderRadius: BorderRadius.only(
-                                          bottomRight: Radius.circular(12),
-                                          bottomLeft: Radius.circular(11),
+                                          bottomRight: Radius.circular(13),
+                                          bottomLeft: Radius.circular(10),
+                                        ),
+                                        border: Border.all(
+                                          color: colorMode.primary,
+                                          width: 1,
                                         ),
                                       ),
                                       child: Text(
@@ -698,12 +716,14 @@ class _CollectionPageState extends State<CollectionPage> {
                               width: 93,
                               height: 121,
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(12),
-                                  border: Border.all(
-                                      color: colorMode.primary, width: 1)),
+                                borderRadius: BorderRadius.circular(12),
+                                border: Border.all(
+                                  color: colorMode.primary,
+                                  width: 1,
+                                ),
+                              ),
                               child: Stack(
                                 children: [
-                                  //ngeset container paling besar
                                   Container(
                                     width: 93,
                                     height: 121,
@@ -716,8 +736,12 @@ class _CollectionPageState extends State<CollectionPage> {
                                     decoration: BoxDecoration(
                                       color: colorMode.primary,
                                       borderRadius: BorderRadius.only(
-                                        bottomRight: Radius.circular(6),
-                                        topLeft: Radius.circular(6),
+                                        bottomRight: Radius.circular(10),
+                                        topLeft: Radius.circular(10),
+                                      ),
+                                      border: Border.all(
+                                        color: colorMode.primary,
+                                        width: 1,
                                       ),
                                     ),
                                     child: Text(
@@ -728,18 +752,21 @@ class _CollectionPageState extends State<CollectionPage> {
                                     ),
                                   ),
                                   Positioned(
-                                    left: 0,
-                                    right: 0,
                                     bottom: 0,
                                     //container view
                                     child: Container(
                                       alignment: Alignment.center,
                                       height: 22,
+                                      width: 93,
                                       decoration: BoxDecoration(
                                         color: colorMode.primary,
                                         borderRadius: BorderRadius.only(
-                                          bottomRight: Radius.circular(12),
-                                          bottomLeft: Radius.circular(11),
+                                          bottomRight: Radius.circular(13),
+                                          bottomLeft: Radius.circular(10),
+                                        ),
+                                        border: Border.all(
+                                          color: colorMode.primary,
+                                          width: 1,
                                         ),
                                       ),
                                       child: Text(
@@ -758,12 +785,14 @@ class _CollectionPageState extends State<CollectionPage> {
                               width: 93,
                               height: 121,
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(12),
-                                  border: Border.all(
-                                      color: colorMode.primary, width: 1)),
+                                borderRadius: BorderRadius.circular(12),
+                                border: Border.all(
+                                  color: colorMode.primary,
+                                  width: 1,
+                                ),
+                              ),
                               child: Stack(
                                 children: [
-                                  //ngeset container paling besar
                                   Container(
                                     width: 93,
                                     height: 121,
@@ -776,8 +805,12 @@ class _CollectionPageState extends State<CollectionPage> {
                                     decoration: BoxDecoration(
                                       color: colorMode.primary,
                                       borderRadius: BorderRadius.only(
-                                        bottomRight: Radius.circular(6),
-                                        topLeft: Radius.circular(6),
+                                        bottomRight: Radius.circular(10),
+                                        topLeft: Radius.circular(10),
+                                      ),
+                                      border: Border.all(
+                                        color: colorMode.primary,
+                                        width: 1,
                                       ),
                                     ),
                                     child: Text(
@@ -788,18 +821,21 @@ class _CollectionPageState extends State<CollectionPage> {
                                     ),
                                   ),
                                   Positioned(
-                                    left: 0,
-                                    right: 0,
                                     bottom: 0,
                                     //container view
                                     child: Container(
                                       alignment: Alignment.center,
                                       height: 22,
+                                      width: 93,
                                       decoration: BoxDecoration(
                                         color: colorMode.primary,
                                         borderRadius: BorderRadius.only(
-                                          bottomRight: Radius.circular(12),
-                                          bottomLeft: Radius.circular(11),
+                                          bottomRight: Radius.circular(13),
+                                          bottomLeft: Radius.circular(10),
+                                        ),
+                                        border: Border.all(
+                                          color: colorMode.primary,
+                                          width: 1,
                                         ),
                                       ),
                                       child: Text(
@@ -823,10 +859,10 @@ class _CollectionPageState extends State<CollectionPage> {
                   ),
                 ),
               ],
-            )
-          ],
+            ),
+          ),
         ),
-      ),
+      ],
     );
   }
 }
