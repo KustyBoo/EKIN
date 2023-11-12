@@ -27,125 +27,137 @@ class HomePage extends StatelessWidget {
                 Container(
                   width: MediaQuery.of(context).size.width,
                   height: 68,
-                  color: Colors.red,
-                  child: Row(children: [
-                    Expanded(
-                      flex: 9,
-                      //container pembungkus search bar
-                      child: Container(
-                        margin: EdgeInsets.only(
-                          left: 12,
-                          right: 12,
-                        ),
-                        height: 47,
-                        color: Colors.yellow,
+                  child: Row(
+                    children: [
+                      Expanded(
+                        flex: 9,
+                        //container pembungkus search bar
                         child: Container(
-                          margin: EdgeInsets.fromLTRB(8, 6, 8, 6),
-                          height: 35,
-                          decoration: BoxDecoration(
-                              border:
-                                  Border.all(color: Colors.white, width: 3)),
-                          child: Row(
-                            children: [
-                              Expanded(
-                                flex: 7,
-                                child: Container(
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(left: 10),
-                                    child: TextField(
-                                      decoration: InputDecoration(
-                                        hintText: "Search",
+                          margin: EdgeInsets.only(
+                            left: 12,
+                            right: 12,
+                          ),
+                          height: 47,
+                          child: Container(
+                            margin: EdgeInsets.fromLTRB(8, 6, 8, 6),
+                            height: 35,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: Colors.white,
+                                width: 1,
+                              ),
+                            ),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  flex: 7,
+                                  child: Container(
+                                    child: Padding(
+                                      padding: EdgeInsets.only(left: 10),
+                                      child: TextField(
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .labelMedium,
+                                        decoration: InputDecoration(
+                                          border: InputBorder.none,
+                                          hintText: "Search",
+                                          hintStyle: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium,
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
-                              ),
-                              Expanded(
-                                flex: 3,
-                                child: Container(
-                                  margin: EdgeInsets.only(left: 40),
-                                  height: 35,
-                                  decoration: BoxDecoration(
-                                    color: Colors.green,
-                                    border: Border(
-                                      left: BorderSide(
-                                          width: 3, color: Colors.white),
+                                Expanded(
+                                  flex: 3,
+                                  child: Container(
+                                    margin: EdgeInsets.only(left: 40),
+                                    height: 35,
+                                    decoration: BoxDecoration(
+                                      color: colorMode.primary,
+                                      border: Border(
+                                        left: BorderSide(
+                                            width: 1, color: Colors.white),
+                                      ),
+                                    ),
+                                    child: Icon(
+                                      Icons.search,
+                                      color: colorMode.onPrimary,
                                     ),
                                   ),
-                                  child: Icon(
-                                    Icons.search,
-                                    color: colorMode.onPrimary,
-                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    Expanded(
+                      Expanded(
                         flex: 2,
                         child: Container(
                           margin: EdgeInsets.only(right: 12),
                           padding: EdgeInsets.all(10),
                           height: 47,
-                          color: Colors.black,
-                          child: Column(children: [
-                            Container(
-                              child: Row(
-                                children: [
-                                  Expanded(
-                                    flex: 2,
-                                    child: Container(
-                                      height: 8,
-                                      color: colorMode.onPrimary,
+                          child: Column(
+                            children: [
+                              Container(
+                                child: Row(
+                                  children: [
+                                    Expanded(
+                                      flex: 2,
+                                      child: Container(
+                                        height: 8,
+                                        color: colorMode.onPrimary,
+                                      ),
                                     ),
-                                  ),
-                                  SizedBox(
-                                    width: 1,
-                                  ),
-                                  Expanded(
-                                    flex: 2,
-                                    child: Container(
-                                      height: 8,
-                                      color: colorMode.onPrimary,
+                                    SizedBox(
+                                      width: 1,
                                     ),
-                                  ),
-                                  SizedBox(
-                                    width: 1,
-                                  ),
-                                  Expanded(
-                                    flex: 2,
-                                    child: Container(
-                                      height: 8,
-                                      color: colorMode.onPrimary,
+                                    Expanded(
+                                      flex: 2,
+                                      child: Container(
+                                        height: 8,
+                                        color: colorMode.onPrimary,
+                                      ),
                                     ),
-                                  ),
-                                  SizedBox(
-                                    width: 1,
-                                  ),
-                                  Expanded(
-                                    flex: 2,
-                                    child: Container(
-                                      height: 8,
-                                      color: colorMode.onPrimary,
+                                    SizedBox(
+                                      width: 1,
                                     ),
-                                  ),
-                                ],
+                                    Expanded(
+                                      flex: 2,
+                                      child: Container(
+                                        height: 8,
+                                        color: colorMode.onPrimary,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 1,
+                                    ),
+                                    Expanded(
+                                      flex: 2,
+                                      child: Container(
+                                        height: 8,
+                                        color: colorMode.onPrimary,
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
-                            SizedBox(
-                              height: 3,
-                            ),
-                            Container(
-                              child: Text(
-                                "LIX",
-                                style: Theme.of(context).textTheme.bodyMedium,
+                              SizedBox(
+                                height: 2,
                               ),
-                            )
-                          ]),
-                        )),
-                  ]),
+                              Container(
+                                child: Text(
+                                  "Lix",
+                                  style: Theme.of(context).textTheme.bodyMedium,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 Expanded(
                   child: ListView(
@@ -195,13 +207,12 @@ class HomePage extends StatelessWidget {
                             SizedBox(
                               width: 8.5,
                             ),
-                            Divider(
-                              thickness: 1,
-                              color: colorMode.onPrimary,
-                              height: 14,
-                              endIndent: 0,
-                              indent: 0,
-                            )
+                            Expanded(
+                              child: Container(
+                                height: 1,
+                                color: colorMode.onPrimary,
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -299,13 +310,12 @@ class HomePage extends StatelessWidget {
                             SizedBox(
                               width: 8.5,
                             ),
-                            Divider(
-                              thickness: 1,
-                              color: colorMode.onPrimary,
-                              height: 14,
-                              endIndent: 0,
-                              indent: 0,
-                            )
+                            Expanded(
+                              child: Container(
+                                height: 1,
+                                color: colorMode.onPrimary,
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -516,7 +526,9 @@ class HomePage extends StatelessWidget {
                           ],
                         ),
                       ),
-                      SizedBox(height: 16),
+                      SizedBox(
+                        height: 16,
+                      ),
                       //container Todays dan garis putih
                       Container(
                         margin: EdgeInsets.only(
@@ -534,13 +546,12 @@ class HomePage extends StatelessWidget {
                             SizedBox(
                               width: 8.5,
                             ),
-                            Divider(
-                              thickness: 1,
-                              color: colorMode.onPrimary,
-                              height: 14,
-                              endIndent: 0,
-                              indent: 0,
-                            )
+                            Expanded(
+                              child: Container(
+                                height: 1,
+                                color: colorMode.onPrimary,
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -597,7 +608,6 @@ class HomePage extends StatelessWidget {
                               child: Container(
                                 width: MediaQuery.of(context).size.width * 0.5,
                                 height: MediaQuery.of(context).size.height,
-                                color: Colors.white,
                               ),
                             ),
                             Positioned(
@@ -608,7 +618,6 @@ class HomePage extends StatelessWidget {
                               child: Container(
                                 width: 125,
                                 height: 109,
-                                color: Colors.blue,
                                 child: Stack(
                                   children: [
                                     Container(

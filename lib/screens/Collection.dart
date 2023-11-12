@@ -32,7 +32,6 @@ class _CollectionPageState extends State<CollectionPage> {
                 Container(
                   width: MediaQuery.of(context).size.width,
                   height: 68,
-                  color: Colors.red,
                   child: Row(
                     children: [
                       Expanded(
@@ -44,23 +43,32 @@ class _CollectionPageState extends State<CollectionPage> {
                             right: 12,
                           ),
                           height: 47,
-                          color: Colors.yellow,
                           child: Container(
                             margin: EdgeInsets.fromLTRB(8, 6, 8, 6),
                             height: 35,
                             decoration: BoxDecoration(
-                                border:
-                                    Border.all(color: Colors.white, width: 3)),
+                              border: Border.all(
+                                color: Colors.white,
+                                width: 1,
+                              ),
+                            ),
                             child: Row(
                               children: [
                                 Expanded(
                                   flex: 7,
                                   child: Container(
                                     child: Padding(
-                                      padding: const EdgeInsets.only(left: 10),
+                                      padding: EdgeInsets.only(left: 10),
                                       child: TextField(
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .labelMedium,
                                         decoration: InputDecoration(
+                                          border: InputBorder.none,
                                           hintText: "Search",
+                                          hintStyle: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium,
                                         ),
                                       ),
                                     ),
@@ -72,10 +80,10 @@ class _CollectionPageState extends State<CollectionPage> {
                                     margin: EdgeInsets.only(left: 40),
                                     height: 35,
                                     decoration: BoxDecoration(
-                                      color: Colors.green,
+                                      color: colorMode.primary,
                                       border: Border(
                                         left: BorderSide(
-                                            width: 3, color: Colors.white),
+                                            width: 1, color: Colors.white),
                                       ),
                                     ),
                                     child: Icon(
@@ -95,7 +103,6 @@ class _CollectionPageState extends State<CollectionPage> {
                           margin: EdgeInsets.only(right: 12),
                           padding: EdgeInsets.all(10),
                           height: 47,
-                          color: Colors.black,
                           child: Column(
                             children: [
                               Container(
@@ -142,11 +149,11 @@ class _CollectionPageState extends State<CollectionPage> {
                                 ),
                               ),
                               SizedBox(
-                                height: 3,
+                                height: 2,
                               ),
                               Container(
                                 child: Text(
-                                  "LIX",
+                                  "Lix",
                                   style: Theme.of(context).textTheme.bodyMedium,
                                 ),
                               )
@@ -180,15 +187,17 @@ class _CollectionPageState extends State<CollectionPage> {
                             SizedBox(
                               width: 8.5,
                             ),
-                            Divider(
-                              thickness: 1,
-                              color: colorMode.onPrimary,
-                              height: 14,
-                              endIndent: 0,
-                              indent: 0,
-                            )
+                            Expanded(
+                              child: Container(
+                                height: 1,
+                                color: colorMode.onPrimary,
+                              ),
+                            ),
                           ],
                         ),
+                      ),
+                      SizedBox(
+                        height: 12,
                       ),
                       //container di bawah latest pick
                       Container(
@@ -240,7 +249,6 @@ class _CollectionPageState extends State<CollectionPage> {
                               child: Container(
                                 width: MediaQuery.of(context).size.width * 0.5,
                                 height: MediaQuery.of(context).size.height,
-                                color: Colors.white,
                               ),
                             ),
                             Positioned(
@@ -251,7 +259,6 @@ class _CollectionPageState extends State<CollectionPage> {
                               child: Container(
                                 width: 125,
                                 height: 109,
-                                color: Colors.blue,
                                 child: Stack(
                                   children: [
                                     Container(
@@ -294,28 +301,38 @@ class _CollectionPageState extends State<CollectionPage> {
                       ),
                       //container pemersatu collection dan garis kanan kirinya
                       Container(
+                        margin: EdgeInsets.only(
+                          left: 20,
+                          right: 20,
+                        ),
                         child: Row(
                           children: [
                             //container garis kiri
-                            Expanded(flex: 3, child: Container()),
-                            //container Collection/tengah
                             Expanded(
-                              flex: 3,
                               child: Container(
-                                margin: EdgeInsets.only(
-                                  right: 11,
-                                  left: 11,
-                                ),
-                                height: 25,
-                                child: Text(
-                                  "Collection",
-                                  style:
-                                      Theme.of(context).textTheme.displayLarge,
-                                ),
+                                height: 1,
+                                color: colorMode.onPrimary,
+                              ),
+                            ),
+                            //container Collection/tengah
+                            Container(
+                              margin: EdgeInsets.only(
+                                right: 11,
+                                left: 11,
+                              ),
+                              height: 25,
+                              child: Text(
+                                "Collection",
+                                style: Theme.of(context).textTheme.displayLarge,
                               ),
                             ),
                             //container garis kanan
-                            Expanded(flex: 3, child: Container()),
+                            Expanded(
+                              child: Container(
+                                height: 1,
+                                color: colorMode.onPrimary,
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -335,15 +352,11 @@ class _CollectionPageState extends State<CollectionPage> {
                               flex: 2,
                               child: Container(
                                 alignment: Alignment.center,
-                                padding: EdgeInsets.only(
-                                  left: 20,
-                                  right: 20,
-                                  top: 6,
-                                  bottom: 6,
-                                ),
                                 height: 26,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(20),
+                                  border: Border.all(
+                                      color: colorMode.primary, width: 1),
                                   color: colorMode.primary,
                                 ),
                                 child: Text(
@@ -361,12 +374,6 @@ class _CollectionPageState extends State<CollectionPage> {
                               flex: 2,
                               child: Container(
                                 alignment: Alignment.center,
-                                padding: EdgeInsets.only(
-                                  left: 20,
-                                  right: 20,
-                                  top: 6,
-                                  bottom: 6,
-                                ),
                                 height: 26,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(20),
@@ -388,12 +395,6 @@ class _CollectionPageState extends State<CollectionPage> {
                               flex: 2,
                               child: Container(
                                 alignment: Alignment.center,
-                                padding: EdgeInsets.only(
-                                  left: 20,
-                                  right: 20,
-                                  top: 6,
-                                  bottom: 6,
-                                ),
                                 height: 26,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(20),
@@ -415,12 +416,6 @@ class _CollectionPageState extends State<CollectionPage> {
                               flex: 2,
                               child: Container(
                                 alignment: Alignment.center,
-                                padding: EdgeInsets.only(
-                                  left: 20,
-                                  right: 20,
-                                  top: 6,
-                                  bottom: 6,
-                                ),
                                 height: 26,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(20),
@@ -511,55 +506,45 @@ class _CollectionPageState extends State<CollectionPage> {
                                 ),
                               ),
                             ),
-                            Expanded(
-                              flex: 4,
-                              //container box set filter
-                              child: Container(
-                                  alignment: Alignment.center,
-                                  padding: EdgeInsets.only(
-                                    left: 24,
-                                    right: 24,
-                                    top: 6,
-                                    bottom: 6,
-                                  ),
-                                  width: 127,
-                                  height: 36,
-                                  decoration: BoxDecoration(
-                                    color: colorMode.primary,
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                  child: Container(
-                                    alignment: Alignment.center,
-                                    child: Row(
-                                      children: [
-                                        Container(
-                                          width: 24,
-                                          height: 24,
-                                          child: Icon(
-                                            Icons.manage_search,
-                                            color: colorMode.onPrimary,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: 3,
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                            top: 4,
-                                            bottom: 4,
-                                          ),
-                                          child: Text(
-                                            "Set Filter",
-                                            style: TextStyle(
-                                                fontSize: 16,
-                                                fontFamily: "dity",
-                                                color: colorMode.onPrimary),
-                                            textAlign: TextAlign.center,
-                                          ),
-                                        ),
-                                      ],
+                            Container(
+                              alignment: Alignment.center,
+                              padding: EdgeInsets.only(
+                                left: 20,
+                                right: 20,
+                                top: 6,
+                                bottom: 6,
+                              ),
+                              width: 140,
+                              height: 36,
+                              decoration: BoxDecoration(
+                                color: colorMode.primary,
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: Row(
+                                children: [
+                                  Container(
+                                    child: Icon(
+                                      Icons.manage_search,
+                                      color: colorMode.onPrimary,
                                     ),
-                                  )),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                      top: 4,
+                                      bottom: 4,
+                                      left: 3,
+                                    ),
+                                    child: Text(
+                                      "Set Filter",
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          fontFamily: "dity",
+                                          color: colorMode.onPrimary),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ],
                         ),
@@ -583,9 +568,7 @@ class _CollectionPageState extends State<CollectionPage> {
                       ),
                       //pemersatu kotak kotak sepatu di bawah garis putih
                       Container(
-                        margin: EdgeInsets.only(
-                          left: 20, 
-                          right: 20),
+                        margin: EdgeInsets.only(left: 20, right: 20),
                         child: Wrap(
                           spacing: 20,
                           runSpacing: 16,
@@ -832,6 +815,9 @@ class _CollectionPageState extends State<CollectionPage> {
                             ),
                           ],
                         ),
+                      ),
+                      SizedBox(
+                        height: 100,
                       ),
                     ],
                   ),
