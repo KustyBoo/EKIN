@@ -197,7 +197,7 @@ class IntroductionPage extends StatelessWidget {
                           child: Text(
                             "Explore and discover over 2000 pairs and counting with our features. Showcasing the latest shoe trends and styles.",
                             textAlign: TextAlign.center,
-                            style: Theme.of(context).textTheme.headlineMedium,
+                            style: Theme.of(context).textTheme.headlineSmall,
                           ),
                         ),
                       ],
@@ -238,7 +238,7 @@ class IntroductionPage extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: () {
                       Navigator.pop(context);
-                      Navigator.pushNamed(context, "/");
+                      Navigator.pushNamed(context, "/SignInPage");
                     },
                     style: ElevatedButton.styleFrom(
                       minimumSize: Size(MediaQuery.of(context).size.width, 50),

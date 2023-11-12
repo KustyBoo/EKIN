@@ -20,11 +20,11 @@ class _SignInPageState extends State<SignUpPage> {
   void dispose() {
     // TODO: implement dispose
     super.dispose();
-    _controllerFullName.dispose(); 
+    _controllerFullName.dispose();
     _controllerUserName.dispose();
-     _controllerEmail.dispose();
+    _controllerEmail.dispose();
     _controllerPassword.dispose();
-     _controllerConfirmPw.dispose();
+    _controllerConfirmPw.dispose();
   }
 
   @override
@@ -33,45 +33,49 @@ class _SignInPageState extends State<SignUpPage> {
       body: Stack(
         children: [
           Container(
-             width: MediaQuery.of(context).size.width,
-             height: MediaQuery.of(context).size.height,
-             decoration: BoxDecoration(
-             image: DecorationImage(
-             image: AssetImage("assets/background.png"),
-             fit: BoxFit.cover,
-                ),
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/background.png"),
+                fit: BoxFit.cover,
               ),
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height,
-                child: ListView(
-                    children :[
-                      Column(
-                      children: [
-                         SizedBox(height: 25),
-                          Container(
-                            margin: EdgeInsets.only(left: 15),
-                            width: MediaQuery.of(context).size.width,
-                            height: 24,
-                            child: Image.asset("assets/buttonBack.png"),
-                            alignment: Alignment.topLeft,
+            ),
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
+              child: ListView(
+                children: [
+                  Column(
+                    children: [
+                      SizedBox(height: 25),
+                      Container(
+                        margin: EdgeInsets.only(left: 15),
+                        width: MediaQuery.of(context).size.width,
+                        height: 24,
+                        child: Image.asset("assets/buttonBack.png"),
+                        alignment: Alignment.topLeft,
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.08,
+                      ),
+                      Container(
+                        alignment: Alignment.topLeft,
+                        margin: EdgeInsets.only(left: 30),
+                        child: Text(
+                          "Your journey\nstarts here.",
+                          style: Theme.of(context).textTheme.headlineLarge,
                         ),
-                        SizedBox(height: 100),
-                        Container(
-                          alignment: Alignment.topLeft,
-                          margin: EdgeInsets.only(left: 30),
-                          child: Text(
-                            "Your journey\nstarts here.",
-                            style: Theme.of(context).textTheme.headlineLarge,
-                          ),
-                        ),
-                        SizedBox(height: 30,),
-                        Container(
-                          child: Padding(
-                           padding:
-                              EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      Container(
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 30, vertical: 10),
                           child: TextField(
-                            controller: _controllerPassword,
+                            controller: _controllerFullName,
                             obscureText: true,
                             style: Theme.of(context).textTheme.bodySmall,
                             decoration: InputDecoration(
@@ -83,18 +87,20 @@ class _SignInPageState extends State<SignUpPage> {
                                       .onPrimary, // Ganti dengan warna border yang sesuai
                                 ),
                               ),
-                              floatingLabelBehavior: FloatingLabelBehavior.always,
-                              contentPadding: EdgeInsets.symmetric(vertical: 10),
+                              floatingLabelBehavior:
+                                  FloatingLabelBehavior.always,
+                              contentPadding:
+                                  EdgeInsets.symmetric(vertical: 10),
                             ),
                           ),
                         ),
-                        ),
-                         Container(
-                          child: Padding(
-                           padding:
-                              EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                      ),
+                      Container(
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 30, vertical: 10),
                           child: TextField(
-                            controller: _controllerPassword,
+                            controller: _controllerUserName,
                             obscureText: true,
                             style: Theme.of(context).textTheme.bodySmall,
                             decoration: InputDecoration(
@@ -106,18 +112,20 @@ class _SignInPageState extends State<SignUpPage> {
                                       .onPrimary, // Ganti dengan warna border yang sesuai
                                 ),
                               ),
-                              floatingLabelBehavior: FloatingLabelBehavior.always,
-                              contentPadding: EdgeInsets.symmetric(vertical: 10),
+                              floatingLabelBehavior:
+                                  FloatingLabelBehavior.always,
+                              contentPadding:
+                                  EdgeInsets.symmetric(vertical: 10),
                             ),
                           ),
                         ),
-                        ),
-                         Container(
-                          child: Padding(
-                           padding:
-                              EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                      ),
+                      Container(
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 30, vertical: 10),
                           child: TextField(
-                            controller: _controllerPassword,
+                            controller: _controllerEmail,
                             obscureText: true,
                             style: Theme.of(context).textTheme.bodySmall,
                             decoration: InputDecoration(
@@ -129,16 +137,18 @@ class _SignInPageState extends State<SignUpPage> {
                                       .onPrimary, // Ganti dengan warna border yang sesuai
                                 ),
                               ),
-                              floatingLabelBehavior: FloatingLabelBehavior.always,
-                              contentPadding: EdgeInsets.symmetric(vertical: 10),
+                              floatingLabelBehavior:
+                                  FloatingLabelBehavior.always,
+                              contentPadding:
+                                  EdgeInsets.symmetric(vertical: 10),
                             ),
                           ),
                         ),
-                        ),
-                         Container(
-                          child: Padding(
-                           padding:
-                              EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                      ),
+                      Container(
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 30, vertical: 10),
                           child: TextField(
                             controller: _controllerPassword,
                             obscureText: true,
@@ -152,18 +162,20 @@ class _SignInPageState extends State<SignUpPage> {
                                       .onPrimary, // Ganti dengan warna border yang sesuai
                                 ),
                               ),
-                              floatingLabelBehavior: FloatingLabelBehavior.always,
-                              contentPadding: EdgeInsets.symmetric(vertical: 10),
+                              floatingLabelBehavior:
+                                  FloatingLabelBehavior.always,
+                              contentPadding:
+                                  EdgeInsets.symmetric(vertical: 10),
                             ),
                           ),
                         ),
-                        ),
-                         Container(
-                          child: Padding(
-                           padding:
-                              EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                      ),
+                      Container(
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 30, vertical: 10),
                           child: TextField(
-                            controller: _controllerPassword,
+                            controller: _controllerConfirmPw,
                             obscureText: true,
                             style: Theme.of(context).textTheme.bodySmall,
                             decoration: InputDecoration(
@@ -175,33 +187,38 @@ class _SignInPageState extends State<SignUpPage> {
                                       .onPrimary, // Ganti dengan warna border yang sesuai
                                 ),
                               ),
-                              floatingLabelBehavior: FloatingLabelBehavior.always,
-                              contentPadding: EdgeInsets.symmetric(vertical: 10),
+                              floatingLabelBehavior:
+                                  FloatingLabelBehavior.always,
+                              contentPadding:
+                                  EdgeInsets.symmetric(vertical: 10),
                             ),
                           ),
                         ),
-                        ),
-                        SizedBox(height: 40,),
-                    Container(
-                      //margin: EdgeInsets.only(bottom: 100),
-                      width: MediaQuery.of(context).size.width,
-                      child:
-                       ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          minimumSize:
-                              Size(MediaQuery.of(context).size.width * 0.9, 50),
-                        ),
-                        child: Text("Sign-Un"),
                       ),
-                      alignment: Alignment.bottomCenter,
-                    )
-                      ],
-                    )
-                    ]
-                  
-                ),
+                      SizedBox(
+                        height: 40,
+                      ),
+                      Container(
+                        //margin: EdgeInsets.only(bottom: 100),
+                        width: MediaQuery.of(context).size.width,
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            minimumSize: Size(
+                                MediaQuery.of(context).size.width * 0.9, 50),
+                          ),
+                          child: Text("Sign-up"),
+                        ),
+                        alignment: Alignment.bottomCenter,
+                      )
+                    ],
+                  ),
+                  SizedBox(
+                    height: 25,
+                  )
+                ],
               ),
+            ),
           )
         ],
       ),

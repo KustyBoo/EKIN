@@ -69,7 +69,7 @@ class MyApp extends StatelessWidget {
           "/CollectionPage": (context) => CollectionPage(),
           "/BottomNavPage": (context) => BottomNavBar(),
         },
-        initialRoute: "/BottomNavPage", // inisialisasi rute
+        initialRoute: "/IntroPage", // inisialisasi rute
       ),
     );
   }
