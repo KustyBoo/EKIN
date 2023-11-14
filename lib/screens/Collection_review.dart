@@ -1,6 +1,7 @@
 // ignore_for_file: sized_box_for_whitespace, prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:pa_ekin/widgets/container_review.dart';
 import 'package:pa_ekin/widgets/theme_data.dart';
 
 class CollectionReviewPage extends StatefulWidget {
@@ -510,151 +511,25 @@ class _CollectionReviewPageState extends State<CollectionReviewPage> {
                         height: 21,
                       ),
                       // container lihat review
-                      Container(
-                        margin: EdgeInsets.only(
-                          left: 20,
-                          right: 20,
-                        ),
-                        child: Column(
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  width: 1,
-                                  color: colorMode.primary,
-                                ),
-                                borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(13),
-                                  topRight: Radius.circular(13),
-                                ),
-                              ),
-                              child: Row(
-                                children: [
-                                  Container(
-                                    width: 102,
-                                    padding: EdgeInsets.all(5),
-                                    decoration: BoxDecoration(
-                                      border: Border(
-                                        right: BorderSide(
-                                          width: 1,
-                                          color: colorMode.primary,
-                                        ),
-                                      ),
-                                    ),
-                                    child: Text(
-                                      "AlexBanjarmasin123",
-                                      style: TextStyle(
-                                          fontFamily: "dity",
-                                          fontSize: 12,
-                                          letterSpacing: 0,
-                                          color: colorMode.onPrimary),
-                                    ),
-                                  ),
-                                  Container(
-                                    padding: EdgeInsets.all(5),
-                                    decoration: BoxDecoration(
-                                      border: Border(
-                                        right: BorderSide(
-                                          width: 1,
-                                          color: colorMode.primary,
-                                        ),
-                                      ),
-                                    ),
-                                    child: Row(
-                                      children: [
-                                        Container(
-                                          width: 15,
-                                          height: 15,
-                                          decoration: BoxDecoration(
-                                            image: DecorationImage(
-                                              image: AssetImage(
-                                                  "assets/bintang.png"),
-                                            ),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: 6,
-                                        ),
-                                        Container(
-                                          width: 15,
-                                          height: 15,
-                                          decoration: BoxDecoration(
-                                            image: DecorationImage(
-                                              image: AssetImage(
-                                                  "assets/bintang.png"),
-                                            ),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: 6,
-                                        ),
-                                        Container(
-                                          width: 15,
-                                          height: 15,
-                                          decoration: BoxDecoration(
-                                            image: DecorationImage(
-                                              image: AssetImage(
-                                                  "assets/bintang.png"),
-                                            ),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: 6,
-                                        ),
-                                        Container(
-                                          width: 15,
-                                          height: 15,
-                                          decoration: BoxDecoration(
-                                            image: DecorationImage(
-                                              image: AssetImage(
-                                                  "assets/bintang.png"),
-                                            ),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: 6,
-                                        ),
-                                        Container(
-                                          width: 15,
-                                          height: 15,
-                                          decoration: BoxDecoration(
-                                            image: DecorationImage(
-                                              image: AssetImage(
-                                                  "assets/bintang.png"),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              alignment: Alignment.topLeft,
-                              height: 68,
-                              padding: EdgeInsets.only(
-                                left: 8,
-                                right: 8,
-                                top: 8,
-                              ),
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  width: 1,
-                                  color: colorMode.primary,
-                                ),
-                                borderRadius: BorderRadius.only(
-                                  bottomLeft: Radius.circular(13),
-                                  bottomRight: Radius.circular(13),
-                                ),
-                              ),
-                              child: Text(
-                                "very good me like, 100 stars",
-                                style: Theme.of(context).textTheme.labelMedium,
-                              ),
-                            ),
-                          ],
-                        ),
+                      ContainerReview(
+                        nama: "AlexBanjarmasin123",
+                        deskripsi: "very good me like, 100 stars",
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      ContainerReview(
+                        nama: "DwightKSchrute",
+                        deskripsi:
+                            "what the hell, dont even get me started, this thing takes hours and hours to clean, not to mention the smoothest and brightest white ive ever seen",
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      ContainerReview(
+                        nama: "AffhIyhh",
+                        deskripsi:
+                            "yes",
                       ),
                       SizedBox(
                         height: 25,

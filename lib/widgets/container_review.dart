@@ -47,7 +47,7 @@ class ContainerReview extends StatelessWidget {
                     ),
                   ),
                   child: Text(
-                    "AlexBanjarmasin123",
+                    nama,
                     style: TextStyle(
                         fontFamily: "dity",
                         fontSize: 12,
@@ -149,7 +149,7 @@ class ContainerReview extends StatelessWidget {
               ),
             ),
             child: Text(
-              "very good me like, 100 stars",
+              deskripsi,
               style: Theme.of(context).textTheme.labelMedium,
             ),
           ),
