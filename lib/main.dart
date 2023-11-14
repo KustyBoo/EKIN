@@ -7,6 +7,7 @@ import 'package:pa_ekin/models/provider_screen_index.dart';
 import 'package:pa_ekin/screens/Collection.dart';
 import 'package:pa_ekin/screens/Home.dart';
 import 'package:pa_ekin/screens/Introduction_screen.dart';
+import 'package:pa_ekin/screens/abouUs.dart';
 import 'package:pa_ekin/screens/signInPage.dart';
 import 'package:pa_ekin/screens/signuUpPage.dart';
 import 'package:pa_ekin/screens/success.dart';
@@ -67,9 +68,10 @@ class MyApp extends StatelessWidget {
           "/SuccessPage": (context) => SuccessPage(),
           "/HomePage": (context) => HomePage(),
           "/CollectionPage": (context) => CollectionPage(),
+           "/AboutUsPage": (context) => AboutUsPage(),
           "/BottomNavPage": (context) => BottomNavBar(),
         },
-        initialRoute: "/IntroPage", // inisialisasi rute
+        initialRoute: "/AboutUsPage", // inisialisasi rute
       ),
     );
   }

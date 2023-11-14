@@ -25,7 +25,7 @@ class _SignInPageState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Stack(
+      body: Stack(
       children: [
         Container(
           width: MediaQuery.of(context).size.width,
@@ -158,6 +158,7 @@ class _SignInPageState extends State<SignInPage> {
           ),
         )
       ],
-    ));
+    )
+    );
   }
 }

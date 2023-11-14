@@ -78,6 +78,9 @@ flutter:
     - assets/Group_89.png
     - assets/buttonBack.png
     - assets/Success.png
+    - assets/mail.png
+    - assets/call.png
+    - assets/content_copy.png
 
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg

@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, must_be_immutable, sized_box_for_whitespace, avoid_unnecessary_containers
-
 import 'package:flutter/material.dart';
 import 'package:pa_ekin/widgets/theme_data.dart';
 
