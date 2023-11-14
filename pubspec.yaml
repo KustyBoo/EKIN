@@ -81,6 +81,11 @@ flutter:
     - assets/mail.png
     - assets/call.png
     - assets/content_copy.png
+    - assets/dekorasi_1.png
+    - assets/dekorasi_2.png
+    - assets/dekorasi_3.png
+    - assets/sepatu_placeholder.png
+    - assets/bintang.png
 
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
