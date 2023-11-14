@@ -53,10 +53,11 @@ TextTheme teksMode = TextTheme(
     color: colorMode.onPrimary,
   ),
   displayMedium: TextStyle(
-      fontSize: 12,
-      fontFamily: "dity",
-      color: colorMode.onPrimary,
-      fontWeight: FontWeight.normal),
+    fontSize: 12,
+    fontFamily: "dity",
+    color: colorMode.onPrimary,
+    fontWeight: FontWeight.normal,
+  ),
   displaySmall: TextStyle(
     fontSize: 8,
     fontFamily: "dity",
@@ -76,9 +77,21 @@ TextTheme teksMode = TextTheme(
     fontSize: 12,
     fontFamily: "dity",
     color: colorMode.onPrimary.withOpacity(0.5),
-  )
+  ),
+  titleLarge: TextStyle(
+    fontSize: 18,
+    fontFamily: "Oddval",
+    color: colorMode.onPrimary,
+  ),
+  titleMedium: TextStyle(
+    fontSize: 14,
+    fontFamily: "Oddval",
+    color: colorMode.onPrimary,
+  ),
+);
 
-  //
+IconThemeData iconMode = IconThemeData(
+  color: colorMode.onPrimary,
 );
 
 // tema elevated button

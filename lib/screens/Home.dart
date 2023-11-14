@@ -1,3 +1,5 @@
+// ignore_for_file: sized_box_for_whitespace, prefer_const_constructors, avoid_unnecessary_containers
+
 import 'package:flutter/material.dart';
 import 'package:pa_ekin/widgets/theme_data.dart';
 
