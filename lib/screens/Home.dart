@@ -1,6 +1,7 @@
 // ignore_for_file: sized_box_for_whitespace, prefer_const_constructors, avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
+import 'package:pa_ekin/screens/Collection_review.dart';
 import 'package:pa_ekin/widgets/theme_data.dart';
 
 class HomePage extends StatelessWidget {
@@ -149,9 +150,7 @@ class HomePage extends StatelessWidget {
                               Container(
                                 child: Text(
                                   "Lix",
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyMedium,
+                                  style: Theme.of(context).textTheme.bodyMedium,
                                 ),
                               )
                             ],
@@ -181,8 +180,8 @@ class HomePage extends StatelessWidget {
                         height: 152,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12),
-                          border: Border.all(
-                              color: colorMode.primary, width: 1),
+                          border:
+                              Border.all(color: colorMode.primary, width: 1),
                         ),
                         child: Image(
                           image: AssetImage("assets/Group_89.png"),
@@ -204,8 +203,7 @@ class HomePage extends StatelessWidget {
                           children: [
                             Text(
                               "What's New",
-                              style:
-                                  Theme.of(context).textTheme.displayLarge,
+                              style: Theme.of(context).textTheme.displayLarge,
                             ),
                             SizedBox(
                               width: 8.5,
@@ -230,60 +228,39 @@ class HomePage extends StatelessWidget {
                           scrollDirection: Axis.horizontal,
                           children: [
                             //container sepatu 1
-                            Container(
-                              margin: EdgeInsets.only(
-                                left: 20,
-                              ),
-                              width: 93,
-                              height: 121,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12),
-                                border: Border.all(
-                                  color: colorMode.primary,
-                                  width: 1,
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.pushNamed(context, "/CollectionReviewPage");
+                              },
+                              child: Container(
+                                margin: EdgeInsets.only(
+                                  left: 20,
                                 ),
-                              ),
-                              child: Stack(
-                                children: [
-                                  Container(
-                                    width: 93,
-                                    height: 121,
+                                width: 93,
+                                height: 121,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(12),
+                                  border: Border.all(
+                                    color: colorMode.primary,
+                                    width: 1,
                                   ),
-                                  //container tulisan harga
-                                  Container(
-                                    alignment: Alignment.center,
-                                    height: 11.5,
-                                    width: 40,
-                                    decoration: BoxDecoration(
-                                      color: colorMode.primary,
-                                      borderRadius: BorderRadius.only(
-                                        bottomRight: Radius.circular(10),
-                                        topLeft: Radius.circular(10),
-                                      ),
-                                      border: Border.all(
-                                        color: colorMode.primary,
-                                        width: 1,
-                                      ),
-                                    ),
-                                    child: Text(
-                                      "\$100.00",
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .displaySmall,
-                                    ),
-                                  ),
-                                  Positioned(
-                                    bottom: 0,
-                                    //container view
-                                    child: Container(
-                                      alignment: Alignment.center,
-                                      height: 22,
+                                ),
+                                child: Stack(
+                                  children: [
+                                    Container(
                                       width: 93,
+                                      height: 121,
+                                    ),
+                                    //container tulisan harga
+                                    Container(
+                                      alignment: Alignment.center,
+                                      height: 11.5,
+                                      width: 40,
                                       decoration: BoxDecoration(
                                         color: colorMode.primary,
                                         borderRadius: BorderRadius.only(
-                                          bottomRight: Radius.circular(13),
-                                          bottomLeft: Radius.circular(10),
+                                          bottomRight: Radius.circular(10),
+                                          topLeft: Radius.circular(10),
                                         ),
                                         border: Border.all(
                                           color: colorMode.primary,
@@ -291,14 +268,40 @@ class HomePage extends StatelessWidget {
                                         ),
                                       ),
                                       child: Text(
-                                        "View",
+                                        "\$100.00",
                                         style: Theme.of(context)
                                             .textTheme
-                                            .displayMedium,
+                                            .displaySmall,
                                       ),
                                     ),
-                                  ),
-                                ],
+                                    Positioned(
+                                      bottom: 0,
+                                      //container view
+                                      child: Container(
+                                        alignment: Alignment.center,
+                                        height: 22,
+                                        width: 93,
+                                        decoration: BoxDecoration(
+                                          color: colorMode.primary,
+                                          borderRadius: BorderRadius.only(
+                                            bottomRight: Radius.circular(13),
+                                            bottomLeft: Radius.circular(10),
+                                          ),
+                                          border: Border.all(
+                                            color: colorMode.primary,
+                                            width: 1,
+                                          ),
+                                        ),
+                                        child: Text(
+                                          "View",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .displayMedium,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ],
@@ -319,8 +322,7 @@ class HomePage extends StatelessWidget {
                           children: [
                             Text(
                               "Most Rated",
-                              style:
-                                  Theme.of(context).textTheme.displayLarge,
+                              style: Theme.of(context).textTheme.displayLarge,
                             ),
                             SizedBox(
                               width: 8.5,
@@ -375,8 +377,7 @@ class HomePage extends StatelessWidget {
                                         decoration: BoxDecoration(
                                           color: colorMode.primary,
                                           borderRadius: BorderRadius.only(
-                                            bottomRight:
-                                                Radius.circular(10),
+                                            bottomRight: Radius.circular(10),
                                             topLeft: Radius.circular(10),
                                           ),
                                           border: Border.all(
@@ -403,8 +404,7 @@ class HomePage extends StatelessWidget {
                                         decoration: BoxDecoration(
                                           color: colorMode.primary,
                                           borderRadius: BorderRadius.only(
-                                            bottomRight:
-                                                Radius.circular(10),
+                                            bottomRight: Radius.circular(10),
                                             bottomLeft: Radius.circular(10),
                                           ),
                                           border: Border.all(
@@ -436,8 +436,7 @@ class HomePage extends StatelessWidget {
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(12),
                                     border: Border.all(
-                                        color: colorMode.primary,
-                                        width: 1)),
+                                        color: colorMode.primary, width: 1)),
                                 child: Stack(
                                   children: [
                                     Container(
@@ -478,8 +477,7 @@ class HomePage extends StatelessWidget {
                                         decoration: BoxDecoration(
                                           color: colorMode.primary,
                                           borderRadius: BorderRadius.only(
-                                            bottomRight:
-                                                Radius.circular(10),
+                                            bottomRight: Radius.circular(10),
                                             bottomLeft: Radius.circular(10),
                                           ),
                                           border: Border.all(
@@ -511,8 +509,7 @@ class HomePage extends StatelessWidget {
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(12),
                                     border: Border.all(
-                                        color: colorMode.primary,
-                                        width: 1)),
+                                        color: colorMode.primary, width: 1)),
                                 child: Stack(
                                   children: [
                                     //ngeset container paling besar
@@ -554,8 +551,7 @@ class HomePage extends StatelessWidget {
                                         decoration: BoxDecoration(
                                           color: colorMode.primary,
                                           borderRadius: BorderRadius.only(
-                                            bottomRight:
-                                                Radius.circular(10),
+                                            bottomRight: Radius.circular(10),
                                             bottomLeft: Radius.circular(10),
                                           ),
                                           border: Border.all(
@@ -593,8 +589,7 @@ class HomePage extends StatelessWidget {
                           children: [
                             Text(
                               "Today's Pick",
-                              style:
-                                  Theme.of(context).textTheme.displayLarge,
+                              style: Theme.of(context).textTheme.displayLarge,
                             ),
                             SizedBox(
                               width: 8.5,
@@ -621,8 +616,8 @@ class HomePage extends StatelessWidget {
                         height: 152,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12),
-                          border: Border.all(
-                              color: colorMode.primary, width: 1),
+                          border:
+                              Border.all(color: colorMode.primary, width: 1),
                         ),
                         child: Stack(
                           children: [
@@ -648,9 +643,8 @@ class HomePage extends StatelessWidget {
                                 ),
                                 child: Text(
                                   "\$100.00",
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .displaySmall,
+                                  style:
+                                      Theme.of(context).textTheme.displaySmall,
                                 ),
                               ),
                             ),
@@ -660,8 +654,7 @@ class HomePage extends StatelessWidget {
                               top: 0,
                               //container image
                               child: Container(
-                                width:
-                                    MediaQuery.of(context).size.width * 0.5,
+                                width: MediaQuery.of(context).size.width * 0.5,
                                 height: MediaQuery.of(context).size.height,
                               ),
                             ),
@@ -676,11 +669,9 @@ class HomePage extends StatelessWidget {
                                 child: Stack(
                                   children: [
                                     Container(
-                                      width:
-                                          MediaQuery.of(context).size.width,
-                                      height: MediaQuery.of(context)
-                                          .size
-                                          .height,
+                                      width: MediaQuery.of(context).size.width,
+                                      height:
+                                          MediaQuery.of(context).size.height,
                                     ),
                                     //container more
                                     Positioned(

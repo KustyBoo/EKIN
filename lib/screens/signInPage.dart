@@ -122,7 +122,9 @@ class _SignInPageState extends State<SignInPage> {
                             child: Container(
                               margin: EdgeInsets.only(top: 35),
                               child: TextButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.pushNamed(context, "/SignUpPage");
+                                },
                                 child: Text(
                                   "Sign Up",
                                   style: Theme.of(context).textTheme.bodySmall,

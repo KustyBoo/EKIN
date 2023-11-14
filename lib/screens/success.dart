@@ -23,12 +23,18 @@ class SuccessPage extends StatelessWidget {
                   Column(
                     children: [
                       SizedBox(height: 25),
-                      Container(
-                        margin: EdgeInsets.only(left: 15),
-                        width: MediaQuery.of(context).size.width,
-                        height: 24,
-                        child: Image.asset("assets/buttonBack.png"),
-                        alignment: Alignment.topLeft,
+                      InkWell(
+                        onTap: () {
+                          Navigator.pop(context);
+                          Navigator.pushNamed(context, "/SignInPage");
+                        },
+                        child: Container(
+                          margin: EdgeInsets.only(left: 15),
+                          width: MediaQuery.of(context).size.width,
+                          height: 24,
+                          child: Image.asset("assets/buttonBack.png"),
+                          alignment: Alignment.topLeft,
+                        ),
                       ),
                       SizedBox(height: 100),
                       Container(
@@ -51,7 +57,10 @@ class SuccessPage extends StatelessWidget {
                         width: MediaQuery.of(context).size.width,
                         alignment: Alignment.bottomCenter,
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pop(context);
+                            Navigator.pushNamed(context, "/SignInPage");
+                          },
                           style: ElevatedButton.styleFrom(
                             minimumSize: Size(
                                 MediaQuery.of(context).size.width * 0.9, 50),

@@ -1,3 +1,5 @@
+// ignore_for_file: sort_child_properties_last, prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:pa_ekin/widgets/theme_data.dart';
 //import 'package:pa_ekin/widgets/theme_data.dart';
@@ -49,12 +51,17 @@ class _SignInPageState extends State<SignUpPage> {
                   Column(
                     children: [
                       SizedBox(height: 25),
-                      Container(
-                        margin: EdgeInsets.only(left: 15),
-                        width: MediaQuery.of(context).size.width,
-                        height: 24,
-                        child: Image.asset("assets/buttonBack.png"),
-                        alignment: Alignment.topLeft,
+                      InkWell(
+                        onTap: (){
+                          Navigator.pop(context);
+                        },
+                        child: Container(
+                          margin: EdgeInsets.only(left: 15),
+                          width: MediaQuery.of(context).size.width,
+                          height: 24,
+                          child: Image.asset("assets/buttonBack.png"),
+                          alignment: Alignment.topLeft,
+                        ),
                       ),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.08,
@@ -202,7 +209,10 @@ class _SignInPageState extends State<SignUpPage> {
                         //margin: EdgeInsets.only(bottom: 100),
                         width: MediaQuery.of(context).size.width,
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pop(context);
+                            Navigator.pushNamed(context, "/SuccessPage");
+                          },
                           style: ElevatedButton.styleFrom(
                             minimumSize: Size(
                                 MediaQuery.of(context).size.width * 0.9, 50),

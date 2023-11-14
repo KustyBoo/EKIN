@@ -41,7 +41,9 @@ class _CollectionReviewPageState extends State<CollectionReviewPage> {
                     children: [
                       Container(
                         child: IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
                           icon: Icon(
                             Icons.arrow_back_ios,
                           ),

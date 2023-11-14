@@ -82,8 +82,8 @@ class MyApp extends StatelessWidget {
           "/BottomNavPage": (context) => BottomNavBar(),
         },
         
-        initialRoute: "/CollectionReviewPage", // inisialisasi rute
-        
+        initialRoute: "/IntroPage", // inisialisasi rute
+
       ),
     );
   }
