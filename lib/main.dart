@@ -71,7 +71,7 @@ class MyApp extends StatelessWidget {
            "/AboutUsPage": (context) => AboutUsPage(),
           "/BottomNavPage": (context) => BottomNavBar(),
         },
-        initialRoute: "/AboutUsPage", // inisialisasi rute
+        initialRoute: "/BottomNavPage", // inisialisasi rute
       ),
     );
   }

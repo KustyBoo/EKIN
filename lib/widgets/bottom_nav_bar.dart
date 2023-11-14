@@ -7,6 +7,7 @@ import 'package:pa_ekin/models/provider_icon_nav.dart';
 import 'package:pa_ekin/models/provider_screen_index.dart';
 import 'package:pa_ekin/screens/Collection.dart';
 import 'package:pa_ekin/screens/Home.dart';
+import 'package:pa_ekin/screens/abouUs.dart';
 import 'package:pa_ekin/widgets/theme_data.dart';
 import 'package:provider/provider.dart';
 
@@ -30,34 +31,36 @@ class BottomNavBar extends StatelessWidget {
     List<dynamic> screen = [
       HomePage(),
       CollectionPage(),
-      Center(child: Text("ini halaman about")),
+      AboutUsPage(),
     ];
 
     return Scaffold(
       extendBody: true,
-      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.transparent,
       floatingActionButton: Container(
         width: 65,
         height: 65,
-        child: FloatingActionButton(
-          onPressed: () {
-            screenIndexProvider.refreshScreen(1);
-            iconProviderNav.refreshIcon();
-          },
-          backgroundColor: colorMode.onPrimary,
-          child: Container(
-            decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: colorMode.onPrimary,
-                  spreadRadius: 7,
-                  blurRadius: 25,
-                  offset: Offset(0, 8),
-                ),
-              ],
+        child: Visibility(
+          visible: MediaQuery.of(context).viewInsets.bottom == 0.0,
+          child: FloatingActionButton(
+            onPressed: () {
+              screenIndexProvider.refreshScreen(1);
+              iconProviderNav.refreshIcon();
+            },
+            backgroundColor: colorMode.onPrimary,
+            child: Container(
+              decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: colorMode.onPrimary,
+                    spreadRadius: 7,
+                    blurRadius: 25,
+                    offset: Offset(0, 8),
+                  ),
+                ],
+              ),
+              child: currentIconProvider,
             ),
-            child: currentIconProvider,
           ),
         ),
       ),

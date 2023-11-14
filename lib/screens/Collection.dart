@@ -571,7 +571,7 @@ class _CollectionPageState extends State<CollectionPage> {
                         margin: EdgeInsets.only(left: 20, right: 20),
                         child: Wrap(
                           spacing: 20,
-                          runSpacing: 16,
+                          runSpacing: 20,
                           children: [
                             //container kotak 1
                             Container(
