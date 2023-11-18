@@ -18,7 +18,14 @@ import 'package:pa_ekin/widgets/scroll_behaviour.dart';
 import 'package:pa_ekin/widgets/theme_data.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -81,9 +88,8 @@ class MyApp extends StatelessWidget {
           "/AboutUsPage": (context) => AboutUsPage(),
           "/BottomNavPage": (context) => BottomNavBar(),
         },
-        
-        initialRoute: "/IntroPage", // inisialisasi rute
 
+        initialRoute: "/IntroPage", // inisialisasi rute
       ),
     );
   }

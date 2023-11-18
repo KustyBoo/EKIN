@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "680605173372",
+    "project_id": "ekin-app",
+    "storage_bucket": "ekin-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:680605173372:android:1a04bb7821728b14e12bf9",
+        "android_client_info": {
+          "package_name": "com.example.pa_ekin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpHVE8UI6_HQ7n7e-kgBbpkXhzBkSvbdU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
