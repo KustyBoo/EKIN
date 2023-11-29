@@ -43,15 +43,13 @@ class _SignInPageState extends State<SignInPage> {
       if (loggedInUser != null) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
+            behavior: SnackBarBehavior.floating,
             content: Text('Anda adalah: ${loggedInUser.fullName}'),
           ),
         );
         Provider.of<ProviderUser>(context, listen: false).addUser(loggedInUser);
 
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const HomePage()),
-        );
+        Navigator.pushNamed(context, "/BottomNavPage");
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(

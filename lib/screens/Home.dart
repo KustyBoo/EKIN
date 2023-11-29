@@ -1,14 +1,20 @@
 // ignore_for_file: sized_box_for_whitespace, prefer_const_constructors, avoid_unnecessary_containers
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pa_ekin/screens/Collection_review.dart';
+import 'package:pa_ekin/widgets/container_horizontal.dart';
 import 'package:pa_ekin/widgets/theme_data.dart';
+import '../models/user_models.dart' as my_models;
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+    CollectionReference dataDiri = firestore.collection("data_diri");
     return Stack(
       children: [
         //container bg
@@ -224,88 +230,7 @@ class HomePage extends StatelessWidget {
                       Container(
                         width: MediaQuery.of(context).size.width,
                         height: 121,
-                        child: ListView(
-                          scrollDirection: Axis.horizontal,
-                          children: [
-                            //container sepatu 1
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.pushNamed(context, "/CollectionReviewPage");
-                              },
-                              child: Container(
-                                margin: EdgeInsets.only(
-                                  left: 20,
-                                ),
-                                width: 93,
-                                height: 121,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(12),
-                                  border: Border.all(
-                                    color: colorMode.primary,
-                                    width: 1,
-                                  ),
-                                ),
-                                child: Stack(
-                                  children: [
-                                    Container(
-                                      width: 93,
-                                      height: 121,
-                                    ),
-                                    //container tulisan harga
-                                    Container(
-                                      alignment: Alignment.center,
-                                      height: 11.5,
-                                      width: 40,
-                                      decoration: BoxDecoration(
-                                        color: colorMode.primary,
-                                        borderRadius: BorderRadius.only(
-                                          bottomRight: Radius.circular(10),
-                                          topLeft: Radius.circular(10),
-                                        ),
-                                        border: Border.all(
-                                          color: colorMode.primary,
-                                          width: 1,
-                                        ),
-                                      ),
-                                      child: Text(
-                                        "\$100.00",
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .displaySmall,
-                                      ),
-                                    ),
-                                    Positioned(
-                                      bottom: 0,
-                                      //container view
-                                      child: Container(
-                                        alignment: Alignment.center,
-                                        height: 22,
-                                        width: 93,
-                                        decoration: BoxDecoration(
-                                          color: colorMode.primary,
-                                          borderRadius: BorderRadius.only(
-                                            bottomRight: Radius.circular(13),
-                                            bottomLeft: Radius.circular(10),
-                                          ),
-                                          border: Border.all(
-                                            color: colorMode.primary,
-                                            width: 1,
-                                          ),
-                                        ),
-                                        child: Text(
-                                          "View",
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .displayMedium,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+                        child: ContainerHorizontal(pilihan: 1,),
                       ),
                       SizedBox(
                         height: 16,
@@ -341,238 +266,9 @@ class HomePage extends StatelessWidget {
                       ),
                       //container pemersatu 3 sepatu bawah
                       Container(
-                        margin: EdgeInsets.only(
-                          left: 20,
-                          right: 20,
-                        ),
-                        child: Row(
-                          children: [
-                            //container sepatu 1
-                            Expanded(
-                              flex: 3,
-                              child: Container(
-                                width: 93,
-                                height: 121,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(12),
-                                  border: Border.all(
-                                    color: colorMode.primary,
-                                    width: 1,
-                                  ),
-                                ),
-                                child: Stack(
-                                  children: [
-                                    Container(
-                                      width: 93,
-                                      height: 121,
-                                    ),
-                                    //container tulisan harga
-                                    Positioned(
-                                      left: 0,
-                                      top: 0,
-                                      child: Container(
-                                        alignment: Alignment.center,
-                                        height: 11.5,
-                                        width: 40,
-                                        decoration: BoxDecoration(
-                                          color: colorMode.primary,
-                                          borderRadius: BorderRadius.only(
-                                            bottomRight: Radius.circular(10),
-                                            topLeft: Radius.circular(10),
-                                          ),
-                                          border: Border.all(
-                                            color: colorMode.primary,
-                                            width: 1,
-                                          ),
-                                        ),
-                                        child: Text(
-                                          "\$100.00",
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .displaySmall,
-                                        ),
-                                      ),
-                                    ),
-                                    Positioned(
-                                      left: 0,
-                                      right: 0,
-                                      bottom: 0,
-                                      //container view
-                                      child: Container(
-                                        alignment: Alignment.center,
-                                        height: 22,
-                                        decoration: BoxDecoration(
-                                          color: colorMode.primary,
-                                          borderRadius: BorderRadius.only(
-                                            bottomRight: Radius.circular(10),
-                                            bottomLeft: Radius.circular(10),
-                                          ),
-                                          border: Border.all(
-                                            color: colorMode.primary,
-                                            width: 1,
-                                          ),
-                                        ),
-                                        child: Text(
-                                          "View",
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .displayMedium,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              width: 35,
-                            ),
-                            //container sepatu 2
-                            Expanded(
-                              flex: 3,
-                              child: Container(
-                                width: 93,
-                                height: 121,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(12),
-                                    border: Border.all(
-                                        color: colorMode.primary, width: 1)),
-                                child: Stack(
-                                  children: [
-                                    Container(
-                                      width: 93,
-                                      height: 121,
-                                    ),
-                                    //container tulisan harga
-                                    Container(
-                                      alignment: Alignment.center,
-                                      height: 11.5,
-                                      width: 40,
-                                      decoration: BoxDecoration(
-                                        color: colorMode.primary,
-                                        borderRadius: BorderRadius.only(
-                                          bottomRight: Radius.circular(10),
-                                          topLeft: Radius.circular(10),
-                                        ),
-                                        border: Border.all(
-                                          color: colorMode.primary,
-                                          width: 1,
-                                        ),
-                                      ),
-                                      child: Text(
-                                        "\$100.00",
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .displaySmall,
-                                      ),
-                                    ),
-                                    Positioned(
-                                      left: 0,
-                                      right: 0,
-                                      bottom: 0,
-                                      //container view
-                                      child: Container(
-                                        alignment: Alignment.center,
-                                        height: 22,
-                                        decoration: BoxDecoration(
-                                          color: colorMode.primary,
-                                          borderRadius: BorderRadius.only(
-                                            bottomRight: Radius.circular(10),
-                                            bottomLeft: Radius.circular(10),
-                                          ),
-                                          border: Border.all(
-                                            color: colorMode.primary,
-                                            width: 1,
-                                          ),
-                                        ),
-                                        child: Text(
-                                          "View",
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .displayMedium,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              width: 35,
-                            ),
-                            //container sepatu 3
-                            Expanded(
-                              flex: 3,
-                              child: Container(
-                                width: 93,
-                                height: 121,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(12),
-                                    border: Border.all(
-                                        color: colorMode.primary, width: 1)),
-                                child: Stack(
-                                  children: [
-                                    //ngeset container paling besar
-                                    Container(
-                                      width: 93,
-                                      height: 121,
-                                    ),
-                                    //container tulisan harga
-                                    Container(
-                                      alignment: Alignment.center,
-                                      height: 11.5,
-                                      width: 40,
-                                      decoration: BoxDecoration(
-                                        color: colorMode.primary,
-                                        borderRadius: BorderRadius.only(
-                                          bottomRight: Radius.circular(10),
-                                          topLeft: Radius.circular(10),
-                                        ),
-                                        border: Border.all(
-                                          color: colorMode.primary,
-                                          width: 1,
-                                        ),
-                                      ),
-                                      child: Text(
-                                        "\$100.00",
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .displaySmall,
-                                      ),
-                                    ),
-                                    Positioned(
-                                      left: 0,
-                                      right: 0,
-                                      bottom: 0,
-                                      //container view
-                                      child: Container(
-                                        alignment: Alignment.center,
-                                        height: 22,
-                                        decoration: BoxDecoration(
-                                          color: colorMode.primary,
-                                          borderRadius: BorderRadius.only(
-                                            bottomRight: Radius.circular(10),
-                                            bottomLeft: Radius.circular(10),
-                                          ),
-                                          border: Border.all(
-                                            color: colorMode.primary,
-                                            width: 1,
-                                          ),
-                                        ),
-                                        child: Text(
-                                          "View",
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .displayMedium,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+                        width: MediaQuery.of(context).size.width,
+                        height: 125,
+                        child: ContainerHorizontal(pilihan: 2,),
                       ),
                       SizedBox(
                         height: 16,
@@ -607,102 +303,7 @@ class HomePage extends StatelessWidget {
                         height: 12,
                       ),
                       //container di bawah todays pick
-                      Container(
-                        margin: EdgeInsets.only(
-                          left: 20,
-                          right: 20,
-                        ),
-                        width: MediaQuery.of(context).size.width,
-                        height: 152,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          border:
-                              Border.all(color: colorMode.primary, width: 1),
-                        ),
-                        child: Stack(
-                          children: [
-                            //container paling besar
-                            Container(
-                              width: MediaQuery.of(context).size.width,
-                              height: MediaQuery.of(context).size.height,
-                            ),
-                            //container tulisan harga
-                            Positioned(
-                              right: 0,
-                              top: 0,
-                              child: Container(
-                                alignment: Alignment.center,
-                                height: 22.45,
-                                width: 97,
-                                decoration: BoxDecoration(
-                                  color: colorMode.primary,
-                                  borderRadius: BorderRadius.only(
-                                    bottomLeft: Radius.circular(6),
-                                    topRight: Radius.circular(6),
-                                  ),
-                                ),
-                                child: Text(
-                                  "\$100.00",
-                                  style:
-                                      Theme.of(context).textTheme.displaySmall,
-                                ),
-                              ),
-                            ),
-                            Positioned(
-                              left: 0,
-                              bottom: 0,
-                              top: 0,
-                              //container image
-                              child: Container(
-                                width: MediaQuery.of(context).size.width * 0.5,
-                                height: MediaQuery.of(context).size.height,
-                              ),
-                            ),
-                            Positioned(
-                              right: 16,
-                              top: 25,
-                              bottom: 11,
-                              //container tulisan samping image
-                              child: Container(
-                                width: 125,
-                                height: 109,
-                                child: Stack(
-                                  children: [
-                                    Container(
-                                      width: MediaQuery.of(context).size.width,
-                                      height:
-                                          MediaQuery.of(context).size.height,
-                                    ),
-                                    //container more
-                                    Positioned(
-                                      right: 0,
-                                      bottom: 0,
-                                      child: Container(
-                                        alignment: Alignment.center,
-                                        height: 20,
-                                        width: 48,
-                                        decoration: BoxDecoration(
-                                          color: colorMode.primary,
-                                          borderRadius: BorderRadius.only(
-                                            bottomRight: Radius.circular(6),
-                                            topLeft: Radius.circular(6),
-                                          ),
-                                        ),
-                                        child: Text(
-                                          "\$100.00",
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .displaySmall,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                      ContainerHorizontal(pilihan: 3),
                       SizedBox(
                         height: 20,
                       ),

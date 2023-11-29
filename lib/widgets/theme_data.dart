@@ -88,6 +88,11 @@ TextTheme teksMode = TextTheme(
     fontFamily: "Oddval",
     color: colorMode.onPrimary,
   ),
+  titleSmall: TextStyle(
+    fontSize: 10,
+    fontFamily: "Oddval",
+    color: colorMode.onPrimaryContainer,
+  ),
 );
 
 IconThemeData iconMode = IconThemeData(

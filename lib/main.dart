@@ -6,6 +6,7 @@ import 'package:pa_ekin/models/provider_btn_intro.dart';
 import 'package:pa_ekin/models/provider_icon_nav.dart';
 import 'package:pa_ekin/models/provider_review.dart';
 import 'package:pa_ekin/models/provider_screen_index.dart';
+import 'package:pa_ekin/models/sepatu_models.dart';
 import 'package:pa_ekin/screens/Collection.dart';
 import 'package:pa_ekin/screens/Collection_review.dart';
 import 'package:pa_ekin/screens/Home.dart';
@@ -66,6 +67,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (BuildContext context) => ProviderUser(),
         ),
+
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -103,7 +105,7 @@ class MyApp extends StatelessWidget {
           stream: firebase_auth.FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              return HomePage(); 
+              return BottomNavBar(); 
             } else {
               return SignInPage(); 
             }

@@ -69,8 +69,6 @@ class _SignInPageState extends State<SignUpPage> {
       // Navigator.pushNamed(context, "/SuccessPage");
     } catch (e) {
       print('Registration failed: $e');
-    } finally {
-      setState(() => _loading = false);
     }
   }
 

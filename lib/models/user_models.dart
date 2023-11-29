@@ -16,6 +16,10 @@ class User {
     required this.confirmPassword,
   });
 
+  String getUsername(){
+    return username;
+  }
+
   factory User.fromFirebaseUser(firebase_auth.User? firebaseUser) {
     if (firebaseUser == null) {
       return User(
