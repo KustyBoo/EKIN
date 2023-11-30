@@ -5,7 +5,20 @@ import 'package:pa_ekin/widgets/container_review.dart';
 import 'package:pa_ekin/widgets/theme_data.dart';
 
 class CollectionReviewPage extends StatefulWidget {
-  const CollectionReviewPage({super.key});
+  CollectionReviewPage({
+    super.key,
+    required this.namaSepatu,
+    required this.urlSepatu,
+    required this.descSepatu,
+    required this.hargaSepatu,
+    required this.ratingSepatu,
+  });
+
+  String namaSepatu;
+  String urlSepatu;
+  String hargaSepatu;
+  String ratingSepatu;
+  String descSepatu;
 
   @override
   State<CollectionReviewPage> createState() => _CollectionReviewPageState();
@@ -54,7 +67,7 @@ class _CollectionReviewPageState extends State<CollectionReviewPage> {
                       ),
                       Container(
                         child: Text(
-                          "Air Force 1’07 :  Triple White",
+                          widget.namaSepatu,
                           style: Theme.of(context).textTheme.titleMedium,
                         ),
                       ),
@@ -94,8 +107,8 @@ class _CollectionReviewPageState extends State<CollectionReviewPage> {
                                       height: 164,
                                       decoration: BoxDecoration(
                                         image: DecorationImage(
-                                          image: AssetImage(
-                                            "assets/sepatu_placeholder.png",
+                                          image: NetworkImage(
+                                            widget.urlSepatu,
                                           ),
                                           fit: BoxFit.contain,
                                         ),
@@ -172,7 +185,7 @@ class _CollectionReviewPageState extends State<CollectionReviewPage> {
                                         ),
                                       ),
                                       child: Text(
-                                        "~\$4500.00",
+                                        "\$${widget.hargaSepatu}",
                                         style: Theme.of(context)
                                             .textTheme
                                             .labelLarge,
@@ -205,7 +218,7 @@ class _CollectionReviewPageState extends State<CollectionReviewPage> {
                                     Container(
                                       alignment: Alignment.centerLeft,
                                       child: Text(
-                                        "Air Force 1’07 :  Triple White",
+                                        widget.namaSepatu,
                                         style: Theme.of(context)
                                             .textTheme
                                             .titleLarge,
@@ -222,7 +235,7 @@ class _CollectionReviewPageState extends State<CollectionReviewPage> {
                                             child: Container(
                                               alignment: Alignment.centerLeft,
                                               child: Text(
-                                                "4.7/5",
+                                                "${widget.ratingSepatu}/5",
                                                 style: TextStyle(
                                                   fontSize: 20,
                                                   fontFamily: "dity",
@@ -253,7 +266,7 @@ class _CollectionReviewPageState extends State<CollectionReviewPage> {
                                     ),
                                     Container(
                                       child: Text(
-                                        "The radiance lives on in the Nike Air Force 1 ’07, the b-ball OG that puts a fresh spin on what you know best: durably stitched overlays, clean finishes and the perfect amount of flash to make you shine. The stitched overlays on the upper add heritage style, durability and support. Originally designed for performance hoops, the Nike Air cushioning adds lightweight, all-day comfort. The low-cut silhouette adds a clean, streamlined look.",
+                                        widget.descSepatu,
                                         style: Theme.of(context)
                                             .textTheme
                                             .labelMedium,
@@ -530,8 +543,7 @@ class _CollectionReviewPageState extends State<CollectionReviewPage> {
                       ),
                       ContainerReview(
                         nama: "AffhIyhh",
-                        deskripsi:
-                            "yes",
+                        deskripsi: "yes",
                       ),
                       SizedBox(
                         height: 25,

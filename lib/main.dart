@@ -6,9 +6,7 @@ import 'package:pa_ekin/models/provider_btn_intro.dart';
 import 'package:pa_ekin/models/provider_icon_nav.dart';
 import 'package:pa_ekin/models/provider_review.dart';
 import 'package:pa_ekin/models/provider_screen_index.dart';
-import 'package:pa_ekin/models/sepatu_models.dart';
 import 'package:pa_ekin/screens/Collection.dart';
-import 'package:pa_ekin/screens/Collection_review.dart';
 import 'package:pa_ekin/screens/Home.dart';
 import 'package:pa_ekin/screens/Introduction_screen.dart';
 import 'package:pa_ekin/screens/abouUs.dart';
@@ -95,7 +93,6 @@ class MyApp extends StatelessWidget {
           "/SuccessPage": (context) => SuccessPage(),
           "/HomePage": (context) => HomePage(),
           "/CollectionPage": (context) => CollectionPage(),
-          "/CollectionReviewPage": (context) => CollectionReviewPage(),
           "/AboutUsPage": (context) => AboutUsPage(),
           "/BottomNavPage": (context) => BottomNavBar(),
         },

@@ -5,6 +5,7 @@ import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:pa_ekin/models/sepatu_models.dart';
+import 'package:pa_ekin/screens/Collection_review.dart';
 import 'package:pa_ekin/widgets/theme_data.dart';
 import 'package:provider/provider.dart';
 
@@ -63,7 +64,18 @@ class IsiContainer extends StatelessWidget {
       itemBuilder: (context, index) {
         return GestureDetector(
           onTap: () {
-            Navigator.pushNamed(context, "/CollectionReviewPage");
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => CollectionReviewPage(
+                  namaSepatu: sepatuData[index].nama,
+                  urlSepatu: sepatuData[index].url,
+                  descSepatu: sepatuData[index].description,
+                  hargaSepatu: sepatuData[index].harga,
+                  ratingSepatu: sepatuData[index].rating.toString(),
+                ),
+              ),
+            );
           },
           child: Container(
             margin: EdgeInsets.only(
@@ -246,24 +258,50 @@ class MostRatedContainer extends StatelessWidget {
                 Positioned(
                   bottom: 0,
                   //container view
-                  child: Container(
-                    alignment: Alignment.center,
-                    height: 22,
-                    width: 110,
-                    decoration: BoxDecoration(
-                      color: colorMode.primary,
-                      borderRadius: BorderRadius.only(
-                        bottomRight: Radius.circular(13),
-                        bottomLeft: Radius.circular(10),
-                      ),
-                      border: Border.all(
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CollectionReviewPage(
+                            namaSepatu:
+                                sepatuData[sepatuData.length - (index + 1)]
+                                    .nama,
+                            urlSepatu:
+                                sepatuData[sepatuData.length - (index + 1)].url,
+                            descSepatu:
+                                sepatuData[sepatuData.length - (index + 1)]
+                                    .description,
+                            hargaSepatu:
+                                sepatuData[sepatuData.length - (index + 1)]
+                                    .harga,
+                            ratingSepatu:
+                                sepatuData[sepatuData.length - (index + 1)]
+                                    .rating
+                                    .toString(),
+                          ),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      height: 22,
+                      width: 110,
+                      decoration: BoxDecoration(
                         color: colorMode.primary,
-                        width: 1,
+                        borderRadius: BorderRadius.only(
+                          bottomRight: Radius.circular(13),
+                          bottomLeft: Radius.circular(10),
+                        ),
+                        border: Border.all(
+                          color: colorMode.primary,
+                          width: 1,
+                        ),
                       ),
-                    ),
-                    child: Text(
-                      "View",
-                      style: Theme.of(context).textTheme.displayMedium,
+                      child: Text(
+                        "View",
+                        style: Theme.of(context).textTheme.displayMedium,
+                      ),
                     ),
                   ),
                 ),
@@ -463,20 +501,37 @@ class TodaysPickContainer extends StatelessWidget {
                   Positioned(
                     right: 0,
                     bottom: 0,
-                    child: Container(
-                      alignment: Alignment.center,
-                      height: 20,
-                      width: 48,
-                      decoration: BoxDecoration(
-                        color: colorMode.primary,
-                        borderRadius: BorderRadius.only(
-                          bottomRight: Radius.circular(6),
-                          topLeft: Radius.circular(6),
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => CollectionReviewPage(
+                              namaSepatu: sepatuData[pickedNumber].nama,
+                              urlSepatu: sepatuData[pickedNumber].url,
+                              descSepatu: sepatuData[pickedNumber].description,
+                              hargaSepatu: sepatuData[pickedNumber].harga,
+                              ratingSepatu:
+                                  sepatuData[pickedNumber].rating.toString(),
+                            ),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        alignment: Alignment.center,
+                        height: 20,
+                        width: 48,
+                        decoration: BoxDecoration(
+                          color: colorMode.primary,
+                          borderRadius: BorderRadius.only(
+                            bottomRight: Radius.circular(6),
+                            topLeft: Radius.circular(6),
+                          ),
                         ),
-                      ),
-                      child: Text(
-                        "More",
-                        style: Theme.of(context).textTheme.displayMedium,
+                        child: Text(
+                          "More",
+                          style: Theme.of(context).textTheme.displayMedium,
+                        ),
                       ),
                     ),
                   ),
@@ -498,7 +553,7 @@ class CollectionContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      height: 150 * (sepatuData.length.toDouble() / 3),
+      height: 150 * sepatuData.length.toDouble() / 2,
       child: GridView.builder(
         physics: NeverScrollableScrollPhysics(),
         padding: EdgeInsets.only(
@@ -515,7 +570,18 @@ class CollectionContainer extends StatelessWidget {
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: () {
-              Navigator.pushNamed(context, "/CollectionReviewPage");
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CollectionReviewPage(
+                    namaSepatu: sepatuData[index].nama,
+                    urlSepatu: sepatuData[index].url,
+                    descSepatu: sepatuData[index].description,
+                    hargaSepatu: sepatuData[index].harga,
+                    ratingSepatu: sepatuData[index].rating.toString(),
+                  ),
+                ),
+              );
             },
             child: Container(
               width: 93,
@@ -556,15 +622,16 @@ class CollectionContainer extends StatelessWidget {
                   ),
                   Positioned(
                     bottom: 0,
+                    left: 0,
+                    right: 0,
                     //container view
                     child: Container(
                       alignment: Alignment.center,
                       height: 22,
-                      width: 93,
                       decoration: BoxDecoration(
                         color: colorMode.primary,
                         borderRadius: BorderRadius.only(
-                          bottomRight: Radius.circular(13),
+                          bottomRight: Radius.circular(10),
                           bottomLeft: Radius.circular(10),
                         ),
                         border: Border.all(
@@ -620,7 +687,8 @@ class CollectionContainer extends StatelessWidget {
                           Container(
                             width: 10,
                             height: 10,
-                            child: Image(image: AssetImage('assets/bintang.png')),
+                            child:
+                                Image(image: AssetImage('assets/bintang.png')),
                           )
                         ],
                       ),
