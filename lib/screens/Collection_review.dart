@@ -29,7 +29,7 @@ class _CollectionReviewPageState extends State<CollectionReviewPage> {
           body: SafeArea(
             child: Column(
               children: [
-                //container back dan nama sepatu
+                //container back dan nama sepat
                 Container(
                   margin: EdgeInsets.only(
                     left: 20,
