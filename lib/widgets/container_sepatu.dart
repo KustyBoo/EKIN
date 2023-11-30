@@ -39,6 +39,9 @@ class ContainerHorizontal extends StatelessWidget {
         } else if (!snapshot.hasError && pilihan == 3) {
           List<Sepatu> dataList = snapshot.data ?? [];
           return TodaysPickContainer(sepatuData: dataList);
+        } else if (!snapshot.hasError && pilihan == 4) {
+          List<Sepatu> dataList = snapshot.data ?? [];
+          return CollectionContainer(sepatuData: dataList);
         } else {
           return Text('Error: ${snapshot.error}');
         }
@@ -202,7 +205,7 @@ class MostRatedContainer extends StatelessWidget {
           child: Container(
             margin: EdgeInsets.only(
               left: 20,
-              right: index == sepatuData.length - 1 ? 20 : 0,
+              right: index == 3 - 1 ? 20 : 0,
             ),
             width: 110,
             height: 121,
@@ -373,8 +376,8 @@ class TodaysPickContainer extends StatelessWidget {
                 ),
               ),
               child: Text(
-                sepatuData[pickedNumber].harga,
-                style: Theme.of(context).textTheme.displaySmall,
+                "\$${sepatuData[pickedNumber].harga}",
+                style: Theme.of(context).textTheme.labelLarge,
               ),
             ),
           ),
@@ -437,14 +440,18 @@ class TodaysPickContainer extends StatelessWidget {
                         Container(
                           child: Row(
                             children: [
-                              Text("${sepatuData[pickedNumber].rating.toString()}/5", style: teksMode.titleSmall,),
+                              Text(
+                                "${sepatuData[pickedNumber].rating.toString()}/5",
+                                style: teksMode.titleSmall,
+                              ),
                               SizedBox(
                                 width: 5,
                               ),
                               Container(
                                 width: 10,
                                 height: 10,
-                                child: Image(image: AssetImage("assets/bintang.png")),
+                                child: Image(
+                                    image: AssetImage("assets/bintang.png")),
                               )
                             ],
                           ),
@@ -469,7 +476,7 @@ class TodaysPickContainer extends StatelessWidget {
                       ),
                       child: Text(
                         "More",
-                        style: Theme.of(context).textTheme.displaySmall,
+                        style: Theme.of(context).textTheme.displayMedium,
                       ),
                     ),
                   ),
@@ -478,6 +485,152 @@ class TodaysPickContainer extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class CollectionContainer extends StatelessWidget {
+  final List<Sepatu> sepatuData;
+  const CollectionContainer({super.key, required this.sepatuData});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      height: 150 * (sepatuData.length.toDouble() / 3),
+      child: GridView.builder(
+        physics: NeverScrollableScrollPhysics(),
+        padding: EdgeInsets.only(
+          left: 20,
+          right: 20,
+        ),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          childAspectRatio: 0.7,
+          crossAxisCount: 3,
+          mainAxisSpacing: 20,
+          crossAxisSpacing: 20,
+        ),
+        itemCount: sepatuData.length,
+        itemBuilder: (context, index) {
+          return GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, "/CollectionReviewPage");
+            },
+            child: Container(
+              width: 93,
+              height: 121,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(
+                  color: colorMode.primary,
+                  width: 1,
+                ),
+              ),
+              child: Stack(
+                children: [
+                  Container(
+                    width: 93,
+                    height: 121,
+                  ),
+                  //container tulisan harga
+                  Container(
+                    alignment: Alignment.center,
+                    height: 11.5,
+                    width: 40,
+                    decoration: BoxDecoration(
+                      color: colorMode.primary,
+                      borderRadius: BorderRadius.only(
+                        bottomRight: Radius.circular(10),
+                        topLeft: Radius.circular(10),
+                      ),
+                      border: Border.all(
+                        color: colorMode.primary,
+                        width: 1,
+                      ),
+                    ),
+                    child: Text(
+                      "\$${sepatuData[index].harga}",
+                      style: Theme.of(context).textTheme.displaySmall,
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 0,
+                    //container view
+                    child: Container(
+                      alignment: Alignment.center,
+                      height: 22,
+                      width: 93,
+                      decoration: BoxDecoration(
+                        color: colorMode.primary,
+                        borderRadius: BorderRadius.only(
+                          bottomRight: Radius.circular(13),
+                          bottomLeft: Radius.circular(10),
+                        ),
+                        border: Border.all(
+                          color: colorMode.primary,
+                          width: 1,
+                        ),
+                      ),
+                      child: Text(
+                        "View",
+                        style: Theme.of(context).textTheme.displayMedium,
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    left: 0,
+                    right: 0,
+                    bottom: 55,
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: 56,
+                      child: Image(image: NetworkImage(sepatuData[index].url)),
+                    ),
+                  ),
+                  Positioned(
+                    left: 5,
+                    right: 5,
+                    bottom: 23,
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      child: Text(
+                        overflow: TextOverflow.ellipsis,
+                        sepatuData[index].nama,
+                        textAlign: TextAlign.center,
+                        style: teksMode.titleSmall,
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    left: 0,
+                    right: 0,
+                    bottom: 38,
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            "${sepatuData[index].rating.toString()}/5",
+                            textAlign: TextAlign.center,
+                            style: teksMode.titleSmall,
+                          ),
+                          Container(
+                            width: 10,
+                            height: 10,
+                            child: Image(image: AssetImage('assets/bintang.png')),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
       ),
     );
   }

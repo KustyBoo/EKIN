@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pa_ekin/screens/Collection_review.dart';
-import 'package:pa_ekin/widgets/container_horizontal.dart';
+import 'package:pa_ekin/widgets/container_sepatu.dart';
 import 'package:pa_ekin/widgets/theme_data.dart';
 import '../models/user_models.dart' as my_models;
 
