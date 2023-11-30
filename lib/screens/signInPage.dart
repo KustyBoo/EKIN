@@ -1,4 +1,4 @@
-// ignore_for_file: sort_child_properties_last, prefer_const_constructors, use_build_context_synchronously
+// ignore_for_file: sort_child_properties_last, prefer_const_constructors, use_build_context_synchronously, prefer_final_fields
 
 import 'package:flutter/material.dart';
 import 'package:pa_ekin/services/auth_services.dart';
@@ -23,9 +23,20 @@ class _SignInPageState extends State<SignInPage> {
   final TextEditingController _controllerPassword = TextEditingController();
 
   @override
+  void initState() {
+    super.initState();
+    _selected1.addListener(onFocusChange);
+    _selected2.addListener(onFocusChange);
+  }
+
+  @override
   void dispose() {
     _controllerEmail.dispose();
     _controllerPassword.dispose();
+    _selected1.removeListener(onFocusChange);
+    _selected1.dispose();
+    _selected2.removeListener(onFocusChange);
+    _selected2.dispose();
     super.dispose();
   }
 
@@ -71,13 +82,23 @@ class _SignInPageState extends State<SignInPage> {
     }
   }
 
+  FocusNode _selected1 = FocusNode();
+  FocusNode _selected2 = FocusNode();
+  bool visibilityBtn = true;
+
+  void onFocusChange() {
+    setState(() {
+      visibilityBtn = !visibilityBtn;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Form(
-          key: _formKey,
-          child: Stack(
+        body: Center(
+      child: Form(
+        key: _formKey,
+        child: Stack(
           children: [
             Container(
               width: MediaQuery.of(context).size.width,
@@ -108,9 +129,10 @@ class _SignInPageState extends State<SignInPage> {
                         ),
                         Container(
                           child: Padding(
-                            padding:
-                                EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 30, vertical: 10),
                             child: TextFormField(
+                              focusNode: _selected1,
                               controller: _controllerEmail,
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
@@ -121,24 +143,28 @@ class _SignInPageState extends State<SignInPage> {
                               style: Theme.of(context).textTheme.bodySmall,
                               decoration: InputDecoration(
                                 labelText: "Email",
-                                labelStyle: Theme.of(context).textTheme.bodyLarge,
+                                labelStyle:
+                                    Theme.of(context).textTheme.bodyLarge,
                                 enabledBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(
                                     color: colorMode
                                         .onPrimary, // Ganti dengan warna border yang sesuai
                                   ),
                                 ),
-                                floatingLabelBehavior: FloatingLabelBehavior.always,
-                                contentPadding: EdgeInsets.symmetric(vertical: 10),
+                                floatingLabelBehavior:
+                                    FloatingLabelBehavior.always,
+                                contentPadding:
+                                    EdgeInsets.symmetric(vertical: 10),
                               ),
                             ),
                           ),
                         ),
                         Container(
                           child: Padding(
-                            padding:
-                                EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 30, vertical: 10),
                             child: TextFormField(
+                              focusNode: _selected2,
                               controller: _controllerPassword,
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
@@ -150,15 +176,18 @@ class _SignInPageState extends State<SignInPage> {
                               style: Theme.of(context).textTheme.bodySmall,
                               decoration: InputDecoration(
                                 labelText: "Password",
-                                labelStyle: Theme.of(context).textTheme.bodyLarge,
+                                labelStyle:
+                                    Theme.of(context).textTheme.bodyLarge,
                                 enabledBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(
                                     color: colorMode
                                         .onPrimary, // Ganti dengan warna border yang sesuai
                                   ),
                                 ),
-                                floatingLabelBehavior: FloatingLabelBehavior.always,
-                                contentPadding: EdgeInsets.symmetric(vertical: 10),
+                                floatingLabelBehavior:
+                                    FloatingLabelBehavior.always,
+                                contentPadding:
+                                    EdgeInsets.symmetric(vertical: 10),
                               ),
                             ),
                           ),
@@ -177,7 +206,8 @@ class _SignInPageState extends State<SignInPage> {
                                   ),
                                   child: Text(
                                     "Don't Have an Account?",
-                                    style: Theme.of(context).textTheme.bodyMedium,
+                                    style:
+                                        Theme.of(context).textTheme.bodyMedium,
                                   ),
                                 ),
                               ),
@@ -187,11 +217,13 @@ class _SignInPageState extends State<SignInPage> {
                                   margin: EdgeInsets.only(top: 35),
                                   child: TextButton(
                                     onPressed: () {
-                                      Navigator.pushNamed(context, "/SignUpPage");
+                                      Navigator.pushNamed(
+                                          context, "/SignUpPage");
                                     },
                                     child: Text(
                                       "Sign Up",
-                                      style: Theme.of(context).textTheme.bodySmall,
+                                      style:
+                                          Theme.of(context).textTheme.bodySmall,
                                     ),
                                   ),
                                 ),
@@ -199,45 +231,47 @@ class _SignInPageState extends State<SignInPage> {
                             ],
                           ),
                         ),
-                        SizedBox(
-                          height: 140,
-                        ),
-                        Container(
-                          //margin: EdgeInsets.only(bottom: 100),
-                          width: MediaQuery.of(context).size.width,
-                          child: ElevatedButton(
-                              onPressed: () {
-                                handleSubmit();
-                              },
-                              child: _loading
-                                  ? const SizedBox(
-                                      width: 20,
-                                      height: 20,
-                                      child: CircularProgressIndicator(
-                                        color: Colors.white,
-                                        strokeWidth: 2,
-                                      ),
-                                    )
-                                  : Text("Submit"),
-                              style: ElevatedButton.styleFrom(
-                                minimumSize: Size(
-                                  MediaQuery.of(context).size.width * 0.9,
-                                  50,
-                                ),
-                              ),
-                            ),
-                          alignment: Alignment.bottomCenter,
-                        )
                       ],
                     )
                   ],
                 ),
               ),
-            )
-          ],
             ),
+            Positioned(
+              bottom: 20,
+              child: Visibility(
+                visible: visibilityBtn,
+                child: Container(
+                  //margin: EdgeInsets.only(bottom: 100),
+                  width: MediaQuery.of(context).size.width,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      handleSubmit();
+                    },
+                    child: _loading
+                        ? const SizedBox(
+                            width: 20,
+                            height: 20,
+                            child: CircularProgressIndicator(
+                              color: Colors.white,
+                              strokeWidth: 2,
+                            ),
+                          )
+                        : Text("Submit"),
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: Size(
+                        MediaQuery.of(context).size.width * 0.9,
+                        50,
+                      ),
+                    ),
+                  ),
+                  alignment: Alignment.bottomCenter,
+                ),
+              ),
+            ),
+          ],
         ),
-      )     
-      );
+      ),
+    ));
   }
 }
