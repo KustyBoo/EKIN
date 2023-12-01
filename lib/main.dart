@@ -6,6 +6,7 @@ import 'package:pa_ekin/models/provider_btn_intro.dart';
 import 'package:pa_ekin/models/provider_icon_nav.dart';
 import 'package:pa_ekin/models/provider_review.dart';
 import 'package:pa_ekin/models/provider_screen_index.dart';
+import 'package:pa_ekin/models/provider_shoe_reviews.dart';
 import 'package:pa_ekin/screens/Collection.dart';
 import 'package:pa_ekin/screens/Home.dart';
 import 'package:pa_ekin/screens/Introduction_screen.dart';
@@ -64,6 +65,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (BuildContext context) => ProviderUser(),
+        ),
+        ChangeNotifierProvider(
+          create: (BuildContext context) => ProviderShoeReviews(),
         ),
 
       ],

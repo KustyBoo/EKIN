@@ -32,8 +32,8 @@ class User {
     }
 
     return User(
-      fullName: firebaseUser.displayName ?? '',
-      username: '',
+      fullName: '',
+      username: firebaseUser.displayName ?? '',
       email: firebaseUser.email ?? '',
       password: '',
       confirmPassword: '',
