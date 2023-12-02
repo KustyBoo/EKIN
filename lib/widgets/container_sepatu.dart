@@ -564,7 +564,7 @@ class CollectionContainer extends StatelessWidget {
           right: 20,
         ),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          childAspectRatio: 0.7,
+          childAspectRatio: 0.8,
           crossAxisCount: 3,
           mainAxisSpacing: 20,
           crossAxisSpacing: 20,
