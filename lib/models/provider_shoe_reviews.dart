@@ -17,4 +17,16 @@ class ProviderShoeReviews extends ChangeNotifier {
     _reviews.add(newReview);
     notifyListeners();
   }
+
+
+  //   List<Reviews>? _users;
+
+  // List<Reviews>? get users => _users;
+
+  //  int get userCount => _users?.length ?? 0;
+
+  // void addReview(Reviews review) {
+  //   _users?.add(review);
+  //   notifyListeners();
+  // }
 }

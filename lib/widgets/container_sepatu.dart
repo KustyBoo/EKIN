@@ -73,6 +73,7 @@ class IsiContainer extends StatelessWidget {
                   descSepatu: sepatuData[index].description,
                   hargaSepatu: sepatuData[index].harga,
                   ratingSepatu: sepatuData[index].rating.toString(),
+                  indexSepatu: index
                 ),
               ),
             );
@@ -279,6 +280,7 @@ class MostRatedContainer extends StatelessWidget {
                                 sepatuData[sepatuData.length - (index + 1)]
                                     .rating
                                     .toString(),
+                            indexSepatu: index,
                           ),
                         ),
                       );
@@ -513,6 +515,7 @@ class TodaysPickContainer extends StatelessWidget {
                               hargaSepatu: sepatuData[pickedNumber].harga,
                               ratingSepatu:
                                   sepatuData[pickedNumber].rating.toString(),
+                              indexSepatu: pickedNumber,
                             ),
                           ),
                         );
@@ -579,6 +582,7 @@ class CollectionContainer extends StatelessWidget {
                     descSepatu: sepatuData[index].description,
                     hargaSepatu: sepatuData[index].harga,
                     ratingSepatu: sepatuData[index].rating.toString(),
+                    indexSepatu: index,
                   ),
                 ),
               );

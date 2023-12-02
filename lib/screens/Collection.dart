@@ -63,7 +63,7 @@ class _CollectionPageState extends State<CollectionPage> {
                                       child: TextField(
                                         style: Theme.of(context)
                                             .textTheme
-                                            .labelMedium,
+                                             .labelMedium,
                                         decoration: InputDecoration(
                                           border: InputBorder.none,
                                           hintText: "Search",
