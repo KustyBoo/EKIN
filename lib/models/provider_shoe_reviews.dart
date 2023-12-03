@@ -18,6 +18,11 @@ class ProviderShoeReviews extends ChangeNotifier {
     notifyListeners();
   }
 
+  void delReview(Reviews newReview) {
+    _reviews.remove(newReview);
+    notifyListeners();
+  }
+
 
   //   List<Reviews>? _users;
 

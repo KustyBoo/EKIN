@@ -22,4 +22,25 @@ class ShoeReviewsService {
       print("Error adding review to Firebase: $error");
     }
   }
+
+  Future<void> deleteReviewFromFirebase(String shoeID, Reviews review, String userEmail) async {
+    try {
+      CollectionReference shoeReviewsCollection = FirebaseFirestore.instance.collection("shoes");
+      
+      DocumentReference shoeDocument = shoeReviewsCollection.doc(shoeID);
+    
+      CollectionReference reviewsCollection = shoeDocument.collection("reviews");
+    
+      DocumentReference userReviewDocument = reviewsCollection.doc(userEmail);
+
+      Map<String, dynamic> reviewMap = {
+        'Username': review.username,
+        'Review': review.reviews,
+      };
+
+      await userReviewDocument.delete();
+    } catch (error) {
+      print("Error delete review to Firebase: $error");
+    }
+  }
 }

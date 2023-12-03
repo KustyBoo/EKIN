@@ -62,66 +62,66 @@ class IsiContainer extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       itemCount: sepatuData.length,
       itemBuilder: (context, index) {
-        return GestureDetector(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => CollectionReviewPage(
-                  namaSepatu: sepatuData[index].nama,
-                  urlSepatu: sepatuData[index].url,
-                  descSepatu: sepatuData[index].description,
-                  hargaSepatu: sepatuData[index].harga,
-                  ratingSepatu: sepatuData[index].rating.toString(),
-                  indexSepatu: index
-                ),
-              ),
-            );
-          },
-          child: Container(
-            margin: EdgeInsets.only(
-              left: 20,
-              right: index == sepatuData.length - 1 ? 20 : 0,
+        return Container(
+          margin: EdgeInsets.only(
+            left: 20,
+            right: index == sepatuData.length - 1 ? 20 : 0,
+          ),
+          width: 93,
+          height: 121,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(
+              color: colorMode.primary,
+              width: 1,
             ),
-            width: 93,
-            height: 121,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(
-                color: colorMode.primary,
-                width: 1,
+          ),
+          child: Stack(
+            children: [
+              Container(
+                width: 93,
+                height: 121,
               ),
-            ),
-            child: Stack(
-              children: [
-                Container(
-                  width: 93,
-                  height: 121,
-                ),
-                //container tulisan harga
-                Container(
-                  alignment: Alignment.center,
-                  height: 11.5,
-                  width: 40,
-                  decoration: BoxDecoration(
+              //container tulisan harga
+              Container(
+                alignment: Alignment.center,
+                height: 11.5,
+                width: 40,
+                decoration: BoxDecoration(
+                  color: colorMode.primary,
+                  borderRadius: BorderRadius.only(
+                    bottomRight: Radius.circular(10),
+                    topLeft: Radius.circular(10),
+                  ),
+                  border: Border.all(
                     color: colorMode.primary,
-                    borderRadius: BorderRadius.only(
-                      bottomRight: Radius.circular(10),
-                      topLeft: Radius.circular(10),
-                    ),
-                    border: Border.all(
-                      color: colorMode.primary,
-                      width: 1,
-                    ),
-                  ),
-                  child: Text(
-                    "\$${sepatuData[index].harga}",
-                    style: Theme.of(context).textTheme.displaySmall,
+                    width: 1,
                   ),
                 ),
-                Positioned(
-                  bottom: 0,
-                  //container view
+                child: Text(
+                  "\$${sepatuData[index].harga}",
+                  style: Theme.of(context).textTheme.displaySmall,
+                ),
+              ),
+              Positioned(
+                bottom: 0,
+                //container view
+                child: InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CollectionReviewPage(
+                          namaSepatu: sepatuData[index].nama,
+                          urlSepatu: sepatuData[index].url,
+                          descSepatu: sepatuData[index].description,
+                          hargaSepatu: sepatuData[index].harga,
+                          ratingSepatu: sepatuData[index].rating.toString(),
+                          indexSepatu: index,
+                        ),
+                      ),
+                    );
+                  },
                   child: Container(
                     alignment: Alignment.center,
                     height: 22,
@@ -143,56 +143,56 @@ class IsiContainer extends StatelessWidget {
                     ),
                   ),
                 ),
-                Positioned(
-                  left: 0,
-                  right: 0,
-                  bottom: 55,
-                  child: Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: 56,
-                    child: Image(image: NetworkImage(sepatuData[index].url)),
+              ),
+              Positioned(
+                left: 0,
+                right: 0,
+                bottom: 55,
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: 56,
+                  child: Image(image: NetworkImage(sepatuData[index].url)),
+                ),
+              ),
+              Positioned(
+                left: 5,
+                right: 5,
+                bottom: 23,
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  child: Text(
+                    overflow: TextOverflow.ellipsis,
+                    sepatuData[index].nama,
+                    textAlign: TextAlign.center,
+                    style: teksMode.titleSmall,
                   ),
                 ),
-                Positioned(
-                  left: 5,
-                  right: 5,
-                  bottom: 23,
-                  child: Container(
-                    width: MediaQuery.of(context).size.width,
-                    child: Text(
-                      overflow: TextOverflow.ellipsis,
-                      sepatuData[index].nama,
-                      textAlign: TextAlign.center,
-                      style: teksMode.titleSmall,
-                    ),
+              ),
+              Positioned(
+                left: 0,
+                right: 0,
+                bottom: 38,
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        "${sepatuData[index].rating.toString()}/5",
+                        textAlign: TextAlign.center,
+                        style: teksMode.titleSmall,
+                      ),
+                      Container(
+                        width: 10,
+                        height: 10,
+                        child: Image(image: AssetImage('assets/bintang.png')),
+                      )
+                    ],
                   ),
                 ),
-                Positioned(
-                  left: 0,
-                  right: 0,
-                  bottom: 38,
-                  child: Container(
-                    width: MediaQuery.of(context).size.width,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          "${sepatuData[index].rating.toString()}/5",
-                          textAlign: TextAlign.center,
-                          style: teksMode.titleSmall,
-                        ),
-                        Container(
-                          width: 10,
-                          height: 10,
-                          child: Image(image: AssetImage('assets/bintang.png')),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         );
       },
@@ -203,7 +203,22 @@ class IsiContainer extends StatelessWidget {
 class MostRatedContainer extends StatelessWidget {
   final List<Sepatu> sepatuData;
 
-  MostRatedContainer({required this.sepatuData});
+  MostRatedContainer({required this.sepatuData}) {
+    randomNumber.clear();
+    pickRandomNumber();
+  }
+
+  List<int> randomNumber = [];
+
+  void pickRandomNumber() {
+    final random = Random();
+    while (randomNumber.length < 3) {
+      int result = random.nextInt(sepatuData.length);
+      if (!randomNumber.contains(result)) {
+        randomNumber.add(result);
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -211,154 +226,140 @@ class MostRatedContainer extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       itemCount: 3,
       itemBuilder: (context, index) {
-        return GestureDetector(
-          onTap: () {
-            Navigator.pushNamed(context, "/CollectionReviewPage");
-          },
-          child: Container(
-            margin: EdgeInsets.only(
-              left: 20,
-              right: index == 3 - 1 ? 20 : 0,
+        return Container(
+          margin: EdgeInsets.only(
+            left: 20,
+            right: index == 3 - 1 ? 20 : 0,
+          ),
+          width: 110,
+          height: 121,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(
+              color: colorMode.primary,
+              width: 1,
             ),
-            width: 110,
-            height: 121,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(
-                color: colorMode.primary,
-                width: 1,
+          ),
+          child: Stack(
+            children: [
+              Container(
+                width: 93,
+                height: 121,
               ),
-            ),
-            child: Stack(
-              children: [
-                Container(
-                  width: 93,
-                  height: 121,
-                ),
-                //container tulisan harga
-                Container(
-                  alignment: Alignment.center,
-                  height: 11.5,
-                  width: 40,
-                  decoration: BoxDecoration(
+              //container tulisan harga
+              Container(
+                alignment: Alignment.center,
+                height: 11.5,
+                width: 40,
+                decoration: BoxDecoration(
+                  color: colorMode.primary,
+                  borderRadius: BorderRadius.only(
+                    bottomRight: Radius.circular(10),
+                    topLeft: Radius.circular(10),
+                  ),
+                  border: Border.all(
                     color: colorMode.primary,
-                    borderRadius: BorderRadius.only(
-                      bottomRight: Radius.circular(10),
-                      topLeft: Radius.circular(10),
-                    ),
-                    border: Border.all(
+                    width: 1,
+                  ),
+                ),
+                child: Text(
+                  "\$${sepatuData[randomNumber[index]].harga}",
+                  style: Theme.of(context).textTheme.displaySmall,
+                ),
+              ),
+              Positioned(
+                bottom: 0,
+                //container view
+                child: InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CollectionReviewPage(
+                          namaSepatu: sepatuData[randomNumber[index]].nama,
+                          urlSepatu: sepatuData[randomNumber[index]].url,
+                          descSepatu:
+                              sepatuData[randomNumber[index]].description,
+                          hargaSepatu: sepatuData[randomNumber[index]].harga,
+                          ratingSepatu:
+                              sepatuData[randomNumber[index]].rating.toString(),
+                          indexSepatu: randomNumber[index],
+                        ),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    alignment: Alignment.center,
+                    height: 22,
+                    width: 110,
+                    decoration: BoxDecoration(
                       color: colorMode.primary,
-                      width: 1,
-                    ),
-                  ),
-                  child: Text(
-                    "\$${sepatuData[sepatuData.length - (index + 1)].harga}",
-                    style: Theme.of(context).textTheme.displaySmall,
-                  ),
-                ),
-                Positioned(
-                  bottom: 0,
-                  //container view
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => CollectionReviewPage(
-                            namaSepatu:
-                                sepatuData[sepatuData.length - (index + 1)]
-                                    .nama,
-                            urlSepatu:
-                                sepatuData[sepatuData.length - (index + 1)].url,
-                            descSepatu:
-                                sepatuData[sepatuData.length - (index + 1)]
-                                    .description,
-                            hargaSepatu:
-                                sepatuData[sepatuData.length - (index + 1)]
-                                    .harga,
-                            ratingSepatu:
-                                sepatuData[sepatuData.length - (index + 1)]
-                                    .rating
-                                    .toString(),
-                            indexSepatu: index,
-                          ),
-                        ),
-                      );
-                    },
-                    child: Container(
-                      alignment: Alignment.center,
-                      height: 22,
-                      width: 110,
-                      decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        bottomRight: Radius.circular(13),
+                        bottomLeft: Radius.circular(10),
+                      ),
+                      border: Border.all(
                         color: colorMode.primary,
-                        borderRadius: BorderRadius.only(
-                          bottomRight: Radius.circular(13),
-                          bottomLeft: Radius.circular(10),
-                        ),
-                        border: Border.all(
-                          color: colorMode.primary,
-                          width: 1,
-                        ),
-                      ),
-                      child: Text(
-                        "View",
-                        style: Theme.of(context).textTheme.displayMedium,
+                        width: 1,
                       ),
                     ),
-                  ),
-                ),
-                Positioned(
-                  left: 0,
-                  right: 0,
-                  bottom: 55,
-                  child: Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: 56,
-                    child: Image(
-                        image: NetworkImage(
-                            sepatuData[sepatuData.length - (index + 1)].url)),
-                  ),
-                ),
-                Positioned(
-                  left: 5,
-                  right: 5,
-                  bottom: 23,
-                  child: Container(
-                    width: MediaQuery.of(context).size.width,
                     child: Text(
-                      overflow: TextOverflow.ellipsis,
-                      sepatuData[sepatuData.length - (index + 1)].nama,
-                      textAlign: TextAlign.center,
-                      style: teksMode.titleSmall,
+                      "View",
+                      style: Theme.of(context).textTheme.displayMedium,
                     ),
                   ),
                 ),
-                Positioned(
-                  left: 0,
-                  right: 0,
-                  bottom: 38,
-                  child: Container(
-                    width: MediaQuery.of(context).size.width,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          "${sepatuData[index].rating.toString()}/5",
-                          textAlign: TextAlign.center,
-                          style: teksMode.titleSmall,
-                        ),
-                        Container(
-                          width: 10,
-                          height: 10,
-                          child: Image(image: AssetImage('assets/bintang.png')),
-                        )
-                      ],
-                    ),
+              ),
+              Positioned(
+                left: 0,
+                right: 0,
+                bottom: 55,
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: 56,
+                  child: Image(
+                      image: NetworkImage(sepatuData[randomNumber[index]].url)),
+                ),
+              ),
+              Positioned(
+                left: 5,
+                right: 5,
+                bottom: 23,
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  child: Text(
+                    overflow: TextOverflow.ellipsis,
+                    sepatuData[randomNumber[index]].nama,
+                    textAlign: TextAlign.center,
+                    style: teksMode.titleSmall,
                   ),
                 ),
-              ],
-            ),
+              ),
+              Positioned(
+                left: 0,
+                right: 0,
+                bottom: 38,
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        "${sepatuData[randomNumber[index]].rating.toString()}/5",
+                        textAlign: TextAlign.center,
+                        style: teksMode.titleSmall,
+                      ),
+                      Container(
+                        width: 10,
+                        height: 10,
+                        child: Image(image: AssetImage('assets/bintang.png')),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
         );
       },
@@ -571,48 +572,56 @@ class CollectionContainer extends StatelessWidget {
         ),
         itemCount: sepatuData.length,
         itemBuilder: (context, index) {
-          return GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => CollectionReviewPage(
-                    namaSepatu: sepatuData[index].nama,
-                    urlSepatu: sepatuData[index].url,
-                    descSepatu: sepatuData[index].description,
-                    hargaSepatu: sepatuData[index].harga,
-                    ratingSepatu: sepatuData[index].rating.toString(),
-                    indexSepatu: index,
-                  ),
-                ),
-              );
-            },
-            child: Container(
-              width: 93,
-              height: 121,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(
-                  color: colorMode.primary,
-                  width: 1,
-                ),
+          return Container(
+            width: 93,
+            height: 121,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(
+                color: colorMode.primary,
+                width: 1,
               ),
-              child: Stack(
-                children: [
-                  Container(
-                    width: 93,
-                    height: 121,
+            ),
+            child: Stack(
+              children: [
+                Container(
+                  width: 93,
+                  height: 121,
+                ),
+                //container tulisan harga
+                Container(
+                  alignment: Alignment.center,
+                  height: 11.5,
+                  width: 40,
+                  decoration: BoxDecoration(
+                    color: colorMode.primary,
+                    borderRadius: BorderRadius.only(
+                      bottomRight: Radius.circular(10),
+                      topLeft: Radius.circular(10),
+                    ),
+                    border: Border.all(
+                      color: colorMode.primary,
+                      width: 1,
+                    ),
                   ),
-                  //container tulisan harga
-                  Container(
+                  child: Text(
+                    "\$${sepatuData[index].harga}",
+                    style: Theme.of(context).textTheme.displaySmall,
+                  ),
+                ),
+                Positioned(
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  //container view
+                  child: Container(
                     alignment: Alignment.center,
-                    height: 11.5,
-                    width: 40,
+                    height: 22,
                     decoration: BoxDecoration(
                       color: colorMode.primary,
                       borderRadius: BorderRadius.only(
                         bottomRight: Radius.circular(10),
-                        topLeft: Radius.circular(10),
+                        bottomLeft: Radius.circular(10),
                       ),
                       border: Border.all(
                         color: colorMode.primary,
@@ -620,86 +629,60 @@ class CollectionContainer extends StatelessWidget {
                       ),
                     ),
                     child: Text(
-                      "\$${sepatuData[index].harga}",
-                      style: Theme.of(context).textTheme.displaySmall,
+                      "View",
+                      style: Theme.of(context).textTheme.displayMedium,
                     ),
                   ),
-                  Positioned(
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    //container view
-                    child: Container(
-                      alignment: Alignment.center,
-                      height: 22,
-                      decoration: BoxDecoration(
-                        color: colorMode.primary,
-                        borderRadius: BorderRadius.only(
-                          bottomRight: Radius.circular(10),
-                          bottomLeft: Radius.circular(10),
+                ),
+                Positioned(
+                  left: 0,
+                  right: 0,
+                  bottom: 55,
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: 56,
+                    child: Image(image: NetworkImage(sepatuData[index].url)),
+                  ),
+                ),
+                Positioned(
+                  left: 5,
+                  right: 5,
+                  bottom: 23,
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    child: Text(
+                      overflow: TextOverflow.ellipsis,
+                      sepatuData[index].nama,
+                      textAlign: TextAlign.center,
+                      style: teksMode.titleSmall,
+                    ),
+                  ),
+                ),
+                Positioned(
+                  left: 0,
+                  right: 0,
+                  bottom: 38,
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          "${sepatuData[index].rating.toString()}/5",
+                          textAlign: TextAlign.center,
+                          style: teksMode.titleSmall,
                         ),
-                        border: Border.all(
-                          color: colorMode.primary,
-                          width: 1,
-                        ),
-                      ),
-                      child: Text(
-                        "View",
-                        style: Theme.of(context).textTheme.displayMedium,
-                      ),
+                        Container(
+                          width: 10,
+                          height: 10,
+                          child: Image(image: AssetImage('assets/bintang.png')),
+                        )
+                      ],
                     ),
                   ),
-                  Positioned(
-                    left: 0,
-                    right: 0,
-                    bottom: 55,
-                    child: Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: 56,
-                      child: Image(image: NetworkImage(sepatuData[index].url)),
-                    ),
-                  ),
-                  Positioned(
-                    left: 5,
-                    right: 5,
-                    bottom: 23,
-                    child: Container(
-                      width: MediaQuery.of(context).size.width,
-                      child: Text(
-                        overflow: TextOverflow.ellipsis,
-                        sepatuData[index].nama,
-                        textAlign: TextAlign.center,
-                        style: teksMode.titleSmall,
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    left: 0,
-                    right: 0,
-                    bottom: 38,
-                    child: Container(
-                      width: MediaQuery.of(context).size.width,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            "${sepatuData[index].rating.toString()}/5",
-                            textAlign: TextAlign.center,
-                            style: teksMode.titleSmall,
-                          ),
-                          Container(
-                            width: 10,
-                            height: 10,
-                            child:
-                                Image(image: AssetImage('assets/bintang.png')),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           );
         },
