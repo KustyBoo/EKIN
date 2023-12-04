@@ -152,7 +152,7 @@ class _CollectionReviewPageState extends State<CollectionReviewPage> {
 
     try {
       Reviews newReview = Reviews(
-        username: email!,
+        username: username!,
         reviews: review,
       );
 

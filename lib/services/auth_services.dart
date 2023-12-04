@@ -5,7 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../models/user_models.dart' as models;
 
-class AuthServices extends ChangeNotifier{
+class AuthServices extends ChangeNotifier {
   final firebase_auth.FirebaseAuth _auth = firebase_auth.FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
@@ -34,7 +34,6 @@ class AuthServices extends ChangeNotifier{
         email: email,
         password: password,
         confirmPassword: confirmPassword,
-        
       );
     } catch (e) {
       print('Registration failed: $e');
@@ -50,13 +49,11 @@ class AuthServices extends ChangeNotifier{
 
       DocumentSnapshot userDoc = await _firestore.collection('users').doc(user!.uid).get();
 
-      return models.User(
-          fullName: userDoc.get('fullName'),
-          username: '', 
-          email: userDoc.get('email'),
-          password: '',
-          confirmPassword: '',
-      );
+      return models.User.fromMap({
+        'Fullname': userDoc.get('fullName'),
+        'Username': userDoc.get('username'),
+        'Email': userDoc.get('email'),
+      });
     } catch (e) {
       print('Login failed: $e');
 
@@ -73,5 +70,4 @@ class AuthServices extends ChangeNotifier{
       throw errorMessage;
     }
   }
-
 }

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 
 class User {
@@ -16,25 +17,11 @@ class User {
     required this.confirmPassword,
   });
 
-  String getUsername(){
-    return username;
-  }
-
-  factory User.fromFirebaseUser(firebase_auth.User? firebaseUser) {
-    if (firebaseUser == null) {
-      return User(
-        fullName: '',
-        username: '',
-        email: '',
-        password: '',
-        confirmPassword: '',
-      );
-    }
-
+  factory User.fromMap(Map<String, dynamic> map) {
     return User(
-      fullName: '',
-      username: firebaseUser.displayName ?? '',
-      email: firebaseUser.email ?? '',
+      fullName: map['Fullname'] ?? '',
+      username: map['Username'] ?? '',
+      email: map['Email'] ?? '',
       password: '',
       confirmPassword: '',
     );

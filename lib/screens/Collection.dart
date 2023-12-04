@@ -1,8 +1,10 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, must_be_immutable, sized_box_for_whitespace, avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
+import 'package:pa_ekin/models/provider_user.dart';
 import 'package:pa_ekin/widgets/container_sepatu.dart';
 import 'package:pa_ekin/widgets/theme_data.dart';
+import 'package:provider/provider.dart';
 
 class CollectionPage extends StatefulWidget {
   const CollectionPage({super.key});
@@ -12,6 +14,31 @@ class CollectionPage extends StatefulWidget {
 }
 
 class _CollectionPageState extends State<CollectionPage> {
+  String? username = '';
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance!.addPostFrameCallback((_) async {
+      fetchUsername();
+    });
+  }
+
+  void fetchUsername() async {
+    try {
+      var userProvider = Provider.of<ProviderUser>(context, listen: false);
+      var user = userProvider.users.first;
+
+      if (user != null) {
+        setState(() {
+          username = user.username ?? '';
+          print('Fetched username: $username');
+        });
+      }
+    } catch (e) {
+      print('Error fetching username: $e');
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -154,7 +181,7 @@ class _CollectionPageState extends State<CollectionPage> {
                               ),
                               Container(
                                 child: Text(
-                                  "Lix",
+                                  username!,
                                   style: Theme.of(context).textTheme.bodyMedium,
                                 ),
                               )
