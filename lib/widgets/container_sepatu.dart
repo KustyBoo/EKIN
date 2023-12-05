@@ -16,7 +16,7 @@ class ContainerHorizontal extends StatelessWidget {
 
   Future<List<Sepatu>> fetchDataFromFirestore() async {
     QuerySnapshot<Map<String, dynamic>> querySnapshot =
-        await FirebaseFirestore.instance.collection('shoes').where('condition', isEqualTo: data).get();
+        await FirebaseFirestore.instance.collection('shoes').get();
 
     List<Sepatu> dataList = querySnapshot.docs.map((document) {
       return Sepatu.fromMap(document.data() as Map<String, dynamic>);
@@ -379,7 +379,11 @@ class TodaysPickContainer extends StatelessWidget {
   int pickedNumber = 0;
 
   void pickRandomNumber() {
-    pickedNumber = random.nextInt(sepatuData.length);
+    if (sepatuData != null && sepatuData.length > 0) {
+      pickedNumber = random.nextInt(sepatuData.length);
+    } else {
+      return;
+    }
   }
 
   @override
