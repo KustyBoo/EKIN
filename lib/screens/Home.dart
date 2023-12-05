@@ -131,7 +131,7 @@ class _HomePageState extends State<HomePage> {
                                           ),
                                           onChanged: (value) {
                                             // handleSearch();
-                                            search = _controllerSearch.text;
+                                            search = value;
                                             setState(() {});
                                           },
                                         ),

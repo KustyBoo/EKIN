@@ -9,21 +9,94 @@ import 'package:pa_ekin/screens/Collection_review.dart';
 import 'package:pa_ekin/widgets/theme_data.dart';
 import 'package:provider/provider.dart';
 
+// class ContainerHorizontal extends StatelessWidget {
+//   int pilihan;
+//   String data;
+//   ContainerHorizontal({super.key, required this.pilihan, required this.data});
+
+// Future<List<Sepatu>> fetchDataFromFirestore(String searchKeyword) async {
+//   try {
+//     QuerySnapshot<Map<String, dynamic>> querySnapshot;
+
+//     if (searchKeyword != null && searchKeyword.isNotEmpty) {
+//       querySnapshot = await FirebaseFirestore.instance
+//           .collection('shoes')
+//           .where('condition', isEqualTo: data)
+//           .where('fieldName', arrayContains: searchKeyword.toLowerCase())
+//           .get();
+//     } else {
+//       querySnapshot = await FirebaseFirestore.instance
+//           .collection('shoes')
+//           .where('condition', isEqualTo: data)
+//           .get();
+//     }
+
+//     List<Sepatu> dataList = querySnapshot.docs.map((document) {
+//       return Sepatu.fromMap(document.data() as Map<String, dynamic>);
+//     }).toList();
+
+//     return dataList;
+//   } catch (e) {
+//     // Handle error if needed
+//     print('Error fetching data: $e');
+//     throw e; // Rethrow the exception
+//   }
+// }
+
+// @override
+// Widget build(BuildContext context) {
+//   return FutureBuilder<List<Sepatu>>(
+//     future: fetchDataFromFirestore("Air Jordan 1 Retro High OG"),
+//     builder: (context, snapshot) {
+//       if (snapshot.connectionState == ConnectionState.waiting) {
+//         return CircularProgressIndicator();
+//       } else if (snapshot.hasError) {
+//         return Text('Error: ${snapshot.error}');
+//       } else {
+//         List<Sepatu> dataList = snapshot.data ?? [];
+
+//         if (dataList.isNotEmpty) {
+//           if (pilihan == 1) {
+//             return IsiContainer(sepatuData: dataList);
+//           } else if (pilihan == 2) {
+//             return MostRatedContainer(sepatuData: dataList);
+//           } else if (pilihan == 3) {
+//             return TodaysPickContainer(sepatuData: dataList);
+//           } else if (pilihan == 4) {
+//             return CollectionContainer(sepatuData: dataList);
+//           }
+//         }
+//         return Text('Data tidak ditemukan');
+//       }
+//     },
+//   );
+// }
+// }
+
 class ContainerHorizontal extends StatelessWidget {
   int pilihan;
   String data;
   ContainerHorizontal({super.key, required this.pilihan, required this.data});
 
-  Future<List<Sepatu>> fetchDataFromFirestore() async {
+Future<List<Sepatu>> fetchDataFromFirestore() async {
     QuerySnapshot<Map<String, dynamic>> querySnapshot =
         await FirebaseFirestore.instance.collection('shoes').get();
 
-    List<Sepatu> dataList = querySnapshot.docs.map((document) {
-      return Sepatu.fromMap(document.data() as Map<String, dynamic>);
-    }).toList();
+    List<Sepatu> dataList = [];
+
+    for (var doc in querySnapshot.docs) {
+      String name = doc.data()['Nama'];
+      if (name.contains(data)) {
+          dataList.add(doc.data() as Sepatu);
+      }
+    }
+    // querySnapshot.docs.map((document) {
+    //   return Sepatu.fromMap(document.data() as Map<String, dynamic>);
+    // }).toList();
 
     return dataList;
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -47,9 +120,9 @@ class ContainerHorizontal extends StatelessWidget {
         } else {
           return Text('Error: ${snapshot.error}');
         }
-      },
-    );
-  }
+     },
+     );
+     }
 }
 
 class IsiContainer extends StatelessWidget {
