@@ -50,18 +50,19 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-  void handleSearch() {
-    String searchTerm = _controllerSearch.text.toLowerCase();
-    List<Sepatu> searchResults = sepatuData
-        .where((sepatu) => sepatu.nama.toLowerCase().contains(searchTerm))
-        .toList();
+  // void handleSearch() {
+  //   String searchTerm = _controllerSearch.text.toLowerCase();
+  //   List<Sepatu> searchResults = sepatuData
+  //       .where((sepatu) => sepatu.nama.toLowerCase().contains(searchTerm))
+  //       .toList();
 
-    print('Search Results: $searchResults');
-  }
-
+  //   print('Search Results: $searchResults');
+  // }
 
   @override
   Widget build(BuildContext context) {
+    String search = "";
+
     return Stack(
       children: [
         //container bg
@@ -129,7 +130,9 @@ class _HomePageState extends State<HomePage> {
                                                 .bodyMedium,
                                           ),
                                           onChanged: (value) {
-                                            handleSearch();
+                                            // handleSearch();
+                                            search = _controllerSearch.text;
+                                            setState(() {});
                                           },
                                         ),
                                       ),
@@ -289,7 +292,7 @@ class _HomePageState extends State<HomePage> {
                         Container(
                           width: MediaQuery.of(context).size.width,
                           height: 121,
-                          child: ContainerHorizontal(pilihan: 1,),
+                          child: ContainerHorizontal(pilihan: 1, data: search)
                         ),
                         SizedBox(
                           height: 16,
@@ -327,7 +330,7 @@ class _HomePageState extends State<HomePage> {
                         Container(
                           width: MediaQuery.of(context).size.width,
                           height: 125,
-                          child: ContainerHorizontal(pilihan: 2,),
+                          child: ContainerHorizontal(pilihan: 2, data: ""),
                         ),
                         SizedBox(
                           height: 16,
@@ -362,7 +365,7 @@ class _HomePageState extends State<HomePage> {
                           height: 12,
                         ),
                         //container di bawah todays pick
-                        ContainerHorizontal(pilihan: 3),
+                        ContainerHorizontal(pilihan: 3, data: ""),
                         SizedBox(
                           height: 20,
                         ),
@@ -378,3 +381,4 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+

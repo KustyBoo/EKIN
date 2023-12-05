@@ -228,7 +228,7 @@ class _CollectionPageState extends State<CollectionPage> {
                         height: 12,
                       ),
                       //container di bawah latest pick
-                      ContainerHorizontal(pilihan: 3),
+                      ContainerHorizontal(pilihan: 3, data: ""),
                       SizedBox(
                         height: 16,
                       ),
@@ -500,7 +500,7 @@ class _CollectionPageState extends State<CollectionPage> {
                         height: 20,
                       ),
                       //pemersatu kotak kotak sepatu di bawah garis putih
-                      ContainerHorizontal(pilihan: 4),
+                      ContainerHorizontal(pilihan: 4, data: ""),
                     ],
                   ),
                 ),

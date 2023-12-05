@@ -11,11 +11,12 @@ import 'package:provider/provider.dart';
 
 class ContainerHorizontal extends StatelessWidget {
   int pilihan;
-  ContainerHorizontal({super.key, required this.pilihan});
+  String data;
+  ContainerHorizontal({super.key, required this.pilihan, required this.data});
 
   Future<List<Sepatu>> fetchDataFromFirestore() async {
     QuerySnapshot<Map<String, dynamic>> querySnapshot =
-        await FirebaseFirestore.instance.collection('shoes').get();
+        await FirebaseFirestore.instance.collection('shoes').where('condition', isEqualTo: data).get();
 
     List<Sepatu> dataList = querySnapshot.docs.map((document) {
       return Sepatu.fromMap(document.data() as Map<String, dynamic>);
