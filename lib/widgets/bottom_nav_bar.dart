@@ -27,7 +27,7 @@ class BottomNavBar extends StatelessWidget {
 
     Icon currentIconProvider = iconProviderNav.iconFAB;
 
-    // membuat list halaman yang ditunjukkan
+    // membuat list halaman yang ditunjukka
     List<dynamic> screen = [
       HomePage(),
       CollectionPage(),
