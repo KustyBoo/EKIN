@@ -15,6 +15,7 @@ class ShoeReviewsService {
       Map<String, dynamic> reviewMap = {
         'Username': review.username,
         'Review': review.reviews,
+        'Rating': review.rating,
       };
 
       await userReviewDocument.set(reviewMap);
@@ -36,6 +37,7 @@ class ShoeReviewsService {
       Map<String, dynamic> reviewMap = {
         'Username': review.username,
         'Review': review.reviews,
+        'Rating' : review.rating,
       };
 
       await userReviewDocument.delete();

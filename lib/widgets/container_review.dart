@@ -1,25 +1,25 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:pa_ekin/models/provider_rating.dart';
 import 'package:pa_ekin/widgets/theme_data.dart';
+import 'package:provider/provider.dart';
 
 class ContainerReview extends StatelessWidget {
   String nama;
   String deskripsi;
+  int rating;
 
   ContainerReview({
     super.key,
     required this.nama,
     required this.deskripsi,
+    required this.rating,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(
-        left: 20,
-        right: 20,
-      ),
       child: Column(
         children: [
           Container(
@@ -65,66 +65,22 @@ class ContainerReview extends StatelessWidget {
                       ),
                     ),
                   ),
-                  child: Row(
-                    children: [
-                      Container(
-                        width: 15,
-                        height: 15,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage("assets/bintang.png"),
+                  child: Wrap(
+                    spacing: 5,
+                    children: List.generate(
+                      rating,
+                      (index) {
+                        return Container(
+                          width: 15,
+                          height: 15,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage("assets/bintang.png"),
+                            ),
                           ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 6,
-                      ),
-                      Container(
-                        width: 15,
-                        height: 15,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage("assets/bintang.png"),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 6,
-                      ),
-                      Container(
-                        width: 15,
-                        height: 15,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage("assets/bintang.png"),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 6,
-                      ),
-                      Container(
-                        width: 15,
-                        height: 15,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage("assets/bintang.png"),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 6,
-                      ),
-                      Container(
-                        width: 15,
-                        height: 15,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage("assets/bintang.png"),
-                          ),
-                        ),
-                      ),
-                    ],
+                        );
+                      },
+                    ),
                   ),
                 ),
               ],

@@ -76,34 +76,31 @@ import 'package:provider/provider.dart';
 class ContainerHorizontal extends StatelessWidget {
   int pilihan;
   String data;
-  ContainerHorizontal({super.key, required this.pilihan, required this.data});
-  
-Future<List<Sepatu>> fetchDataFromFirestore() async {
-    QuerySnapshot<Map<String, dynamic>> querySnapshot =
-        await FirebaseFirestore.instance.collection('shoes').get();
+  bool urutan;
+  ContainerHorizontal(
+      {super.key,
+      required this.pilihan,
+      required this.data,
+      required this.urutan});
+
+  Future<List<Sepatu>> fetchDataFromFirestore() async {
+    QuerySnapshot<Map<String, dynamic>> querySnapshot;
+    if (data == "") {
+      querySnapshot =
+          await FirebaseFirestore.instance.collection('shoes').get();
+    } else {
+      querySnapshot = await FirebaseFirestore.instance
+          .collection('shoes')
+          .orderBy(data, descending: urutan)
+          .get();
+    }
 
     List<Sepatu> dataList = querySnapshot.docs.map((document) {
       return Sepatu.fromMap(document.data() as Map<String, dynamic>);
     }).toList();
 
-    // List<Sepatu> dataList = querySnapshot.docs
-    //     .where((doc) => doc.data()['nama'].contains(data))
-    //     .map((document) {
-    //   return Sepatu.fromMap(document.data() as Map<String, dynamic>);
-    // }).toList();
-    if (data == "") {
-      return dataList;
-    } else {
-      return dataList.where((sepatu) {
-        return sepatu.nama.toLowerCase().contains(data.toLowerCase());
-      }).toList();
-    }
-
-    // List<Sepatu> dataList = querySnapshot.docs.map((document) {
-    //   return Sepatu.fromMap(document.data() as Map<String, dynamic>);
-    // }).toList();
+    return dataList;
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -127,9 +124,9 @@ Future<List<Sepatu>> fetchDataFromFirestore() async {
         } else {
           return Text('Error: ${snapshot.error}');
         }
-     },
-     );
-     }
+      },
+    );
+  }
 }
 
 class IsiContainer extends StatelessWidget {
@@ -699,23 +696,40 @@ class CollectionContainer extends StatelessWidget {
                   left: 0,
                   right: 0,
                   //container view
-                  child: Container(
-                    alignment: Alignment.center,
-                    height: 22,
-                    decoration: BoxDecoration(
-                      color: colorMode.primary,
-                      borderRadius: BorderRadius.only(
-                        bottomRight: Radius.circular(10),
-                        bottomLeft: Radius.circular(10),
-                      ),
-                      border: Border.all(
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CollectionReviewPage(
+                            namaSepatu: sepatuData[index].nama,
+                            urlSepatu: sepatuData[index].url,
+                            descSepatu: sepatuData[index].description,
+                            hargaSepatu: sepatuData[index].harga,
+                            ratingSepatu: sepatuData[index].rating.toString(),
+                            indexSepatu: index,
+                          ),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      height: 22,
+                      decoration: BoxDecoration(
                         color: colorMode.primary,
-                        width: 1,
+                        borderRadius: BorderRadius.only(
+                          bottomRight: Radius.circular(10),
+                          bottomLeft: Radius.circular(10),
+                        ),
+                        border: Border.all(
+                          color: colorMode.primary,
+                          width: 1,
+                        ),
                       ),
-                    ),
-                    child: Text(
-                      "View",
-                      style: Theme.of(context).textTheme.displayMedium,
+                      child: Text(
+                        "View",
+                        style: Theme.of(context).textTheme.displayMedium,
+                      ),
                     ),
                   ),
                 ),

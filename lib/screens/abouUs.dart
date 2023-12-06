@@ -1,10 +1,56 @@
 // ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:introduction_screen/introduction_screen.dart';
+import 'package:pa_ekin/models/provider_user.dart';
 import 'package:pa_ekin/widgets/theme_data.dart';
+import 'package:provider/provider.dart';
 
-class AboutUsPage extends StatelessWidget {
+class AboutUsPage extends StatefulWidget {
   const AboutUsPage({Key? key}) : super(key: key);
+
+  @override
+  State<AboutUsPage> createState() => _AboutUsPageState();
+}
+
+class _AboutUsPageState extends State<AboutUsPage> {
+  String? username = '';
+  final ValueNotifier<bool> selected = ValueNotifier<bool>(false);
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance!.addPostFrameCallback((_) async {
+      fetchUsername();
+    });
+  }
+
+  void fetchUsername() async {
+    try {
+      var userProvider = Provider.of<ProviderUser>(context, listen: false);
+      var user = userProvider.users.first;
+
+      if (user != null) {
+        setState(() {
+          username = user.username ?? '';
+          print('Fetched username: $username');
+        });
+      }
+    } catch (e) {
+      print('Error fetching username: $e');
+    }
+  }
+
+  Future<void> _signOut() async {
+    try {
+      await FirebaseAuth.instance.signOut();
+      print("Sign out successful");
+    } catch (e) {
+      print("Error signing out: $e");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -94,66 +140,73 @@ class AboutUsPage extends StatelessWidget {
                         ),
                         Expanded(
                           flex: 2,
-                          child: Container(
-                            margin: EdgeInsets.only(right: 12),
-                            padding: EdgeInsets.all(10),
-                            height: 47,
-                            child: Column(
-                              children: [
-                                Container(
-                                  child: Row(
-                                    children: [
-                                      Expanded(
-                                        flex: 2,
-                                        child: Container(
-                                          height: 8,
-                                          color: colorMode.onPrimary,
+                          child: GestureDetector(
+                            onTap: () {
+                              selected.value = !selected.value;
+                            },
+                            child: Container(
+                              margin: EdgeInsets.only(right: 12),
+                              padding: EdgeInsets.all(10),
+                              height: 47,
+                              child: Column(
+                                children: [
+                                  Container(
+                                    child: Row(
+                                      children: [
+                                        Expanded(
+                                          flex: 2,
+                                          child: Container(
+                                            height: 8,
+                                            color: colorMode.onPrimary,
+                                          ),
                                         ),
-                                      ),
-                                      SizedBox(
-                                        width: 1,
-                                      ),
-                                      Expanded(
-                                        flex: 2,
-                                        child: Container(
-                                          height: 8,
-                                          color: colorMode.onPrimary,
+                                        SizedBox(
+                                          width: 1,
                                         ),
-                                      ),
-                                      SizedBox(
-                                        width: 1,
-                                      ),
-                                      Expanded(
-                                        flex: 2,
-                                        child: Container(
-                                          height: 8,
-                                          color: colorMode.onPrimary,
+                                        Expanded(
+                                          flex: 2,
+                                          child: Container(
+                                            height: 8,
+                                            color: colorMode.onPrimary,
+                                          ),
                                         ),
-                                      ),
-                                      SizedBox(
-                                        width: 1,
-                                      ),
-                                      Expanded(
-                                        flex: 2,
-                                        child: Container(
-                                          height: 8,
-                                          color: colorMode.onPrimary,
+                                        SizedBox(
+                                          width: 1,
                                         ),
-                                      ),
-                                    ],
+                                        Expanded(
+                                          flex: 2,
+                                          child: Container(
+                                            height: 8,
+                                            color: colorMode.onPrimary,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 1,
+                                        ),
+                                        Expanded(
+                                          flex: 2,
+                                          child: Container(
+                                            height: 8,
+                                            color: colorMode.onPrimary,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                                SizedBox(
-                                  height: 2,
-                                ),
-                                Container(
-                                  child: Text(
-                                    "Lix",
-                                    style:
-                                        Theme.of(context).textTheme.bodyMedium,
+                                  SizedBox(
+                                    height: 2,
                                   ),
-                                ),
-                              ],
+                                  Container(
+                                    child: Text(
+                                      overflow: TextOverflow.ellipsis,
+                                      username!,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -300,12 +353,17 @@ class AboutUsPage extends StatelessWidget {
                                         ),
                                         Expanded(
                                           flex: 1,
-                                          child: Container(
-                                            child: Image(
-                                              image: AssetImage(
-                                                  "assets/content_copy.png"),
-                                              width: 24,
-                                              height: 24,
+                                          child: GestureDetector(
+                                            onTap: () {
+                                              Clipboard.setData(ClipboardData(text: "@supportekin@gmail.com"));
+                                            },
+                                            child: Container(
+                                              child: Image(
+                                                image: AssetImage(
+                                                    "assets/content_copy.png"),
+                                                width: 24,
+                                                height: 24,
+                                              ),
                                             ),
                                           ),
                                         )
@@ -356,12 +414,17 @@ class AboutUsPage extends StatelessWidget {
                                         ),
                                         Expanded(
                                           flex: 1,
-                                          child: Container(
-                                            child: Image(
-                                              image: AssetImage(
-                                                  "assets/content_copy.png"),
-                                              width: 24,
-                                              height: 24,
+                                          child: GestureDetector(
+                                            onTap: () {
+                                              Clipboard.setData(ClipboardData(text: "+6281155124422"));
+                                            },
+                                            child: Container(
+                                              child: Image(
+                                                image: AssetImage(
+                                                    "assets/content_copy.png"),
+                                                width: 24,
+                                                height: 24,
+                                              ),
                                             ),
                                           ),
                                         )
@@ -626,6 +689,63 @@ class AboutUsPage extends StatelessWidget {
                 ],
               ),
             ),
+          ),
+        ),
+        Positioned(
+          top: MediaQuery.of(context).size.height * 0.12,
+          right: 20,
+          child: ValueListenableBuilder<bool>(
+            valueListenable: selected,
+            builder: (context, value, child) {
+              return GestureDetector(
+                onTap: () {
+                  _signOut();
+                  Navigator.pop(context);
+                },
+                child: AnimatedContainer(
+                  duration: Duration(milliseconds: 200),
+                  width: selected.value ? 150 : 0,
+                  height: selected.value ? 50 : 0,
+                  curve: Curves.fastOutSlowIn,
+                  decoration: BoxDecoration(
+                    color: Color(0xFF1E1E1E),
+                    borderRadius: BorderRadius.circular(8),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.white.withOpacity(0.1),
+                        offset: Offset(0, 8),
+                        blurRadius: 15,
+                      ),
+                    ],
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        flex: 3,
+                        child: AnimatedContainer(
+                          duration: Duration(milliseconds: 200),
+                          child: Icon(
+                            Icons.logout,
+                            size: selected.value ? 24 : 0,
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        flex: 4,
+                        child: AnimatedContainer(
+                          duration: Duration(milliseconds: 200),
+                          child: Text(
+                            "Logout",
+                            style: Theme.of(context).textTheme.bodyLarge,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
           ),
         ),
       ],

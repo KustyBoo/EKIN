@@ -8,7 +8,7 @@ class Sepatu {
   String url;
   String nama;
   String brand;
-  String harga;
+  int harga;
   String description;
   String color;
   String year;

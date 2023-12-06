@@ -3,7 +3,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pa_ekin/models/provider_btn_intro.dart';
+import 'package:pa_ekin/models/provider_filter.dart';
 import 'package:pa_ekin/models/provider_icon_nav.dart';
+import 'package:pa_ekin/models/provider_rating.dart';
 import 'package:pa_ekin/models/provider_review.dart';
 import 'package:pa_ekin/models/provider_screen_index.dart';
 import 'package:pa_ekin/models/provider_shoe_reviews.dart';
@@ -43,7 +45,8 @@ class MyApp extends StatelessWidget {
       providers: [
         // provider button intro screen
         ChangeNotifierProvider(
-          create: (BuildContext context) => ProviderBtnVisibleCounter(btnbaru: btn),
+          create: (BuildContext context) =>
+              ProviderBtnVisibleCounter(btnbaru: btn),
         ),
 
         // provider index screen bottom nav
@@ -54,6 +57,21 @@ class MyApp extends StatelessWidget {
         // provider icon bottom nav
         ChangeNotifierProvider(
           create: (BuildContext context) => ProviderIconNav(),
+        ),
+
+        // provider button filter
+        ChangeNotifierProvider(
+          create: (BuildContext context) => ProviderFilter(),
+        ),
+
+        // provider button ascending descending
+        ChangeNotifierProvider(
+          create: (BuildContext context) => ProviderAscDesc(),
+        ),
+
+        // provider image rating
+        ChangeNotifierProvider(
+          create: (BuildContext context) => ProviderRating(),
         ),
 
         // provider review
@@ -69,7 +87,6 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (BuildContext context) => ProviderShoeReviews(),
         ),
-
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -96,7 +113,8 @@ class MyApp extends StatelessWidget {
           "/SignUpPage": (context) => SignUpPage(),
           "/SuccessPage": (context) => SuccessPage(),
           "/HomePage": (context) => HomePage(),
-          "/CollectionPage": (context) => CollectionPage(),
+          "/CollectionPage": (context) =>
+              CollectionPage(sorting: "", urutan: false),
           "/AboutUsPage": (context) => AboutUsPage(),
           "/BottomNavPage": (context) => BottomNavBar(),
         },
@@ -106,9 +124,9 @@ class MyApp extends StatelessWidget {
           stream: firebase_auth.FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              return BottomNavBar(); 
+              return BottomNavBar();
             } else {
-              return SignInPage(); 
+              return SignInPage();
             }
           },
         ),

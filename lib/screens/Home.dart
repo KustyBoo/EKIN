@@ -1,4 +1,4 @@
-// ignore_for_file: sized_box_for_whitespace, prefer_const_constructors, avoid_unnecessary_containers
+// ignore_for_file: sized_box_for_whitespace, prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -20,6 +20,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   String? username = '';
+  final ValueNotifier<bool> selected = ValueNotifier<bool>(false);
   final _formKey = GlobalKey<FormState>();
 
   final TextEditingController _controllerSearch = TextEditingController();
@@ -47,6 +48,15 @@ class _HomePageState extends State<HomePage> {
       }
     } catch (e) {
       print('Error fetching username: $e');
+    }
+  }
+
+  Future<void> _signOut() async {
+    try {
+      await FirebaseAuth.instance.signOut();
+      print("Sign out successful");
+    } catch (e) {
+      print("Error signing out: $e");
     }
   }
 
@@ -114,7 +124,8 @@ class _HomePageState extends State<HomePage> {
                                         child: TextFormField(
                                           controller: _controllerSearch,
                                           validator: (value) {
-                                            if (value == null || value.isEmpty) {
+                                            if (value == null ||
+                                                value.isEmpty) {
                                               return 'Silakan pencarian anda';
                                             }
                                             return null;
@@ -163,65 +174,73 @@ class _HomePageState extends State<HomePage> {
                         ),
                         Expanded(
                           flex: 2,
-                          child: Container(
-                            margin: EdgeInsets.only(right: 12),
-                            padding: EdgeInsets.all(10),
-                            height: 47,
-                            child: Column(
-                              children: [
-                                Container(
-                                  child: Row(
-                                    children: [
-                                      Expanded(
-                                        flex: 2,
-                                        child: Container(
-                                          height: 8,
-                                          color: colorMode.onPrimary,
+                          child: GestureDetector(
+                            onTap: () {
+                              selected.value = !selected.value;
+                            },
+                            child: Container(
+                              margin: EdgeInsets.only(right: 12),
+                              padding: EdgeInsets.all(10),
+                              height: 47,
+                              child: Column(
+                                children: [
+                                  Container(
+                                    child: Row(
+                                      children: [
+                                        Expanded(
+                                          flex: 2,
+                                          child: Container(
+                                            height: 8,
+                                            color: colorMode.onPrimary,
+                                          ),
                                         ),
-                                      ),
-                                      SizedBox(
-                                        width: 1,
-                                      ),
-                                      Expanded(
-                                        flex: 2,
-                                        child: Container(
-                                          height: 8,
-                                          color: colorMode.onPrimary,
+                                        SizedBox(
+                                          width: 1,
                                         ),
-                                      ),
-                                      SizedBox(
-                                        width: 1,
-                                      ),
-                                      Expanded(
-                                        flex: 2,
-                                        child: Container(
-                                          height: 8,
-                                          color: colorMode.onPrimary,
+                                        Expanded(
+                                          flex: 2,
+                                          child: Container(
+                                            height: 8,
+                                            color: colorMode.onPrimary,
+                                          ),
                                         ),
-                                      ),
-                                      SizedBox(
-                                        width: 1,
-                                      ),
-                                      Expanded(
-                                        flex: 2,
-                                        child: Container(
-                                          height: 8,
-                                          color: colorMode.onPrimary,
+                                        SizedBox(
+                                          width: 1,
                                         ),
-                                      ),
-                                    ],
+                                        Expanded(
+                                          flex: 2,
+                                          child: Container(
+                                            height: 8,
+                                            color: colorMode.onPrimary,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 1,
+                                        ),
+                                        Expanded(
+                                          flex: 2,
+                                          child: Container(
+                                            height: 8,
+                                            color: colorMode.onPrimary,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                                SizedBox(
-                                  height: 2,
-                                ),
-                                Container(
-                                  child: Text(
-                                    username!,
-                                    style: Theme.of(context).textTheme.bodyMedium,
+                                  SizedBox(
+                                    height: 2,
                                   ),
-                                )
-                              ],
+                                  Container(
+                                    child: Text(
+                                      overflow: TextOverflow.ellipsis,
+                                      username!,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium,
+                                    ),
+                                  )
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -292,7 +311,15 @@ class _HomePageState extends State<HomePage> {
                         Container(
                           width: MediaQuery.of(context).size.width,
                           height: 121,
-                          child: ContainerHorizontal(pilihan: 1, data: search)
+                          child: StatefulBuilder(
+                            builder: (context, setState) {
+                              return ContainerHorizontal(
+                                pilihan: 1,
+                                data: search,
+                                urutan: false,
+                              );
+                            },
+                          ),
                         ),
                         SizedBox(
                           height: 16,
@@ -330,7 +357,11 @@ class _HomePageState extends State<HomePage> {
                         Container(
                           width: MediaQuery.of(context).size.width,
                           height: 125,
-                          child: ContainerHorizontal(pilihan: 2, data: ""),
+                          child: StatefulBuilder(
+                            builder: (context, setState) {
+                              return ContainerHorizontal(pilihan: 2, data: "", urutan: false,);
+                            },
+                          ),
                         ),
                         SizedBox(
                           height: 16,
@@ -365,7 +396,11 @@ class _HomePageState extends State<HomePage> {
                           height: 12,
                         ),
                         //container di bawah todays pick
-                        ContainerHorizontal(pilihan: 3, data: ""),
+                        StatefulBuilder(
+                          builder: (context, setState) {
+                            return ContainerHorizontal(pilihan: 3, data: "", urutan: false,);
+                          },
+                        ),
                         SizedBox(
                           height: 20,
                         ),
@@ -377,8 +412,64 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ),
+        Positioned(
+          top: MediaQuery.of(context).size.height * 0.12,
+          right: 20,
+          child: ValueListenableBuilder<bool>(
+            valueListenable: selected,
+            builder: (context, value, child) {
+              return GestureDetector(
+                onTap: () {
+                  _signOut();
+                  Navigator.pop(context);
+                },
+                child: AnimatedContainer(
+                  duration: Duration(milliseconds: 200),
+                  width: selected.value ? 150 : 0,
+                  height: selected.value ? 50 : 0,
+                  curve: Curves.fastOutSlowIn,
+                  decoration: BoxDecoration(
+                    color: Color(0xFF1E1E1E),
+                    borderRadius: BorderRadius.circular(8),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.white.withOpacity(0.1),
+                        offset: Offset(0, 8),
+                        blurRadius: 15,
+                      ),
+                    ],
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        flex: 3,
+                        child: AnimatedContainer(
+                          duration: Duration(milliseconds: 200),
+                          child: Icon(
+                            Icons.logout,
+                            size: selected.value ? 24 : 0,
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        flex: 4,
+                        child: AnimatedContainer(
+                          duration: Duration(milliseconds: 200),
+                          child: Text(
+                            "Logout",
+                            style: Theme.of(context).textTheme.bodyLarge,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
       ],
     );
   }
 }
-

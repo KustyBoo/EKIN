@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pa_ekin/models/provider_rating.dart';
 import 'package:pa_ekin/models/provider_shoe_reviews.dart';
 import 'package:pa_ekin/models/provider_user.dart';
 import 'package:pa_ekin/models/reviews_models.dart';
@@ -25,7 +26,7 @@ class CollectionReviewPage extends StatefulWidget {
 
   String namaSepatu;
   String urlSepatu;
-  String hargaSepatu;
+  int hargaSepatu;
   String ratingSepatu;
   String descSepatu;
   final int indexSepatu;
@@ -40,10 +41,12 @@ class _CollectionReviewPageState extends State<CollectionReviewPage> {
   String? email = '';
   final TextEditingController _controllerReview = TextEditingController();
 
-  String teksBtnEditSave = "Save";
-  String teksBtnClearDel = "Clear";
+  String teksBtnEditSave = "";
+  String teksBtnClearDel = "";
   int indeksReview = 0;
   String reviewSepatu = "";
+  bool gambarSelected1 = false;
+  int ratingSepatu = 1;
 
   @override
   void dispose() {
@@ -99,28 +102,42 @@ class _CollectionReviewPageState extends State<CollectionReviewPage> {
           context: context,
           builder: (item) {
             return CupertinoAlertDialog(
-              content: Text("Delete Review?"),
+              content: Text(
+                "Delete Review?",
+                style: TextStyle(color: Colors.black),
+              ),
               actions: [
                 TextButton(
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  child: Text("Cancel"),
+                  child: Text(
+                    "Cancel",
+                    style: TextStyle(color: Colors.black),
+                  ),
                 ),
                 TextButton(
                   onPressed: () async {
                     Provider.of<ProviderShoeReviews>(context, listen: false)
                         .delReview(
-                            Reviews(username: email!, reviews: reviewSepatu));
+                      Reviews(
+                          username: email!,
+                          reviews: reviewSepatu,
+                          rating: ratingSepatu),
+                    );
 
                     String documentId =
-                        await getDocumentId("Shoes", widget.namaSepatu);
+                        await getDocumentId("shoes", widget.namaSepatu);
 
                     ShoeReviewsService shoeReviewsService =
                         ShoeReviewsService();
                     await shoeReviewsService.deleteReviewFromFirebase(
                         documentId,
-                        Reviews(username: email!, reviews: reviewSepatu),
+                        Reviews(
+                          username: email!,
+                          reviews: reviewSepatu,
+                          rating: ratingSepatu,
+                        ),
                         email!);
 
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -129,7 +146,10 @@ class _CollectionReviewPageState extends State<CollectionReviewPage> {
                     setState(() {});
                     Navigator.pop(context);
                   },
-                  child: Text("Yes"),
+                  child: Text(
+                    "Yes",
+                    style: TextStyle(color: Colors.red),
+                  ),
                 ),
               ],
             );
@@ -154,6 +174,7 @@ class _CollectionReviewPageState extends State<CollectionReviewPage> {
       Reviews newReview = Reviews(
         username: username!,
         reviews: review,
+        rating: ratingSepatu,
       );
 
       Provider.of<ProviderShoeReviews>(context, listen: false)
@@ -294,14 +315,16 @@ class _CollectionReviewPageState extends State<CollectionReviewPage> {
                                   return Container();
                                 }
 
-                                final FirebaseAuth auth = FirebaseAuth.instance;
-                                final String? userEmail =
-                                    auth.currentUser?.email;
-
                                 var reviewsDocs = reviewsSnapshot.data!.docs;
 
+                                var userProvider = Provider.of<ProviderUser>(
+                                    context,
+                                    listen: false);
+                                var user = userProvider.users.first;
+                                String username = user.username;
+
                                 for (int i = 0; i < reviewsDocs.length; i++) {
-                                  if (reviewsDocs[i]['Username'] == userEmail) {
+                                  if (reviewsDocs[i]['Username'] == username) {
                                     _controllerReview.text =
                                         reviewsDocs[i]['Review'];
                                     teksBtnEditSave = "Edit";
@@ -598,77 +621,42 @@ class _CollectionReviewPageState extends State<CollectionReviewPage> {
                                                   ),
                                                   child: Row(
                                                     children: [
-                                                      Container(
-                                                        width: 20,
-                                                        height: 20,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          image:
-                                                              DecorationImage(
-                                                            image: AssetImage(
-                                                                "assets/bintang.png"),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      SizedBox(
-                                                        width: 6,
-                                                      ),
-                                                      Container(
-                                                        width: 20,
-                                                        height: 20,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          image:
-                                                              DecorationImage(
-                                                            image: AssetImage(
-                                                                "assets/bintang.png"),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      SizedBox(
-                                                        width: 6,
-                                                      ),
-                                                      Container(
-                                                        width: 20,
-                                                        height: 20,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          image:
-                                                              DecorationImage(
-                                                            image: AssetImage(
-                                                                "assets/bintang.png"),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      SizedBox(
-                                                        width: 6,
-                                                      ),
-                                                      Container(
-                                                        width: 20,
-                                                        height: 20,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          image:
-                                                              DecorationImage(
-                                                            image: AssetImage(
-                                                                "assets/bintang.png"),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      SizedBox(
-                                                        width: 6,
-                                                      ),
-                                                      Container(
-                                                        width: 20,
-                                                        height: 20,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          image:
-                                                              DecorationImage(
-                                                            image: AssetImage(
-                                                                "assets/bintang.png"),
-                                                          ),
-                                                        ),
+                                                      Consumer<ProviderRating>(
+                                                        builder: (context,
+                                                            rating, child) {
+                                                          return Wrap(
+                                                            spacing: 5,
+                                                            children:
+                                                                List.generate(
+                                                              5,
+                                                              (index) {
+                                                                return GestureDetector(
+                                                                  onTap: () {
+                                                                    rating.updateRating(
+                                                                        index);
+                                                                    ratingSepatu =
+                                                                        rating
+                                                                            .counterCount;
+                                                                  },
+                                                                  child:
+                                                                      Container(
+                                                                    width: 20,
+                                                                    height: 20,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      image:
+                                                                          DecorationImage(
+                                                                        image: AssetImage(rating
+                                                                            .dataBintang[index]
+                                                                            .url),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                );
+                                                              },
+                                                            ),
+                                                          );
+                                                        },
                                                       ),
                                                     ],
                                                   ),
@@ -831,6 +819,10 @@ class _CollectionReviewPageState extends State<CollectionReviewPage> {
                                       width: 100.w,
                                       height:
                                           120 * reviewsDocs.length.toDouble(),
+                                      margin: EdgeInsets.only(
+                                        left: 20,
+                                        right: 20,
+                                      ),
                                       child: ListView.builder(
                                         itemCount: reviewsDocs.length,
                                         itemBuilder: (context, index) {
@@ -838,12 +830,15 @@ class _CollectionReviewPageState extends State<CollectionReviewPage> {
                                               reviewsDocs[index]['Username'];
                                           var deskripsi =
                                               reviewsDocs[index]['Review'];
+                                          var rating =
+                                              reviewsDocs[index]['Rating'];
 
                                           return Column(
                                             children: [
                                               ContainerReview(
                                                 nama: nama,
                                                 deskripsi: deskripsi,
+                                                rating: rating,
                                               ),
                                               SizedBox(
                                                 height: 25,
@@ -871,3 +866,5 @@ class _CollectionReviewPageState extends State<CollectionReviewPage> {
     );
   }
 }
+
+class Bintang {}

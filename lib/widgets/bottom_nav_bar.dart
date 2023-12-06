@@ -30,7 +30,7 @@ class BottomNavBar extends StatelessWidget {
     // membuat list halaman yang ditunjukka
     List<dynamic> screen = [
       HomePage(),
-      CollectionPage(),
+      CollectionPage(sorting: "", urutan: false),
       AboutUsPage(),
     ];
 
