@@ -77,24 +77,31 @@ class ContainerHorizontal extends StatelessWidget {
   int pilihan;
   String data;
   ContainerHorizontal({super.key, required this.pilihan, required this.data});
-
+  
 Future<List<Sepatu>> fetchDataFromFirestore() async {
     QuerySnapshot<Map<String, dynamic>> querySnapshot =
         await FirebaseFirestore.instance.collection('shoes').get();
 
-    List<Sepatu> dataList = [];
+    List<Sepatu> dataList = querySnapshot.docs.map((document) {
+      return Sepatu.fromMap(document.data() as Map<String, dynamic>);
+    }).toList();
 
-    for (var doc in querySnapshot.docs) {
-      String name = doc.data()['Nama'];
-      if (name.contains(data)) {
-          dataList.add(doc.data() as Sepatu);
-      }
-    }
-    // querySnapshot.docs.map((document) {
+    // List<Sepatu> dataList = querySnapshot.docs
+    //     .where((doc) => doc.data()['nama'].contains(data))
+    //     .map((document) {
     //   return Sepatu.fromMap(document.data() as Map<String, dynamic>);
     // }).toList();
+    if (data == "") {
+      return dataList;
+    } else {
+      return dataList.where((sepatu) {
+        return sepatu.nama.toLowerCase().contains(data.toLowerCase());
+      }).toList();
+    }
 
-    return dataList;
+    // List<Sepatu> dataList = querySnapshot.docs.map((document) {
+    //   return Sepatu.fromMap(document.data() as Map<String, dynamic>);
+    // }).toList();
   }
 
 
