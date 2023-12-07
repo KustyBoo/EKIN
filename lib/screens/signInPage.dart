@@ -52,34 +52,25 @@ class _SignInPageState extends State<SignInPage> {
               .signIn(email, password);
 
       if (loggedInUser != null) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            behavior: SnackBarBehavior.floating,
-            content: Text('Anda adalah: ${loggedInUser.fullName}'),
-          ),
-        );
+       ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Anda login sebagai: ${loggedInUser.fullName}'),
+        ),
+      );
+
         Provider.of<ProviderUser>(context, listen: false).addUser(loggedInUser);
 
         Navigator.pushNamed(context, "/BottomNavPage");
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
-            content: Text("Failed to login. Please check your credentials."),
+            content: Text("Otentikasi anda gagal! tidak dapat login"),
           ),
         );
       }
     } catch (e) {
       print("Error: $e");
-
-      String errorMessage = "Failed to login. Please check your credentials.";
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(errorMessage),
-        ),
-      );
-    } finally {
-      setState(() => _loading = false);
-    }
+    } 
   }
 
   FocusNode _selected1 = FocusNode();
@@ -181,7 +172,7 @@ class _SignInPageState extends State<SignInPage> {
                                 enabledBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(
                                     color: colorMode
-                                        .onPrimary, // Ganti dengan warna border yang sesuai
+                                        .onPrimary, 
                                   ),
                                 ),
                                 floatingLabelBehavior:

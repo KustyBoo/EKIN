@@ -11,7 +11,7 @@ class AuthServices extends ChangeNotifier {
 
   Future<models.User> signUp(String fullName, String username, String email, String password, String confirmPassword) async {
     if (password != confirmPassword) {
-      throw Exception("Passwords do not match");
+      throw Exception("Password tidak sesuai!");
     }
 
     try {
@@ -36,7 +36,7 @@ class AuthServices extends ChangeNotifier {
         confirmPassword: confirmPassword,
       );
     } catch (e) {
-      print('Registration failed: $e');
+      print('Gagal Registrasi: $e');
       throw e;
     }
   }
@@ -57,7 +57,7 @@ class AuthServices extends ChangeNotifier {
     } catch (e) {
       print('Login failed: $e');
 
-      String errorMessage = "Failed to login. Please check your credentials.";
+      String errorMessage = "Login Gagal! Akun tidak terdaftar";
 
       if (e is FirebaseAuthException) {
         if (e.code == 'user-not-found') {

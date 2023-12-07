@@ -40,11 +40,11 @@ class _CollectionPageState extends State<CollectionPage> {
       if (user != null) {
         setState(() {
           username = user.username ?? '';
-          print('Fetched username: $username');
+          print('Error: $username');
         });
       }
     } catch (e) {
-      print('Error fetching username: $e');
+      print('Error: $e');
     }
   }
 

@@ -38,16 +38,34 @@ class _SignInPageState extends State<SignUpPage> {
     _controllerConfirmPw.dispose();
   }
 
-  void handleSubmit() async {
-    if (!_formKey.currentState!.validate()) return;
+void handleSubmit() async {
+  if (!_formKey.currentState!.validate()) return;
 
-    final fullName = _controllerFullName.text;
-    final username = _controllerUserName.text;
-    final email = _controllerEmail.text;
-    final password = _controllerPassword.text;
-    final confirmPassword = _controllerConfirmPw.text;
+  final fullName = _controllerFullName.text;
+  final username = _controllerUserName.text;
+  final email = _controllerEmail.text;
+  final password = _controllerPassword.text;
+  final confirmPassword = _controllerConfirmPw.text;
 
-    if (password != confirmPassword) {
+  if (password == confirmPassword) {
+    // Memeriksa format email
+    if (!RegExp(r'^[a-zA-Z0-9._%+-]+@gmail.com$').hasMatch(email)) {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          backgroundColor: Colors.black, 
+          title: Text('Error', style: TextStyle(color: Colors.white)), 
+          content: Text('Alamat email harus berakhiran @gmail.com.', style: TextStyle(color: Colors.white)),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('OK', style: TextStyle(color: Colors.white)),
+            ),
+          ],
+        ),
+      );
       return;
     }
 
@@ -65,12 +83,29 @@ class _SignInPageState extends State<SignUpPage> {
       );
 
       Provider.of<ProviderUser>(context, listen: false).addUser(newUser);
-      // Navigasi ke halaman success jika diperlukan
-      // Navigator.pushNamed(context, "/SuccessPage");
+      Navigator.pushNamed(context, "/SuccessPage");
     } catch (e) {
-      print('Registration failed: $e');
+      print('Error: $e');
     }
+  } else {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        backgroundColor: Colors.black, 
+        title: Text('Error', style: TextStyle(color: Colors.white)), 
+        content: Text('Password dan Confirm Password tidak sesuai.', style: TextStyle(color: Colors.white)),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: Text('OK', style: TextStyle(color: Colors.white)),
+          ),
+        ],
+      ),
+    );
   }
+}
 
   @override
   Widget build(BuildContext context) {
@@ -294,8 +329,7 @@ class _SignInPageState extends State<SignUpPage> {
                             ElevatedButton(
                               onPressed: () {
                                 handleSubmit();
-                                Navigator.pop(context);
-                                Navigator.pushNamed(context, "/SuccessPage");
+                                
                               },
                               child: _loading
                                   ? const SizedBox(
@@ -332,4 +366,3 @@ class _SignInPageState extends State<SignUpPage> {
     );
   }
 }
-

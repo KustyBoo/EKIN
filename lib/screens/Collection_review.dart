@@ -71,11 +71,11 @@ class _CollectionReviewPageState extends State<CollectionReviewPage> {
       if (user != null) {
         setState(() {
           username = user.username ?? '';
-          print('Fetched username: $username');
+          print('Error: $username');
         });
       }
     } catch (e) {
-      print('Error fetching username: $e');
+      print('Error: $e');
     }
   }
 
@@ -88,7 +88,7 @@ class _CollectionReviewPageState extends State<CollectionReviewPage> {
         email = user.email ?? '';
       });
     } catch (e) {
-      print('Error fetching email: $e');
+      print('Error: $e');
     }
   }
 
@@ -199,7 +199,7 @@ class _CollectionReviewPageState extends State<CollectionReviewPage> {
         print('ID dokumen kosong');
       }
     } catch (e) {
-      print('Review submission failed: $e');
+      print('Error: $e');
     }
   }
 
@@ -214,11 +214,11 @@ class _CollectionReviewPageState extends State<CollectionReviewPage> {
         print('Dokumen ditemukan: ${querySnapshot.docs.first.id}');
         return querySnapshot.docs.first.id;
       } else {
-        print('Sepatu tidak ditemukan');
+        print('Data sepatu tidak ditemukan');
         return '';
       }
     } catch (e) {
-      print("Error fetching document ID: $e");
+      print("Error: $e");
       return '';
     }
   }
