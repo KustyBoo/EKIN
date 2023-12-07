@@ -2,6 +2,7 @@
 
 import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:introduction_screen/introduction_screen.dart';
@@ -24,8 +25,37 @@ class IntroductionPage extends StatelessWidget {
 
     return WillPopScope(
       onWillPop: () async {
-        SystemNavigator.pop();
-        exit(0);
+        bool shouldPop = await showDialog(
+          context: context,
+          builder: (context) => CupertinoAlertDialog(
+            content: Text(
+              "Exit App?",
+              style: TextStyle(color: Colors.black),
+            ),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context, false);
+                },
+                child: Text(
+                  "Cancel",
+                  style: TextStyle(color: Colors.black),
+                ),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context, true);
+                  exit(0);
+                },
+                child: Text(
+                  "Yes",
+                  style: TextStyle(color: Colors.red),
+                ),
+              ),
+            ],
+          ),
+        );
+        return shouldPop ?? false;
       },
       child: SafeArea(
         child: Stack(

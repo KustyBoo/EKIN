@@ -38,24 +38,65 @@ class _SignInPageState extends State<SignUpPage> {
     _controllerConfirmPw.dispose();
   }
 
-void handleSubmit() async {
-  if (!_formKey.currentState!.validate()) return;
+  void handleSubmit() async {
+    if (!_formKey.currentState!.validate()) return;
 
-  final fullName = _controllerFullName.text;
-  final username = _controllerUserName.text;
-  final email = _controllerEmail.text;
-  final password = _controllerPassword.text;
-  final confirmPassword = _controllerConfirmPw.text;
+    final fullName = _controllerFullName.text;
+    final username = _controllerUserName.text;
+    final email = _controllerEmail.text;
+    final password = _controllerPassword.text;
+    final confirmPassword = _controllerConfirmPw.text;
 
-  if (password == confirmPassword) {
-    // Memeriksa format email
-    if (!RegExp(r'^[a-zA-Z0-9._%+-]+@gmail.com$').hasMatch(email)) {
+    if (password == confirmPassword) {
+      // Memeriksa format email
+      if (!RegExp(r'^[a-zA-Z0-9._%+-]+@gmail.com$').hasMatch(email)) {
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            backgroundColor: Colors.black,
+            title: Text('Error', style: TextStyle(color: Colors.white)),
+            content: Text('Alamat email harus berakhiran @gmail.com.',
+                style: TextStyle(color: Colors.white)),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text('OK', style: TextStyle(color: Colors.white)),
+              ),
+            ],
+          ),
+        );
+        return;
+      }
+
+      setState(() => _loading = true);
+
+      try {
+        await _auth.signUp(
+            fullName, username, email, password, confirmPassword);
+
+        User newUser = User(
+          fullName: fullName,
+          username: username,
+          email: email,
+          password: password,
+          confirmPassword: confirmPassword,
+        );
+
+        Provider.of<ProviderUser>(context, listen: false).addUser(newUser);
+        Navigator.pushNamed(context, "/SuccessPage");
+      } catch (e) {
+        print('Error: $e');
+      }
+    } else {
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
-          backgroundColor: Colors.black, 
-          title: Text('Error', style: TextStyle(color: Colors.white)), 
-          content: Text('Alamat email harus berakhiran @gmail.com.', style: TextStyle(color: Colors.white)),
+          backgroundColor: Colors.black,
+          title: Text('Error', style: TextStyle(color: Colors.white)),
+          content: Text('Password dan Confirm Password tidak sesuai.',
+              style: TextStyle(color: Colors.white)),
           actions: <Widget>[
             TextButton(
               onPressed: () {
@@ -66,46 +107,8 @@ void handleSubmit() async {
           ],
         ),
       );
-      return;
     }
-
-    setState(() => _loading = true);
-
-    try {
-      await _auth.signUp(fullName, username, email, password, confirmPassword);
-
-      User newUser = User(
-        fullName: fullName,
-        username: username,
-        email: email,
-        password: password,
-        confirmPassword: confirmPassword,
-      );
-
-      Provider.of<ProviderUser>(context, listen: false).addUser(newUser);
-      Navigator.pushNamed(context, "/SuccessPage");
-    } catch (e) {
-      print('Error: $e');
-    }
-  } else {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        backgroundColor: Colors.black, 
-        title: Text('Error', style: TextStyle(color: Colors.white)), 
-        content: Text('Password dan Confirm Password tidak sesuai.', style: TextStyle(color: Colors.white)),
-        actions: <Widget>[
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            child: Text('OK', style: TextStyle(color: Colors.white)),
-          ),
-        ],
-      ),
-    );
   }
-}
 
   @override
   Widget build(BuildContext context) {
@@ -174,7 +177,8 @@ void handleSubmit() async {
                                 style: Theme.of(context).textTheme.bodySmall,
                                 decoration: InputDecoration(
                                   labelText: "Full Name",
-                                  labelStyle: Theme.of(context).textTheme.bodyLarge,
+                                  labelStyle:
+                                      Theme.of(context).textTheme.bodyLarge,
                                   enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
                                       color: colorMode
@@ -193,13 +197,20 @@ void handleSubmit() async {
                             child: Padding(
                               padding: EdgeInsets.symmetric(
                                   horizontal: 30, vertical: 10),
-                              child: TextField(
+                              child: TextFormField(
                                 controller: _controllerUserName,
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Please enter your Username';
+                                  }
+                                  return null;
+                                },
                                 obscureText: false,
                                 style: Theme.of(context).textTheme.bodySmall,
                                 decoration: InputDecoration(
                                   labelText: "Username",
-                                  labelStyle: Theme.of(context).textTheme.bodyLarge,
+                                  labelStyle:
+                                      Theme.of(context).textTheme.bodyLarge,
                                   enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
                                       color: colorMode
@@ -230,7 +241,8 @@ void handleSubmit() async {
                                 style: Theme.of(context).textTheme.bodySmall,
                                 decoration: InputDecoration(
                                   labelText: "Email",
-                                  labelStyle: Theme.of(context).textTheme.bodyLarge,
+                                  labelStyle:
+                                      Theme.of(context).textTheme.bodyLarge,
                                   enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
                                       color: colorMode
@@ -261,7 +273,8 @@ void handleSubmit() async {
                                 style: Theme.of(context).textTheme.bodySmall,
                                 decoration: InputDecoration(
                                   labelText: "Password",
-                                  labelStyle: Theme.of(context).textTheme.bodyLarge,
+                                  labelStyle:
+                                      Theme.of(context).textTheme.bodyLarge,
                                   enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
                                       color: colorMode
@@ -292,7 +305,8 @@ void handleSubmit() async {
                                 style: Theme.of(context).textTheme.bodySmall,
                                 decoration: InputDecoration(
                                   labelText: "Confirm Password",
-                                  labelStyle: Theme.of(context).textTheme.bodyLarge,
+                                  labelStyle:
+                                      Theme.of(context).textTheme.bodyLarge,
                                   enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
                                       color: colorMode
@@ -326,10 +340,9 @@ void handleSubmit() async {
                                 //   ),
                                 //   child: Text("Sign-up"),
                                 // ),
-                            ElevatedButton(
+                                ElevatedButton(
                               onPressed: () {
                                 handleSubmit();
-                                
                               },
                               child: _loading
                                   ? const SizedBox(
