@@ -21,14 +21,14 @@ Anggota Kelompok :
 
 ## 3. 2109106012 - Nurmedina Maulidiah
 ### FRONTEND
-- Sign In
-- ⁠Sign Up
-- ⁠Succes
-- ⁠About Us
+- Sign In Page
+- ⁠Sign Up Page
+- ⁠Succes Page
+- ⁠About Us Page
 
 ## 4. 2109106025 - Rismayanti
 ### BACKEND
-- Sign In
+- Sign In 
 - Sign Up
 - Create Review
 - Tampil Review
