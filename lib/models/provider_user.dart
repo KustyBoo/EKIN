@@ -15,4 +15,9 @@ class ProviderUser extends ChangeNotifier {
     _users.add(newUser);
     notifyListeners();
   }
+
+  void deleteUser(){
+    _users.clear();
+    notifyListeners();
+  }
 }

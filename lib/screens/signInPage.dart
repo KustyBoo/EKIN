@@ -56,7 +56,8 @@ class _SignInPageState extends State<SignInPage> {
 
       if (loggedInUser != null) {
         Provider.of<ProviderUser>(context, listen: false).addUser(loggedInUser);
-
+        _loading = false;
+        setState(() {});
         Navigator.pushNamed(context, "/BottomNavPage");
       } else {
         ScaffoldMessenger.of(context).showSnackBar(

@@ -422,6 +422,7 @@ class _HomePageState extends State<HomePage> {
                 onTap: () {
                   _signOut();
                   Navigator.pop(context);
+                  ProviderUser().deleteUser();
                 },
                 child: AnimatedContainer(
                   duration: Duration(milliseconds: 200),

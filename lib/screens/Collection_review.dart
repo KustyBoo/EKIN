@@ -320,18 +320,26 @@ class _CollectionReviewPageState extends State<CollectionReviewPage> {
                                 var userProvider = Provider.of<ProviderUser>(
                                     context,
                                     listen: false);
+
+                                FirebaseAuth auth = FirebaseAuth.instance;
+
+                                User? username = auth.currentUser;
+
                                 var user = userProvider.users.first;
-                                String username = user.username;
+
+                                bool foundReview = false;
 
                                 for (int i = 0; i < reviewsDocs.length; i++) {
-                                  if (reviewsDocs[i]['Username'] == username) {
+                                  if (reviewsDocs[i].id == username?.email) {
                                     _controllerReview.text =
                                         reviewsDocs[i]['Review'];
-                                    teksBtnEditSave = "Edit";
-                                    teksBtnClearDel = "Delete";
                                     reviewSepatu = reviewsDocs[i]['Review'];
                                     indeksReview = i;
-                                  } else {
+                                    teksBtnEditSave = "Edit";
+                                    teksBtnClearDel = "Delete";
+                                    foundReview = true;
+                                  }
+                                  if (!foundReview) {
                                     teksBtnEditSave = "Save";
                                     teksBtnClearDel = "Clear";
                                   }
@@ -866,5 +874,3 @@ class _CollectionReviewPageState extends State<CollectionReviewPage> {
     );
   }
 }
-
-class Bintang {}

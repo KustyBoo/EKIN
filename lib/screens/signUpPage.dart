@@ -1,5 +1,6 @@
 // ignore_for_file: sort_child_properties_last, prefer_const_constructors
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pa_ekin/widgets/theme_data.dart';
 import 'package:provider/provider.dart';
@@ -92,17 +93,16 @@ class _SignInPageState extends State<SignUpPage> {
     } else {
       showDialog(
         context: context,
-        builder: (context) => AlertDialog(
-          backgroundColor: Colors.black,
-          title: Text('Error', style: TextStyle(color: Colors.white)),
+        builder: (context) => CupertinoAlertDialog(
+          title: Text('Error', style: TextStyle(color: Colors.red)),
           content: Text('Password dan Confirm Password tidak sesuai.',
-              style: TextStyle(color: Colors.white)),
+              style: TextStyle(color: Colors.black)),
           actions: <Widget>[
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text('OK', style: TextStyle(color: Colors.white)),
+              child: Text('OK', style: TextStyle(color: Colors.black)),
             ),
           ],
         ),
