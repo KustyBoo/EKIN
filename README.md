@@ -1,7 +1,7 @@
-# EKIN
+# EKIN APPS - APLIKASI REVIEW SEPATU
 
 Anggota Kelompok :
-## 1. 2109106049 - Felix Christopher Afrian
+## 1. 2109106049 - Felix Christopher Afrian (KETUA)
 ### BACKEND
 - Data Sepatuu
 - Update Review
